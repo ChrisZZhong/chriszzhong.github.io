@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Fault-Tolerance"
-date: 2023-06-10
+date: 2023-06-16
 description: "Fault-Tolerance"
 tag: Microservices
 ---

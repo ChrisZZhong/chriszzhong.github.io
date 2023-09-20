@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Spring Cloud Config"
-date: 2023-06-10
+date: 2023-06-22
 description: "Spring Cloud Config"
 tag: Microservices
 ---

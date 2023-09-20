@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Async (@Async & messaging)"
-date: 2023-06-10
+date: 2023-06-11
 description: "Async (@Async & messaging)"
 tag: Microservices
 ---

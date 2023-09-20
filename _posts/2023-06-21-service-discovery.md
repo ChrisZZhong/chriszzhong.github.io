@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Service Discovery & microservices communicate"
-date: 2023-06-10
+date: 2023-06-21
 description: "Service Discovery"
 tag: Microservices
 ---
