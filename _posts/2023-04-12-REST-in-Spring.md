@@ -34,4 +34,4 @@ The advantage is that it is easy to use, but the disadvantage is that the reques
 
 `BindingResult` is used to validate the values of the request body. It is used to store the result of the validation and has to be placed right after the request body parameter. We can use `hasErrors()` to check if there is any error and handle the error in the way we want.
 
-# Rest Principles. See [here](https://chriszzhong.github.io/2023/04/RESTFulAPI/)
+# REST Principles. See [here](https://chriszzhong.github.io/2023/04/RESTFulAPI/)
