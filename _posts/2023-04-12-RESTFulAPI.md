@@ -44,3 +44,5 @@ Soap document need to have a root element called `<Envelope>`, which is required
 
 1. Header: contains routing and processing information.
 2. Body: contains the actual message.
+
+# Rest in Spring. See [here](https://chriszzhong.github.io/2023/04/REST-in-Spring/)
