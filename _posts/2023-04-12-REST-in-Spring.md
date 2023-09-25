@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "REST Controller in Spring"
-date: 2023-04-11
+date: 2023-04-12
 description: "REST Controller in Spring"
 tag: Spring Framework
 ---
