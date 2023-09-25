@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Testing in Spring"
+title: "Testing in Spring & Code Coverage"
 date: 2023-04-15
 description: "Testing in Spring"
 tag: Spring-Testing
@@ -89,6 +89,12 @@ public class UserServiceTest {
 
 `@MockBean` is used to create and inject mocked instances. It is used in integration test. (controller layer)
 
+## doReturn - when vs when - thenReturn
+
+They both are used to mock the return value of a method.
+
+`when - thenReturn` will not check the return type of the method. Try to use `doReturn - when` instead.
+
 ## Other annotations
 
 - `@BeforeAll` and `@AfterAll` are used to run the method before and after all test methods. It is static method.
@@ -98,3 +104,47 @@ public class UserServiceTest {
 - `@DisplayName` is used to display the name of the test method.
 
 - `@Disabled` is used to disable the test method.
+
+## Code Coverage
+
+`Code Coverage` is a metric that measures the percentage of code that is executed during automated tests. It is used to measure the quality of the test.
+
+We can use Jacoco to generate the code coverage report.
+
+- Add dependency in pom file.
+
+  ```xml
+  <dependency>
+      <groupId>org.jacoco</groupId>
+      <artifactId>jacoco-maven-plugin</artifactId>
+      <version>0.8.7</version>
+  </dependency>
+  ```
+
+- Add plugin in pom file.
+
+  ```xml
+    <plugin>
+        <groupId>org.jacoco</groupId>
+        <artifactId>jacoco-maven-plugin</artifactId>
+        <version>0.8.7</version>
+        <executions>
+            <execution>
+                <goals>
+                    <goal>prepare-agent</goal>
+                </goals>
+            </execution>
+            <execution>
+                <id>report</id>
+                <phase>test</phase>
+                <goals>
+                    <goal>report</goal>
+                </goals>
+            </execution>
+        </executions>
+    </plugin>
+  ```
+
+- Run `mvn clean test` to generate the report.
+
+- The report will be generated in `target/site/jacoco/index.html`.
