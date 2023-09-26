@@ -10,7 +10,9 @@ tag: Spring Framework
 
 ## 1. What is AOP?
 
-AOP is another perspective for the application, it modularizes cross-cutting concerns like logging, security, transaction, etc. **It is often used in monitoring the performance of the application.**
+**AOP is used to separate functionalities that are not related to the core business logic.** In another word, it is used to **decouple cross-cutting concerns** from the core business logic.
+
+For example, logging is a cross-cutting concern because it is used in many places in the application. It is not related to the core business logic. So, it is a good idea to separate logging from the core business logic. This is where AOP comes into the picture.
 
 ## 2. AOP Concepts
 
