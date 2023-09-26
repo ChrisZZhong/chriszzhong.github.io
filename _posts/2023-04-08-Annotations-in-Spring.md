@@ -8,7 +8,7 @@ tag: Spring Framework
 
 # Common Annotations in Spring
 
-## `@Component` & `Repository` & @Service
+## `@Component` & `@Repository` & `@Service`
 
 - @Component: generic annotation, Spring will automatically detect and register it as a bean
 
