@@ -5,7 +5,8 @@ date: 2023-04-07
 description: "Spring Boot"
 tag: Spring Framework
 ---
-# Spring Boot
+
+# Spring Boot (knowledge)
 
 ## Spring Boot VS Spring Framework
 
