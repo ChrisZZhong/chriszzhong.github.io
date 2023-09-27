@@ -3,7 +3,7 @@ layout: post
 title: "Application Monitoring (Actuator & Logging)"
 date: 2023-06-19
 description: "Application Monitoring (Actuator & Logging)"
-tag: Microservices
+tag: Spring Framework
 ---
 
 # Application Monitoring
@@ -43,3 +43,9 @@ Log Level: `ERROR`, `WARN`, `INFO`, `DEBUG`, or `TRACE`
 `WARN` : log warning messages indicate potential issues may cause critical errors
 
 `ERROR` : log error messages that indicate failures, exceptions, or critical issues within the application.
+
+## In microservices architecture, how to monitor the application?
+
+### Euraka
+
+service discovery server

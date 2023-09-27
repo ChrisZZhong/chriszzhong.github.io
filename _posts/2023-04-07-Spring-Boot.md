@@ -8,7 +8,19 @@ tag: Spring Framework
 
 # Spring Boot (knowledge)
 
-## Spring Boot VS Spring Framework
+## Spring Boot VS Spring Framework **(interview question)**
+
+**In interview:** Answer the `Feature` of Spring Boot and Spring Framework:
+
+1. `Spring Framework`'s core feature is **`Dependency Injection (IOC)`**, **We don't need to initialize the object, spring framework will manage and inject the dependencies for us**. It also provides modules like `AOP`, `JDBC`, `ORM`, `MVC`, `Security` etc.
+
+   Talk more about the Dependency Injection **[Here](https://chriszzhong.github.io/2023/04/Dependency-Injection/)**
+
+2. `Spring Boot`'s core feature is **`Auto Configuration`**, which is used to reduce the time for setting up configurations.
+
+   Talk more about the Auto Configuration **[Here](#auto-configuration-springbootapplication)**
+
+## why Spring Boot?
 
 Spring framework provides a comprehensive programming and configuration model for Java based applications, It integrates well with a lot of components like IOC, AOP, JDBC, ORM, security.
 
