@@ -12,11 +12,11 @@ group: navigation
 <!--</ul>-->
 
 <div class = "card">
-{% for tag in site.tags | sort %} 
+{% for tag in site.tags %} 
 
   <h3 id="{{ tag[0] }}-ref">{{ tag[0] }}</h3>
   <ul>
-    {% assign pages_list = tag[1] %}  
+    {% assign pages_list = tag[1] | sort %}  
     {% include JB/pages_list %}
   </ul>
 
