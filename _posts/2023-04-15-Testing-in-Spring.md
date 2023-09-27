@@ -83,11 +83,11 @@ public class UserServiceTest {
 
 `@Spy` is used to create and inject partially mocked instances. It will call the real method inside. It is used when we want to call the real method and perform some logic inside the method. like sending an email and then test if the email is sent successfully.
 
-## What is the difference between `@Mock` and `@MockBean`?
+## What is the difference between `@Mock` and `@MockBean`? (same with `@Spy` and `@SpyBean`)
 
-`@Mock` is used to create and inject mocked instances. It is used in unit test.
+They both are used to create a fake object. `@Mock` create object not related to the spring framework.
 
-`@MockBean` is used to create and inject mocked instances. It is used in integration test. (controller layer)
+When testing controller, it need us to start the Spring Boot application. We use `@MockBean` to create a fake object that is part of the Spring context. such as beans declared in the application's configuration or beans created by Spring Boot auto-configuration.
 
 ## doReturn - when vs when - thenReturn
 
@@ -97,13 +97,13 @@ They both are used to mock the return value of a method.
 
 ## Other annotations
 
-- `@BeforeAll` and `@AfterAll` are used to run the method before and after all test methods. It is static method.
-
 - `@BeforeEach` and `@AfterEach` are used to run the method before and after each test methods. It is non-static method.
 
 - `@DisplayName` is used to display the name of the test method.
 
 - `@Disabled` is used to disable the test method.
+
+- Junit: `@BeforeAll` and `@AfterAll` are used to run the method before and after all test methods. It is static method.
 
 ## Code Coverage
 

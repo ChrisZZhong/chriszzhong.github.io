@@ -10,7 +10,7 @@ tag: Spring Framework
 
 ## 1. What is AOP?
 
-**AOP is used to separate functionalities that are not related to the core business logic.** In another word, it is used to **decouple cross-cutting concerns** from the core business logic.
+**AOP is used to separate functionalities that are not related to the core business logic.** In another word, it is used to **decouple cross-cutting concerns** from the core business logic. (e.g. logging, exception handling)
 
 For example, logging is a cross-cutting concern because it is used in many places in the application. It is not related to the core business logic. So, it is a good idea to separate logging from the core business logic. This is where AOP comes into the picture.
 
@@ -34,6 +34,6 @@ This point could be a `method being called`, an `exception being thrown`, or eve
 
 `Aspect` is a module that encapsulates join points, pointcuts, and advice. It is a class that implements cross-cutting concerns.
 
-## Spring AOP works
+## Spring AOP works (proxy pattern)
 
 Spring AOP works by **using `proxy` to wrap the object being called.** The proxy is created by the Spring container and is used to intercept the calls to the object being proxied. This is a `decoupling` work to monitor the application **without modifying the core business logic**.
