@@ -15,7 +15,15 @@ tag: Spring Framework
    - `BeanFactory` : `lazy loaded`, `XML`
    - `ApplicationContext` : `eager loaded`, `XML & annotation`
 
-2. [Bean scopes](#bean-scopes):
+2. [IOC container life cycle](#ioc-container-life-cycle):
+
+   1. When Spring application starts, IOC container is instantiated(BeanFactory or Application Context)
+   2. IOC container read the bean class from config files such as XML or annotations like @ComponentScan
+   3. Create bean instance based on the Bean definition
+   4. When a bean is required, inject the required dependencies.
+   5. Post-Post-initialization Pre-destruction and bean call back will be executed, then is the bean destruction when spring application shut down, then the container will shut down.
+
+3. [Bean scopes](#bean-scopes):
 
    - `singleton` (default)
    - `prototype`
@@ -23,7 +31,7 @@ tag: Spring Framework
    - `session`
    - `global-session`
 
-3. [Three types of dependency injection](#three-types-of-dependency-injection): (Optional)
+4. [Three types of dependency injection](#three-types-of-dependency-injection): (Optional)
 
 ## What is dependency injection?
 
@@ -81,16 +89,16 @@ There will be only one instance of B, because A is singleton, it will only creat
 
 ### Three types of dependency injection
 
-Use `@Autowired` to inject dependency, Setter injection is recommended.
+Use `@Autowired` to inject dependency, Setter injection is recommended if circular dependency exists. constructor injection is recommended if we want to inject immutable class.
 
 1. `constructor` injection
 2. `Setter` injection  
    make setter injection mandatory: @Required, recently recommend constructor
 3. `Field` injection
 
-### Circular dependency
+### Circular dependency & Field injection
 
-Constructor injection sometimes causes circular dependency, the field injection cannot be injected to the immutable class, and it is tight coupling.
+Constructor injection sometimes causes circular dependency, the field injection cannot be injected to the immutable class also only support in Spring framework, and it is tight coupling.
 
 ### Dependency ambiguity
 
