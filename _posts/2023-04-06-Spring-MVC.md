@@ -5,44 +5,35 @@ date: 2023-04-06
 description: "Spring MVC"
 tag: Spring Framework
 ---
-# Spring MVC
+
+# Spring MVC (All important points)
 
 ## What is Spring MVC?
 
 Spring MVC is a framework built on top of the Spring framework, it is a web framework that is used to build web applications. It is based on the MVC architecture, which is `model` `view` and `controller`.
 
-`Model` is the data layer, it is used to store the data, it is usually a POJO class.
+- `Model` is the data layer, it is used to store the data, it is usually a POJO class.
 
-`View` is the presentation layer, it is used to display the data, it is usually a JSP page.
+- `View` is the presentation layer, it is used to display the data, it is usually a JSP page.
 
-`Controller` is the business layer, it is used to process the data, it is usually a servlet.
+- `Controller` is the business layer, it is used to process the data, it is usually a servlet.
 
-## workflow
+## Workflow of Spring MVC (Dispatcher servlet)
 
-Spring MVC has a central controller called DispatcherServlet, which provides a shared algorithm for request processing. Dispatcher Servlet receives all of the HTTP requests and maps them to controller classes. Dispatcher Servlet first unifies the request processing. After enriching and dispatching the request, Dispatcher Servlet handles the request and processes arguments and returns values via controller. Finally, Dispatcher Servlet renders the view.
+1. When requst coming, DispatcherServlet map the request to the corresponding controller method.
 
-To find the handler that matches the request, Spring goes through the registered implementations of the HandlerMapping interface, uses HandlerMapping and HandlerAdapter components. Generally use @RequestMapping to map the controller and methods.
+2. In controller, service, dao, the data is processed recording to the business logic.
 
-1. The user sends a request to the front controller (DispatcherServlet).
+3. After that, the controller will create a model object contains the data in a key-value pair way. Controller will return a string of the view name to the view resolver.
 
-2. The front controller (DispatcherServlet) sends the request to the handler mapping.
-
-3. The handler mapping sends the request to the controller.
-
-4. The controller processes the request and sends the request to the model.
-
-5. The model processes the request and sends the request to the view.
-
-6. The view processes the request and sends the request to the front controller (DispatcherServlet).
-
-7. The front controller (DispatcherServlet) sends the request to the view resolver.
-
-8. The view resolver sends the request to the view.
-
-9. The view processes the request and sends the response to the front controller (DispatcherServlet).
-
-10. The front controller (DispatcherServlet) sends the response to the user.
+4. View resolver has two responsibilities, first is to add the prefix and suffix to the view name to find the jsp page, second is to reach the template to replace the variables with the data in the model object. After that, the view resolver will return the view to the front end.
 
 ## View Resolver
 
-View Resolver is used to map the view name to the actual view. It enables us to render models in the browser without tying the implementation to specific view technology.
+View resolver has two responsibilities:
+
+1. First is to add the prefix and suffix to the view name to find the jsp page
+
+2. Second is to reach the template to replace the variables with the data in the model object.
+
+After that, the view resolver will return the view to the front end.
