@@ -28,6 +28,8 @@ Spring MVC is a framework built on top of the Spring framework, it is a web fram
 
 4. View resolver has two responsibilities, first is to add the prefix and suffix to the view name to find the jsp page, second is to reach the template to replace the variables with the data in the model object. After that, the view resolver will return the view to the front end.
 
+<img src = "/images/Full-Stack/SpringFramework/Spring-MVC-workflow.png">
+
 ## View Resolver
 
 View resolver has two responsibilities:
