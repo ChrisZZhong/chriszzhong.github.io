@@ -16,6 +16,8 @@ It also integrates well with frameworks like `Spring Web MVC` (or `Spring Boot`)
 
 ## talk about details how authentication and authorization works, login/ not login, permission/role, etc.
 
+main flow
+
 ## main concepts
 
 - `Authentication` is the process of verifying `who you are`. For example, when you log in to a website, generally you are asked to enter your username and your password to verify your identity.
