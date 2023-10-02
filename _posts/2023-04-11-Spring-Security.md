@@ -10,11 +10,25 @@ tag: Spring Framework
 
 ## Spring Security introduction [More](https://www.marcobehler.com/guides/spring-security)
 
-`Spring Security` is a `bunch of servlet filters` that help you add `authentication` and `authorization` to your web application.
+`Spring Security` is a framework to protect our endpoints.
 
 ## talk about details how authentication and authorization works, login/ not login, permission/role, etc. (Interview question)
 
-## Spring Security Flow
+1. user want to login in with username and password: first it will be filtered by the filter chain.
+
+- UserDetailsService loadUserByUsername() to load user information from database, and then compare the credentials.
+
+- AuthenticationManager authenticate() to authenticate the user and generate UserDetails object with GrantedAuthority.
+
+- JwtTokenUtil generateToken() to generate token with UserDetails.
+
+2. user want to access the endpoint with token: first it will be filtered by the filter chain.
+
+- JwtTokenUtil resolve() the token from request and generate the userDetails object.
+
+- generate authentication object and set the authentication object to SecurityContext.
+
+For authroization, we can use `@PreAuthorize("hasRole('ROLE_ADMIN')")` or `@PreAuthorize("hasAuthority('unverified')")` to check the role of the user. Also, we can use `@AuthenticationPrincipal UserDetails userDetails` to get the user details in the controller.
 
 ### OAuth2
 
