@@ -16,8 +16,6 @@ tag: Spring Framework
 
 ## Spring Security Flow
 
-## Authentication
-
 ### OAuth2
 
 OAuth2 is a standard that allows users to grant access to their data to third parties. For example, you can grant access to your Google Calendar to a third party, so that they can read your calendar and display it in their app.
