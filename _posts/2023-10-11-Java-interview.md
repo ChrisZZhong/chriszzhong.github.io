@@ -397,7 +397,9 @@ There are two level Caching in Hibernate:
 
 ## Spring Framework & Spring Boot
 
-### `Spring Framework`'s core feature is **`Dependency Injection (IOC)`**, **We don't need to initialize the object, spring framework will manage and inject the dependencies for us**. It also provides modules like `AOP`, `JDBC`, `ORM`, `MVC`, `Security` etc.
+### Spring Framework
+
+`Spring Framework`'s core feature is **`Dependency Injection (IOC)`**, **We don't need to initialize the object, spring framework will manage and inject the dependencies for us**. It also provides modules like `AOP`, `JDBC`, `ORM`, `MVC`, `Security` etc.
 
 1. [Two types of IOC container](#two-types-of-ioc-containers):
 
@@ -422,7 +424,9 @@ There are two level Caching in Hibernate:
 
 4. [Three types of dependency injection](#three-types-of-dependency-injection): (Optional)
 
-### `Spring Boot`'s core feature is **`Auto Configuration`**, which is used to reduce the time for setting up configurations.
+### Spring Boot
+
+`Spring Boot`'s core feature is **`Auto Configuration`**, which is used to reduce the time for setting up configurations.
 
 1. talk about spring configuration is complex, spring boot enables auto configuration, which is to reduce the time for setting up configurations.
 
