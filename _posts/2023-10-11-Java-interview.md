@@ -395,6 +395,8 @@ There are two level Caching in Hibernate:
 
 - `Second Level` cache is disabled by default, it is a higher level, cross-multi session. When query something, Hibernate will execute a query like select all fields from table where …, and cache all objects in second level cache, when hibernate need to query object by id, it will first check the first level cache, if not contains, then check the second level cache, if not contains too, it will fetch from database and put it into the second level cache. Second level cache is only used for querying by ID of Hibernate objects.
 
+# Spring
+
 ## Spring Framework & Spring Boot
 
 ### Spring Framework
