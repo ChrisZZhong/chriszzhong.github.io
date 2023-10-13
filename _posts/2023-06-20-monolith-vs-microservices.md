@@ -10,26 +10,8 @@ tag: Microservices
 
 ## Monolith
 
-A monolithic application is built as a single unit. Everything is packaged together and runs as a single service.
-
-    Advantages:
-    - Easy to develop, deploy and test, debug
-    - Easy to scale horizontally
-
-    Disadvantages:
-    - Hard to scale specific components independently, you have to scale the whole application
-    - Hard to adopt new technologies, not good for decoupling
-    - Hard to maintain, it has larger codebase
+Monolithic means asingle server handle multiple business logic. It is tightly coupled. It is suitable for small applications that do not need to scale or handle high throughput. It is easy to develop and deploy compared to microservices.
 
 ## Microservices
 
-A microservice is a small, loosely coupled, distributed service. Each service is self-contained and handle a single business.
-
-    Advantages:
-    - Easy to scale specific components independently by duplicating the single service
-    - Easy to adopt new technologies, good for decoupling
-    - Easy to maintain, it has smaller codebase because each time you only need to maintain a single service
-
-    Disadvantages:
-    - It is more complex to develop, deploy and test, debug
-    - Hard to scale horizontally
+Microservice is a distributed architecture, each service responsible for a single business logic. It is loosely coupled which is easy to add more features and scale specific components independently. The disadvantage is that it needs well designed and more complex to develop.

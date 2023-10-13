@@ -511,3 +511,53 @@ JWT mainly contains three parts:
 - Signature: is used to verify that the sender of the JWT is who it says it is and to ensure that the message wasn’t changed along the way. (Created by hashing the header and the payload with a secret key)
 
 ## Mockito
+
+`Mockito` is a `mocking framework` used for `unit testing` of Java applications. When we write unit tests, we need to mock the `external dependencies`. Mockito provide an easy way to mock the dependencies.
+
+### Difference between `@Mock`, `@Spy`, `@InjectMocks`
+
+`@Mock` is used to create and inject mocked instances. Often used to mock the dao layer. It will not call the real method inside.
+
+`@InjectMocks` will inject the mocked instances into the tested object automatically. Often used to mock the service layer. It will call the real method inside. (suppose we are testing service layer, the service should be marked as `@InjectMocks`. becasue we need to run the logic inside each method)
+
+`@Spy` is used to create and inject partially mocked instances. It will call the real method inside. It is used when we want to call the real method and perform some logic inside the method. like sending an email and then test if the email is sent successfully.
+
+### What is the difference between `@Mock` and `@MockBean`? (same with `@Spy` and `@SpyBean`)
+
+They both are used to create a fake object. `@Mock` create object not related to the spring framework.
+
+When testing controller, it need us to start the Spring Boot application. We use `@MockBean` to create a fake object that is part of the Spring context. such as beans declared in the application's configuration or beans created by Spring Boot auto-configuration.
+
+## Monolithic vs Microservices
+
+Which one to use depends on the business requirements and the size of the application.
+
+### Monolith
+
+Monolithic means asingle server handle multiple business logic. It is tightly coupled. It is suitable for small applications that do not need to scale or handle high throughput. It is easy to develop and deploy compared to microservices.
+
+### Microservices
+
+Microservice is a distributed architecture, each service responsible for a single business logic. It is loosely coupled which is easy to add more features and scale specific components independently. The disadvantage is that it needs well designed and more complex to develop.
+
+## Communication between Microservices
+
+### **Synchronous Communication**
+
+#### HTTP Requests
+
+Microservices communicate with each other using HTTP requests. Each microservice has its own REST API. In Spring Boot, we can use the `RestTemplate` class to make HTTP requests.
+
+#### Eureka and Feign
+
+`Eureka` is a service registration tool. It allows microservices to register themselves and discover other services. Each service send a heartbeat to Eureka to let it know that it is still alive. If Eureka does not receive a heartbeat from a service, it will remove it from its registry.
+
+`Feign` is a REST client to make HTTP requests to other microservices without using `RestTemplate`. It uses Eureka to discover other services. In this way, we can make HTTP requests to other services without hardcoding the URL, also simplifying the code.
+
+### **Asynchronous Communication**
+
+#### Message Brokers
+
+We can use a `message broker` like `RabbitMQ` or `Kafka` to send messages between microservices to communicate `Asychonously`.
+
+For example, when a user creates a new account, we can send a message to the email service to send a welcome email and to the notification service to send a notification to the user.
