@@ -18,20 +18,18 @@ layout: default
     </div>
   </header>
 
-  <hearder style="left: 75%;">
-    {% if site.enableToc %}
-      <h2 class="post-title">Contents</h2>
-      {% include toc.html html=content %}
-    {% endif %}
-  </hearder>
-
-
-
   <section class="post">
     {{ content }}
   </section>
 
 </article>
+
+<hearder style="left: 75%; width: auto;">
+  {% if site.enableToc %}
+    <h2 class="post-title">Contents</h2>
+    {% include toc.html html=content %}
+  {% endif %}
+</hearder>
 
 {% include new-old.html %}
 {% include comments.html %}
