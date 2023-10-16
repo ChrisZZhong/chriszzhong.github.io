@@ -6,7 +6,8 @@ layout: default
   <link rel="stylesheet" href="{{ "/css/post.css" | prepend: site.baseurl }}">
 </head>
 
-<article class="post-container post-container--single" itemscope itemtype="http://schema.org/BlogPosting" style="width: 75%; float: left;">
+<div style="width: 75%; float: left;">
+<article class="post-container post-container--single" itemscope itemtype="http://schema.org/BlogPosting">
   <header class="post-header">
     <h1 class="post-title">{{ page.title }}</h1>
     <div class="post-meta">
@@ -25,12 +26,14 @@ layout: default
 
 </article>
 
-<hearder style="width: 25%; float: left; position: fixed;">
-  {% if site.enableToc %}
-    <h2 class="post-title">Contents</h2>
-    {% include toc.html html=content %}
-  {% endif %}
-</hearder>
-
 {% include new-old.html %}
 {% include comments.html %}
+</div>
+<div style="width: 25%; float: left; position: fixed;">
+  <hearder >
+    {% if site.enableToc %}
+      <h2 class="post-title">Contents</h2>
+      {% include toc.html html=content %}
+    {% endif %}
+  </hearder>
+</div>
