@@ -731,7 +731,8 @@ img::-moz-selection {
     display: inline-block;
     margin-right: 0px;
     padding: 5px 5px 5px 5px;
-    font-size: .6em;
+    font-size: .7em;
+    font-weight: 700;
     text-shadow: none;
     color: #BF1827;
   }
