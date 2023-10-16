@@ -19,6 +19,11 @@ layout: default
     </div>
   </header>
 
+  {% if site.enableToc %}
+    <h2 class="post-title">Contents</h2>
+    {% include toc.html html=content %}
+  {% endif %}
+
   <section class="post">
     {{ content }}
     {% include footer.html %}
