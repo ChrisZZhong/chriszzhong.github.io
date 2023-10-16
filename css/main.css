@@ -535,7 +535,7 @@ img::-moz-selection {
 
   .side-cover {
     display: block;
-    position: absolute;
+    position: fixed;
     left: 78%;
     z-index: 900;
     width: 100%;
