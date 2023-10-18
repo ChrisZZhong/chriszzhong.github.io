@@ -8,7 +8,7 @@ tag: Spring Framework
 
 # Application Monitoring
 
-## How to monitor an Spring Boot application?
+## How to monitor in monolithic?
 
 ### Actuator
 
@@ -26,7 +26,13 @@ predefined endpoints:
 
 ---
 
-### Logging
+## In microservices architecture, how to monitor the application?
+
+### Euraka
+
+service discovery server
+
+### Logging is used for debugging, not for monitoring
 
 `Logging` is used to record the events that happen in our application. It is used to debug and monitor the application.
 
@@ -43,9 +49,3 @@ Log Level: `ERROR`, `WARN`, `INFO`, `DEBUG`, or `TRACE`
 `WARN` : log warning messages indicate potential issues may cause critical errors
 
 `ERROR` : log error messages that indicate failures, exceptions, or critical issues within the application.
-
-## In microservices architecture, how to monitor the application?
-
-### Euraka
-
-service discovery server
