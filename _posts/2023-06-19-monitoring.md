@@ -32,7 +32,7 @@ predefined endpoints:
 
 service discovery server
 
-### Logging is used for debugging, not for monitoring
+## Logging is used for debugging, not for monitoring
 
 `Logging` is used to record the events that happen in our application. It is used to debug and monitor the application.
 
@@ -40,7 +40,7 @@ For logging, Spring Boot uses `Logback` by default, so the console shows the dat
 
 Also we can use `Log4j2`. `Log4j` is vulnerable to `Log4Shell` attack. So we should use `Log4j2` instead.
 
-#### Log Levels:
+### Log Levels:
 
 Log Level: `ERROR`, `WARN`, `INFO`, `DEBUG`, or `TRACE`
 
