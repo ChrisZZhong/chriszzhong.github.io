@@ -6,9 +6,7 @@ description: "LeetCode daily problems"
 tag: LeetCode
 ---
 
-## [1402. Reducing Dishes](https://leetcode.com/problems/reducing-dishes/)
-
-`time : 10-21-2023`
+## [1402. Reducing Dishes](https://leetcode.com/problems/reducing-dishes/) 🔴 10-21-2023
 
 ### **Description**:
 
