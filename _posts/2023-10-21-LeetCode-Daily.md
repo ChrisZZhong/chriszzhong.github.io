@@ -86,7 +86,7 @@ Time complexity: O(nlogn)
 
 Space complexity: O(1)
 
-## 2678. Number of Senior Citizens 🔴 10-23-2023
+## 2678. Number of Senior Citizens 🟢 10-23-2023
 
 [2678. Number of Senior Citizens](https://leetcode.com/problems/number-of-senior-citizens/)
 
