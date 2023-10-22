@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "LeetCode daily problems"
-date: 2023-10-11
+date: 2023-10-21
 description: "LeetCode daily problems"
 tag: LeetCode
 ---
