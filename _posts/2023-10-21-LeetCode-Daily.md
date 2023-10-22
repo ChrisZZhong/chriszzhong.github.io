@@ -8,7 +8,7 @@ tag: LeetCode
 
 ## [1402. Reducing Dishes](https://leetcode.com/problems/reducing-dishes/) 🔴 10-21-2023
 
-### **Description**:
+**Description**:
 
 <div class="xFUwe" data-track-load="description_content"><p>A chef has collected data on the <code>satisfaction</code> level of his <code>n</code> dishes. Chef can cook any dish in 1 unit of time.</p>
 
@@ -50,7 +50,7 @@ Each dish is prepared in one unit of time.</pre>
 </ul>
 </div>
 
-### **Ideas**:
+**Ideas**:
 
 The intuition behind this approach is that we always try to maximize the like-time coefficient by prioritizing dishes with higher satisfaction.
 
@@ -60,7 +60,7 @@ First we sort the array in ascending order and iterate from back to front. `[-9,
 
 To record the result, we can use a variable `res` to record the result, each time we pick a new dishes, the result will increase `sum + satisfaction[i]`. We don't need to record the list of the dishes and calculate the sum by `times[i] * satisfaction[i]`.
 
-### **Solution**:
+**Solution**:
 
 We can use a greedy approach. We start by sorting the satisfaction array in descending order. Then, we iterate over the array and keep accumulating the satisfaction until the accumulated value is greater than zero. At each step, we update our result.
 
