@@ -176,3 +176,56 @@ Add the following dependencies in `pom.xml`:
     <version>5.3.14.Final</version>
 </dependency>
 ```
+
+## Create a RESTful Controller
+
+Add the following dependencies in `pom.xml`:
+
+```xml
+<!-- Notice that the spring-boot-starter-Tomcat is embedded in web here -->
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-web</artifactId> <!-- Spring Web -->
+</dependency>
+```
+
+Add `@RestController` annotation to the controller class. Also, we need to create the DTO classes to handle the request and response.
+
+````Java
+
+```Java
+@RestController
+public class DashBoardController {
+
+    private CategoryService categoryService;
+
+
+    @Autowired
+    public DashBoardController(CategoryService categoryService) {
+        this.categoryService = categoryService;
+    }
+
+    @GetMapping("/categories")
+    // @RequestBody ProductRequest productRequest
+    public ResponseEntity<CategoriesResponse> getCategories() {
+        // get all catogires
+        List<Category> allCategories = categoryService.getAllCategories();
+        return ResponseEntity.ok(CategoriesResponse.builder().categories(allCategories).build());
+    }
+}
+````
+
+For the request and response, we need to create the DTO classes.
+
+```Java
+@Getter
+@Setter
+@Builder
+public class CategoriesResponse {
+    // this is to map the response with the Json key
+    @JsonProperty(value = "categories")
+    private List<Category> categories;
+}
+```
+
+<img src = "/images/SpringDemo/SpringBoot_4.png">
