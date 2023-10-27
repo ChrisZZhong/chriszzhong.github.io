@@ -63,7 +63,7 @@ Use `Extend` keywords to declare inheritance, inheritance in Java implies that t
 
 Type: single, multiple, multilevel, hierarchical, hybrid. Java doesn’t support Multiple inheritance
 
-#### Diamond Problem
+#### **Diamond Problem**
 
 Multiple inheritance will cause diamond problem
 The diamond problem in Java is about multiple inheritance. `When two superclasses of class A have a common parent class`, they all override the method of the parent class. When class A calls that method, it is ambiguous, so here arises a problem.
@@ -77,7 +77,7 @@ The diamond problem in Java is about multiple inheritance. `When two superclasse
 **Definition** : we can perform a single action in different ways
 Java implements it by `overriding` and `overloading`.
 
-#### method overriding & method overloading Provide your own example
+#### **method overriding & method overloading Provide your own example**
 
 1. Overriding is to redefine a method that has been defined in a parent class, with the same signature.
 
@@ -87,7 +87,7 @@ Java implements it by `overriding` and `overloading`.
 
 **Definition** : Abstraction is used to hide the internal details and show only the functionality to the users.
 
-#### interface and abstract class
+#### **interface and abstract class**
 
 1. Interface is a blueprint of a class that have static constants and abstract methods. It can only have abstract methods, and all methods are public and abstract by default. It is used to achieve abstraction and multiple inheritance.
 
@@ -191,6 +191,42 @@ public class CustomException extends Exception {
 
 ## Thread
 
+### LifeCycle and State of Thread
+
+<img src="/images/Full-Stack/JavaCore/ThreadState.png">
+
+1. `New`: When we create a new thread, it is in the `new` state.
+
+2. `Runnable`: When we call the `start()` method, the thread will be in the `runnable` state. In this state, the thread is ready to run, but it is not running yet.
+
+3. `Running`: When the thread is running, it is in the `running` state.
+
+4. `Blocked`: The thread will be in blocked state when it is trying to acquire a lock but currently the lock is acquired by the other thread. The thread will move from the blocked state to runnable state when it acquires the lock.
+
+5. `Waiting`: When we call the `wait()`, `join()` method, the thread will be in the waiting state and `release the lock` until another thread calls the `notify()` or `notifyAll()` method.
+
+6. `Timed Waiting`: When we call the `sleep()` method, the thread will be in the timed waiting state and `release the lock` for the specified time. When the time is up, the thread will move to the runnable state.
+
+7. `Terminated`: When the thread finishes its execution, it will be in the terminated state.
+
+#### **why wait() and notify() are in Object class but not in Thread Class?**
+
+Because they are used to manage synchronization and communication between threads that are interacting with the same object.
+
+The purpose of wait() is to make a thread temporarily release the lock on the object it is associated with, allowing other threads to enter synchronized blocks or methods associated with the same object. notify() is used to wake up one waiting thread that is waiting on the same object, giving it a chance to acquire the lock and proceed.
+
+If wait() and notify() were part of the Thread class, it might lead to confusion and difficulties when trying to coordinate threads on specific objects.
+
+#### **Join() and Sleep()**
+
+1. join() is used to let the current thread wait for others to finish.
+
+   When a thread invokes join(), it will block itself until the target thread completes execution. This helps you make sure all other threads finish their work and then proceed to execute the current thread.
+
+2. sleep() is used to let the current thread sleep for a specified time.
+
+   When a thread invokes sleep(), it will block itself for the specified time. This helps you pause the execution of the current thread for a specified time.
+
 ### Create a thread
 
 Generally, we can create a thread in two ways: Implement `Runnable` interface or extend `Thread` class.
@@ -213,7 +249,7 @@ We need to access the result and when bug happens, we need to know the message o
 
 ### Callable and Future
 
-#### Callable
+#### **Callable**
 
 `Callable` is a functional interface, which has only one method call(). Callable is similar to Runnable, but Callable can return the result and throw exception.
 
@@ -242,7 +278,7 @@ public interface ExecutorService extends Executor {
 }
 ```
 
-#### Future
+#### **Future**
 
 The `Future` represents the result of Thread. When thread executed, the result or the exception message will be stored in the Future for main thread to access.
 
@@ -633,11 +669,11 @@ Microservice is a distributed architecture, each service responsible for a singl
 
 ### **Synchronous Communication**
 
-#### HTTP Requests
+#### **HTTP Requests**
 
 Microservices communicate with each other using HTTP requests. Each microservice has its own REST API. In Spring Boot, we can use the `RestTemplate` class to make HTTP requests.
 
-#### Eureka and Feign
+#### **Eureka and Feign**
 
 `Eureka` is a service registration tool. It allows microservices to register themselves and discover other services. Each service send a heartbeat to Eureka to let it know that it is still alive. If Eureka does not receive a heartbeat from a service, it will remove it from its registry.
 
@@ -645,7 +681,7 @@ Microservices communicate with each other using HTTP requests. Each microservice
 
 ### **Asynchronous Communication**
 
-#### Message Brokers
+#### **Message Brokers**
 
 We can use a `message broker` like `RabbitMQ` or `Kafka` to send messages between microservices to communicate `Asychonously`.
 
