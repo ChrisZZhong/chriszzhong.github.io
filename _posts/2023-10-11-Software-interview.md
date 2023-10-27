@@ -191,7 +191,7 @@ public class CustomException extends Exception {
 
 ## Thread
 
-### LifeCycle and State of Thread
+### LifeCycle of Thread and common knowledge
 
 <img src="/images/Full-Stack/JavaCore/ThreadState.png">
 
@@ -226,6 +226,17 @@ If wait() and notify() were part of the Thread class, it might lead to confusion
 2. sleep() is used to let the current thread sleep for a specified time.
 
    When a thread invokes sleep(), it will block itself for the specified time. This helps you pause the execution of the current thread for a specified time.
+
+#### **Deadlock**
+
+Deadlock is a situation where two or more threads are blocked forever, waiting for each other to release the lock. Use a join() method between two start() to resolve this situation, so that the main will wait for the first thread to finish and then start the second thread. Use synchronize.
+
+Strictly deadlock has 4 necessary conditions
+
+1. Mutual Exclusion: A resource can be held by only one process at a time.
+2. Hold and Wait: A process can hold a number of resources at a time and at the same time, it can request for other resources that are being held by some other process.
+3. No preemption: A resource can't be preempted from the process by another process, forcefully.
+4. Circular Wait: Circular wait is a condition when the first process is waiting for the resource held by the second process, the second process is waiting for the resource held by the third process, and so on.
 
 ### Create a thread
 
