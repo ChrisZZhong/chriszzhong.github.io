@@ -484,8 +484,6 @@ Use `static method` to create a singleton.
    }
    ```
 
-````
-
 2. Lazy initialization
    Advantage : `Lazy loaded`, only create instance when it is needed, saves memory.
    ```Java
@@ -522,6 +520,8 @@ public class ThreadSafeSingleton {
     }
 ```
 
+# Database
+
 ## JDBC & statement
 
 JDBC is a Java API used to connect and execute query to the database.
@@ -534,6 +534,115 @@ There are three types of JDBC statements:
 - `PreparedStatement`: Used to execute static SQL statements with parameters. we can use `?` to represent the parameters, and then use `setXXX()` method to set the parameters. It can prevent SQL injection attacks.
 
 - `CallableStatement`: Used to execute stored procedures in database.
+
+```Java
+public static List<Trainee> getTraineesByPhoneNumber(String phone){
+   List<Trainee> trainees = new ArrayList<>();
+
+   // set up the connection
+   Connection conn = null;
+   PreparedStatement preparedStatement = null;
+
+   try {
+      // Register JDBC driver, open a connection
+      Class.forName(JDBC_DRIVER);
+      conn = DriverManager.getConnection(DB_URL, USER, PASSWORD);
+
+      // Execute a query
+      String query = "select * from trainee where phoneNumber = ? ";
+      preparedStatement = conn.prepareStatement(query);
+      preparedStatement.setString(1, phone);
+
+      ResultSet resultSet = preparedStatement.executeQuery();
+
+      // retrieve data from result set row by row
+      while (resultSet.next()) {
+            int id = resultSet.getInt("id");
+            String firstName = resultSet.getString("firstName");
+            String lastName = resultSet.getString("lastName");
+            String phoneNumber = resultSet.getString("phoneNumber");
+            String ssn = resultSet.getString("ssn");
+
+            Trainee trainee = new Trainee(id, firstName, lastName, phoneNumber, ssn);
+            trainees.add(trainee);
+      }
+      resultSet.close();
+      // Clean-up environment, handle exceptions
+   } catch (ClassNotFoundException | SQLException e) {
+      e.printStackTrace();
+   } finally {
+      try {
+            if (conn != null) {
+               conn.close();
+            }
+            if (preparedStatement != null) {
+               preparedStatement.close();
+            }
+      } catch (SQLException e) {
+            e.printStackTrace();
+      }
+   }
+
+   return trainees;
+}
+```
+
+### Transaction Management
+
+`Transaction` is a set of operations that are executed as a single unit of work. If one operation fails, the whole transaction fails. In JDBC, the Connection interface provides methods to manage transactions. There are three methods in the Connection interface: `setAutoCommit()`, `commit()` and `rollback()`.
+
+```Java
+public static void main(String[] args) {
+
+   Connection conn = null;
+   Statement statement = null;
+
+   try {
+      Class.forName(JDBC_DRIVER);
+      conn = DriverManager.getConnection(DB_URL, USER, PASSWORD);
+      statement = conn.createStatement();
+
+      // 1. setAutoCommit(false) to disable auto-commit mode
+      conn.setAutoCommit(false);
+
+      String query = "update Bank set balance = 100 where accountName = 'April'";
+      statement.executeUpdate(query);
+      // ... several other executions
+
+      // 2. setAutoCommit false all the operations are grouped together and committed at once
+      conn.commit();
+      System.out.println("Transaction successfully committed");
+      System.out.println(getCurrentBalances(statement));
+
+   }
+   catch (ClassNotFoundException | SQLException e) {
+      e.printStackTrace();
+   }
+   catch (RuntimeException e) {
+      try {
+            System.out.println("rolling back ...");
+            if (conn != null) {
+               // 3. rollback if any exception occurs
+               conn.rollback();
+            }
+      } catch (SQLException e1) {
+            e1.printStackTrace();
+      }
+   }
+   finally {
+      try {
+            if (conn != null) {
+               conn.close();
+            }
+            if (statement != null) {
+               statement.close();
+            }
+      } catch (SQLException e) {
+            e.printStackTrace();
+      }
+   }
+}
+```
 
 ## JDBCTemplate
 
@@ -761,4 +870,7 @@ Microservices communicate with each other using HTTP requests. Each microservice
 We can use a `message broker` like `RabbitMQ` or `Kafka` to send messages between microservices to communicate `Asychonously`.
 
 For example, when a user creates a new account, we can send a message to the email service to send a welcome email and to the notification service to send a notification to the user
-````
+
+```
+
+```
