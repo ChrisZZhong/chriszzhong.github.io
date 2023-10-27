@@ -45,6 +45,54 @@ tag: Interviews
   **Example:**  
    Still use payment as an example, if you want to use a new payment method, you should not modify the payProcessor, instead, you should create a new class and extend the payProcessor, and use the new class to handle the new payment method.
 
+## OOP
+
+### Encapsulation
+
+**Definition** : Encapsulation is used to hide the internal details of a class. Only provide essential information to the users and hide implementation details.
+
+Java implements it by making the fields in a class private and providing access to the fields via public methods like reflection. This helps to maintain data integrity and prevent unauthorized access to or modification of an object's internal state. Improve security, easier maintenance, improve code reuse.
+
+E.g. `private` fields and `public` getters and setters.
+
+### Inheritance
+
+**Definition** : Derive something specific from something generic, a class can inherit all properties and methods of another class and add its own modification.
+
+Use `Extend` keywords to declare inheritance, inheritance in Java implies that there is an IS-A relationship between the classes.
+
+Type: single, multiple, multilevel, hierarchical, hybrid. Java doesn’t support Multiple inheritance
+
+#### Diamond Problem
+
+Multiple inheritance will cause diamond problem
+The diamond problem in Java is about multiple inheritance. `When two superclasses of class A have a common parent class`, they all override the method of the parent class. When class A calls that method, it is ambiguous, so here arises a problem.
+
+1. Interface: We can use the default methods and interfaces to achieve multiple inheritance, since Java supports more than one class implementing the interface.
+
+2. aggregation: We can also use aggregation to include objects of multiple classes within its own implementation. This allows the class to access the methods and properties of the aggregated objects without directly inheriting from them, thus avoiding the conflicts and ambiguities of multiple inheritance.
+
+### Polymorphism
+
+**Definition** : we can perform a single action in different ways
+Java implements it by `overriding` and `overloading`.
+
+#### method overriding & method overloading Provide your own example
+
+1. Overriding is to redefine a method that has been defined in a parent class, with the same signature.
+
+2. Overloading is to define two methods with the same name, in the same class, but with different signatures.
+
+### Abstraction
+
+**Definition** : Abstraction is used to hide the internal details and show only the functionality to the users.
+
+#### interface and abstract class
+
+1. Interface is a blueprint of a class that have static constants and abstract methods. It can only have abstract methods, and all methods are public and abstract by default. It is used to achieve abstraction and multiple inheritance.
+
+2. Abstract class is a class that is declared abstract, it can have abstract and non-abstract methods. It is used to achieve abstraction and code reusability.
+
 ## Final, Finally, Finalize
 
 - `final` is a keyword to declare a constant variable, a method or a class.
