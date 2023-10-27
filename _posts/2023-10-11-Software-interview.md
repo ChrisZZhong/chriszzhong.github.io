@@ -148,6 +148,47 @@ HashMap is a bucket array to store `key-value pairs`. It stores key-value pairs 
 
 When hash collision occurs, it stores the key-value pairs in the same bucket array in the form of linked list. When the number of linked lists in the same bucket array exceeds 8 or 16, it will be converted to a red-black tree to improve the search efficiency.
 
+### SynchronizedMap & ConcurrentHashMap & HashMap
+
+<img src = "/images/Full-Stack/JavaCore/HashMap.png">
+
+`HashMap`: not Thread-safe, can have one null key and multiple null values.  
+`SynchronizedMap`: Thread-safe, Slow Performance, can have one null key and multiple null values. Can only have one thread reading.  
+`ConcurrentHashMap`: Thread-safe, Fast Performance, null key and values are not allowed. Can have multiple threads reading at the same time, because it has multiple segments.
+
+## Exception
+
+### Checked Exception & Unchecked Exception
+
+There are two types of exceptions in Java, checked exceptions and unchecked exceptions.
+
+- `Checked exceptions` are checked at compile-time. It means if a method is throwing a checked exception then it should handle the exception using try-catch block or it should declare the exception using throws keyword, otherwise the program will give a compilation error.  
+  Example: `IOException`, `SQLException` etc.
+
+- `Unchecked exceptions` are not checked at compile-time, it means if your program is throwing an unchecked exception and even if you didn’t handle/declare that exception, the program won’t give a compilation error. It is up to the programmer to judge the conditions in advance, that can cause such exceptions and handle them appropriately.  
+  Example: `NullPointerException` etc.
+
+### Handle Exception
+
+- For handle exception, we can use `try-catch` block to handle the exception, or use `throws` keyword to propagate the exception to the caller.
+- In Spring Boot, we can use `@ExceptionHandler` to handle the exception.
+
+### Exception Propagation
+
+When an exception happens (like throw exceptions or runtime error), first it will check in current functions, is there any handler like try catch block to handle the exception, if not handled, it will be thrown to the caller function in the call stack, again and again until it is handled.
+
+### Custom Exception
+
+Create a class extending `Exception` or `RunTimeException` class, to use it, throw an exception in somewhere and use a try catch block to catch it.
+
+```Java
+public class CustomException extends Exception {
+   public CustomException(String message) {
+      super(message);
+   }
+}
+```
+
 ## Thread
 
 ### Create a thread
