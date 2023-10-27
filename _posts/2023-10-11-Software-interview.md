@@ -369,6 +369,20 @@ When object is serialized, the `serialVersionUID` will be generated automaticall
 
 If we do not want to serialize some fields, we can use `transient` keyword to declare the field. Like `public transient int age`;
 
+# Java 8
+
+Name some new features in Java 8:
+
+- Lambda expression
+
+- Functional interface
+
+- Stream API
+
+- Optional
+
+- Default and static methods in interface
+
 ## Lambda expression
 
 lambda expression is used to create an anonymous function.  
@@ -400,6 +414,54 @@ They both are used for comparing two objects. They serve for different purposes.
   1. We don't need to implement the `Comparator` interface, but we need to create a new class to implement the `Comparator` interface and override the `compare()` method.
   2. We can also use lambda expression to create a `Comparator` object.
 
+## Optional
+
+Optional object is used to handle NPE problems, handling values as ‘availableʼ or ‘not availableʼ instead of checking null values.
+
+```
+empty(): Returns an empty Optional object
+of(): Returns an Optional with the specified present non-null value
+ofNullable(): Returns an Optional with the specified value, if non-null, otherwise returns an empty Optional
+isPresent(): Returns true if there is a value present, otherwise false
+```
+
+```Java
+Optional result = xxxService.findById(id);
+if (result.isPresent()) {
+    return result.get();
+} else {
+    throw new Exception();
+}
+// for service
+public Optional<xxx> findById(Long id) {
+    return Optional.ofNullable(xxxRepository.findById(id));
+}
+```
+
+## Stream API
+
+Stream API is used to process collections of objects, it is a pipeline that performs a series of operations to the object to get the desired result.
+
+### Terminal Operations & Intermediate Operations (API)
+
+Intermediate operation is lazily executed and returns a stream as a result, thus can be pipelined. `filter()` , `map()` , `flatMap()` , `distinct()` , and `sorted()`.
+
+flatMap() : It can transform data or flatten data, like flatten a 2d array to an array.
+
+<img src= "/images/Full-Stack/JavaCore/StreamAPIIntermediate.png">
+
+Terminal operation is eagerly executed and returns a non-stream result, thus ending the stream. `forEach()` , `count()` , `collect()` , `reduce()` , `allMatch()` , `anyMatch()` , `noneMatch()` , `findFirst()` , `findAny()`.
+
+<img src= "/images/Full-Stack/JavaCore/StreamAPITerminal.png">
+
+### Parallel Stream
+
+By default, stream api is sequential, but we can set it to parallel.
+
+Instead of using .stream(), use parallelStream() to create a parallel stream. Other operations are similar to the sequential stream. operations may be executed concurrently by multiple threads, which can lead to faster processing for certain tasks
+
+# Design Pattern
+
 ## Singleton
 
 There at most `one` instance exists during the application runtime. When there is a request, if the instance already exists, return the existing instance, else generate a new instance. Common example is the `bean scope` in Spring.
@@ -408,8 +470,8 @@ There at most `one` instance exists during the application runtime. When there i
 
 Use `static method` to create a singleton.
 
-1. Eager initialization  
-   Advantage : `Simple` and `thread safe`  
+1. Eager initialization
+   Advantage : `Simple` and `thread safe`
    Disadvantage: `Eager loaded` will cause memory waste, because the instance is created even if it is not used.
 
    ```Java
@@ -422,7 +484,9 @@ Use `static method` to create a singleton.
    }
    ```
 
-2. Lazy initialization  
+````
+
+2. Lazy initialization
    Advantage : `Lazy loaded`, only create instance when it is needed, saves memory.
    ```Java
     public class Singleton {
@@ -697,3 +761,4 @@ Microservices communicate with each other using HTTP requests. Each microservice
 We can use a `message broker` like `RabbitMQ` or `Kafka` to send messages between microservices to communicate `Asychonously`.
 
 For example, when a user creates a new account, we can send a message to the email service to send a welcome email and to the notification service to send a notification to the user
+````
