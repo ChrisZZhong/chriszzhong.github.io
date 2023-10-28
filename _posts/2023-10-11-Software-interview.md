@@ -660,6 +660,8 @@ main methods:
 
 Hibernate is an ORM (Object Relational Mapping) framework, which is used to map the object-oriented domain model to the relational database.
 
+### ORM
+
 To configure Hibernate:
 
 - Add the dependency in pom.xml
