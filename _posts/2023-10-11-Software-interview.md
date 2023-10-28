@@ -872,7 +872,3 @@ Microservices communicate with each other using HTTP requests. Each microservice
 We can use a `message broker` like `RabbitMQ` or `Kafka` to send messages between microservices to communicate `Asychonously`.
 
 For example, when a user creates a new account, we can send a message to the email service to send a welcome email and to the notification service to send a notification to the user
-
-```
-
-```
