@@ -6,6 +6,24 @@ description: "Daily English"
 tag: English Learning
 ---
 
+## Nov 5, 2023
+
+[material](https://www.bilibili.com/video/BV1c84y1R77G/?buvid=Z34F8E34D12BC6C64BF0B7A8F1FC14B50935&is_story_h5=false&mid=K8xHrWA25JE2ByBfiZ7w%2Bg%3D%3D&p=1&plat_id=116&share_from=ugc&share_medium=iphone&share_plat=ios&share_source=WEIXIN&share_tag=s_i&timestamp=1699235388&unique_k=TvfOF6e&up_id=286051472)
+
+### Are you gonna ... or not?
+
+```
+Are you gonna __ or not? 你要不要__？
+
+Are you gonna help me or not? 你要不要帮我？
+
+Are you gonna do it or not? 你要不要做？
+
+Are you gonna eat it or not? 你要不要吃？
+
+Are you gonna go or not? 你要不要去？
+```
+
 ## Nov 2, 2023
 
 [material](https://www.bilibili.com/video/BV11B4y1o73o/?-Arouter=story&buvid=de9a7c3d243642e05f0a5ad6d00172f2&from_spmid=tm.recommend.0.0&is_story_h5=true&mid=K8xHrWA25JE2ByBfiZ7w%2Bg%3D%3D&p=1&plat_id=163&share_from=ugc&share_medium=iphone&share_plat=ios&share_session_id=38576EFE-6B4C-429D-97A8-D75D34D36E07&share_source=WEIXIN&share_tag=s_i&spmid=main.ugc-video-detail-vertical.0.0&timestamp=1698964728&unique_k=zDMioZf&up_id=286051472)
