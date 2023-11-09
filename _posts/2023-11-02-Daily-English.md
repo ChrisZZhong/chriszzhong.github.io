@@ -6,6 +6,8 @@ description: "Daily English"
 tag: English Learning
 ---
 
+## Nov 9, 2023
+
 ## Nov 5, 2023
 
 [material](https://www.bilibili.com/video/BV1c84y1R77G/?buvid=Z34F8E34D12BC6C64BF0B7A8F1FC14B50935&is_story_h5=false&mid=K8xHrWA25JE2ByBfiZ7w%2Bg%3D%3D&p=1&plat_id=116&share_from=ugc&share_medium=iphone&share_plat=ios&share_source=WEIXIN&share_tag=s_i&timestamp=1699235388&unique_k=TvfOF6e&up_id=286051472)
