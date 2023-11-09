@@ -8,6 +8,22 @@ tag: English Learning
 
 ## Nov 9, 2023
 
+### What are you on about?
+
+```
+What are you on about? 你在说什么？
+
+It is usually used with a negative tone, like if someone is talking nonsense, you can say "What are you on about?"
+```
+
+### Are you off out now?
+
+```
+Are you off out now? 你现在要出去了吗？
+
+I'm off out. 我要出去了。
+```
+
 ## Nov 5, 2023
 
 [material](https://www.bilibili.com/video/BV1c84y1R77G/?buvid=Z34F8E34D12BC6C64BF0B7A8F1FC14B50935&is_story_h5=false&mid=K8xHrWA25JE2ByBfiZ7w%2Bg%3D%3D&p=1&plat_id=116&share_from=ugc&share_medium=iphone&share_plat=ios&share_source=WEIXIN&share_tag=s_i&timestamp=1699235388&unique_k=TvfOF6e&up_id=286051472)
