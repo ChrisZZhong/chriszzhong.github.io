@@ -6,6 +6,38 @@ description: "Daily English"
 tag: English Learning
 ---
 
+## Nov 13, 2023
+
+[material](https://www.bilibili.com/video/BV1bc411X78v/?buvid=de9a7c3d243642e05f0a5ad6d00172f2&from_spmid=dt.dt-video-quick-cosume.video.0&is_story_h5=false&mid=K8xHrWA25JE2ByBfiZ7w%2Bg%3D%3D&p=1&plat_id=122&share_from=ugc&share_medium=iphone&share_plat=ios&share_session_id=B7826DE2-219B-4F94-9BB0-FA3E3DF91EBF&share_source=WEIXIN&share_tag=s_i&spmid=united.player-video-detail.0.0&timestamp=1699911276&unique_k=fw9ZViG&up_id=404489581)
+
+### I'll get to it.
+
+```
+leave it to me, I'll get to it sometime this week. 交给我，我这周会做的。
+
+get to --> start to do something
+
+don't get to it. 别做了。
+```
+
+### go over
+
+```
+we need to go over the details. 我们需要仔细研究一下细节。
+
+go over the plans. 研究一下计划。
+
+let's go over this again. 让我们再来一遍。
+
+go over --> review/study carefully
+```
+
+### was really hoping to do/that ...
+
+```
+I was really hoping that you could help me. 我真的希望你能帮我。
+```
+
 ## Nov 9, 2023
 
 ### What are you on about?
@@ -22,6 +54,11 @@ It is usually used with a negative tone, like if someone is talking nonsense, yo
 Are you off out now? 你现在要出去了吗？
 
 I'm off out. 我要出去了。
+
+other similar expressions:
+
+1. be out the door. 我要出门了。
+
 ```
 
 ## Nov 5, 2023
