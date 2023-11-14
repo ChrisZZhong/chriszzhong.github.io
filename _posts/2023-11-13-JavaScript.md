@@ -12,6 +12,22 @@ ECMAScript 6 is also known as ES6. It is used to create web applications. It is 
 
 ECMA is the standard, JS is the language in practice
 
+## What are some new features introduced with ES6?
+
+- Let, Const
+- Arrow Functions
+- Template string literals
+- Map & Set
+- Array & Object Destructuring
+- Spread & Rest Operator (…)
+- Enhanced object literals
+- Default function parameters
+- Generators
+- Classes
+- Promises
+- Async/Await
+- Modules
+
 ## What is Hoisting?
 
 Hoisting is a `mechanism`.
@@ -41,3 +57,46 @@ For object : refer to the instance of the object.
 For Keyword Function : ‘this’ changes based on where it is invoked
 
 For Arrow Function : in the scope where this is defined
+
+## What are JavaScript Scopes?
+
+Scope: the section of code that can access a variable or function
+
+- Block : code within non-function body like for loop, static code block
+
+- Function : code within function bracket {}
+
+- Global : all codes not block or function
+  - Window : a global object that represents the current browser tab
+
+## What is closure in JavaScript?
+
+an inner function with references to outer function scope and its variables. a closure gives you access to an outer function's scope from an inner function.
+
+## What is Callback Hell?
+
+nested callback functions whose arguments are results of the outer callback. - Difficult to read, maintain, debug. Use promise chain to solve this problem
+
+## What is a Promise?
+
+an object that represents the eventual completion/failure of an asynchronous operation and its resulting value
+
+Three states: Pending, Fulfilled, Rejected
+
+- The promise will always log pending as long as its results are not resolved yet
+- Once resolved, the status changed to fulfilled
+- If an error occurs, the status will change to reject.
+
+.then() : access a promise result with two options : success or failure callback, it will return a promise with pending status.
+
+.catch() : generally put at the end of the chain, to handle errors.
+
+### Promise chain
+
+consecutively invoking .then() on a promise, compared to nested callback funcs, clean, readable, easy for debug and error handling.
+
+## What is Event Propagation?
+
+Events pass through every DOM node until it reaches the final phase or is stopped by your code
+
+<img src = "./images/Full-Stack/JS/eventpropagation.png">
