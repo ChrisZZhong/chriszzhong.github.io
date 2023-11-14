@@ -100,3 +100,86 @@ consecutively invoking .then() on a promise, compared to nested callback funcs, 
 Events pass through every DOM node until it reaches the final phase or is stopped by your code
 
 <img src = "/images/Full-Stack/JS/eventpropagation.png">
+
+### What is event.preventDefault?
+
+prevent the default behavior of an element
+
+## Is JavaScript a single or multithreaded language?
+
+JavaScript is a single-threaded language. It has one call stack and one memory heap.
+
+JavaScript achieves asynchrony through the `Event loop` mechanism. It handles synchronous and asynchronous code.
+
+### What is the Event Loop? What do call stack and callback queue do?
+
+**`Event loop`** : a runtime model that handles execution of synchronous and asynchronous code
+
+Call stack : store the synchronous tasks
+
+Task Queue:
+
+- Macrotask(callback queue) Queue → (event listener, timeout) low priority tasks executed when microtask queue is empty
+
+- micro task queue → async functions are executed when call stack is empty, promises have a higher priority than other asynchronous tasks (promise)
+
+## How does JavaScript compile (JIT)?
+
+`Just-in-time` compilation
+
+During runtime, entire code is converted into machine code, then executed immediately
+
+## What does it mean when we say that JavaScript is a Dynamically Typed Language?
+
+Types are not specified when declaring variables; they are assigned based on the value at runtime.
+
+## What are some benefits of using Typescript?
+
+A superset of JS, can not be directly executed by browser, needs to be transpiled to js.
+
+Advantage:
+
+- When cooperate with other teammates, build complex applications.
+- Readable, easy for maintain.
+- Catch errors before runtime like Type check
+
+Disadvantage:
+
+- Increase development time. Complex than js
+
+## What is Static Type Checking?
+
+Type checking is performed without running the program.
+
+## What is an Interface in Typescript?
+
+interface({}) defines object types (a group of key-value pairs) to be reused.
+
+```TypeScript
+interface Person {
+  name: string;
+  age: number;
+}
+```
+
+type alias (type) defines a type to be reused.
+
+```TypeScript
+type Person = {
+  name: string;
+  age: number;
+};
+```
+
+## What is the difference between type any and type unknown?
+
+- any: can be assigned to any type, no type checking
+
+- unknown: can be assigned to any type, but type checking is required before using it
+
+Code used to check value type for safety:
+
+- Typeof
+- Instanceof
+- In
+- Array.isArray()
