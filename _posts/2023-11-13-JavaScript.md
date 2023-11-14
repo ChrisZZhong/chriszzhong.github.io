@@ -99,4 +99,4 @@ consecutively invoking .then() on a promise, compared to nested callback funcs, 
 
 Events pass through every DOM node until it reaches the final phase or is stopped by your code
 
-<img src = "./images/Full-Stack/JS/eventpropagation.png">
+<img src = "/images/Full-Stack/JS/eventpropagation.png">
