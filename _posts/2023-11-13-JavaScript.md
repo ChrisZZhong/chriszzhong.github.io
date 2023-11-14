@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "JavaScript questions"
-date: 2023-08-07
+date: 2023-11-13
 description: "JavaScript"
 tag: Interviews
 ---

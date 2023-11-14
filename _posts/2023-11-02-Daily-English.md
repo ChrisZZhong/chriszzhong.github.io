@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Daily English"
-date: 2023-08-07
+date: 2023-11-02
 description: "Daily English"
 tag: English Learning
 ---
