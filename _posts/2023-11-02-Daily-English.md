@@ -6,6 +6,30 @@ description: "Daily English"
 tag: English Learning
 ---
 
+## Nov 21, 2023
+
+[lecture](https://www.bilibili.com/read/cv4097212/)
+
+### 挪下位置
+
+```
+could you scoot over a little bit? 你能挪一下位置吗？
+scoot up. 往前挪一点。
+```
+
+### Foods in the kitchen
+
+```
+The milk is spoiled. 牛奶坏了。
+how long did you leave it out? 你把它放了多久？
+```
+
+### When you in a Bus, plane, train, or other public transportation.
+
+```
+Stow your luggage in the overhead bin. 把你的行李放在头顶的行李架上。
+```
+
 ## Nov 13, 2023
 
 [material](https://www.bilibili.com/video/BV1bc411X78v/?buvid=de9a7c3d243642e05f0a5ad6d00172f2&from_spmid=dt.dt-video-quick-cosume.video.0&is_story_h5=false&mid=K8xHrWA25JE2ByBfiZ7w%2Bg%3D%3D&p=1&plat_id=122&share_from=ugc&share_medium=iphone&share_plat=ios&share_session_id=B7826DE2-219B-4F94-9BB0-FA3E3DF91EBF&share_source=WEIXIN&share_tag=s_i&spmid=united.player-video-detail.0.0&timestamp=1699911276&unique_k=fw9ZViG&up_id=404489581)
