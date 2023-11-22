@@ -6,6 +6,27 @@ description: "Daily English"
 tag: English Learning
 ---
 
+## Nov 22, 2023
+
+### Directions (chat with chatgpt)
+
+can you help me with directions?
+Do you know how to get to the edge tower?
+
+```
+Excuse me, can you help me with directions? I'm trying to get to The Edge Tower in New York City. How do I get there from here?
+
+Sure, it's not too far from here. You can take the subway to the 34th Street Station. Then you can walk to the tower from there.
+```
+
+### 当别人推荐你东西的时候 give it a shot
+
+```
+have you used it before? 你用过吗？
+
+No, I might give it a shot. 没有，我可能会试一试。
+```
+
 ## Nov 21, 2023
 
 [lecture](https://www.bilibili.com/read/cv4097212/)
