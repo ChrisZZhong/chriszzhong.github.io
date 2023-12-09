@@ -6,6 +6,20 @@ description: "Daily English"
 tag: English Learning
 ---
 
+## Dec 9, 2023
+
+## 辛苦的做某事
+
+```
+bust my ass : to make an extreme effort
+```
+
+## 撒谎
+
+```
+made up something
+```
+
 ## Nov 22, 2023
 
 ### Directions (chat with chatgpt)
