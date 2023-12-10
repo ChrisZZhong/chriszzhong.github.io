@@ -6,15 +6,23 @@ description: "Daily English"
 tag: English Learning
 ---
 
+## Dec 10, 2023
+
+### 也就是说....
+
+```
+As in, I'm not going to do it. 也就是说，我不会做的。 often used in spoken English.
+```
+
 ## Dec 9, 2023
 
-## 辛苦的做某事
+### 辛苦的做某事
 
 ```
 bust my ass : to make an extreme effort
 ```
 
-## 撒谎
+### 撒谎
 
 ```
 made up something
