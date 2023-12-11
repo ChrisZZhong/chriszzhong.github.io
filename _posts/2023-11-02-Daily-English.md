@@ -6,6 +6,26 @@ description: "Daily English"
 tag: English Learning
 ---
 
+## Dec 11, 2023
+
+### 我得...
+
+```
+I've got to do something. 我得做某事。 / I've gotta do something. 我得做某事。
+
+you gotta get going. 你得走了。
+
+I've gotta be leaving. 我得走了。
+
+you gotta get used to it. 你得习惯它。
+```
+
+### 让某人难看，臭骂一顿
+
+```
+told him off
+```
+
 ## Dec 10, 2023
 
 ### 也就是说....
