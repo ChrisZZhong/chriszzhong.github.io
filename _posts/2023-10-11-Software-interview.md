@@ -138,9 +138,9 @@ Java implements it by `overriding` and `overloading`.
 
 - `String` is immutable, used to store values with fixed size. (Security reason, Thread safe, Hashcode, String Pool)
 
-- `StringBuffer` used when we do not need to consider the thread safety, and when we need to frequently modify the content of the string.
+- `StringBuffer` ：used in multi-threaded environment, when we need to frequently modify the content of the string.
 
-- `StringBuilder` used in multi-threaded environment, when we need to frequently modify the content of the string.
+- `StringBuilder` used when we do not need to consider the thread safety, and when we need to frequently modify the content of the string.
 
 ## HashMap
 
