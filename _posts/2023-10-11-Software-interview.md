@@ -144,7 +144,7 @@ Java implements it by `overriding` and `overloading`.
 
 ## HashMap
 
-HashMap is a bucket array to store `key-value pairs`. It stores key-value pairs based on their hash value. It uses the `hashcode()` method to calculate the hash value of the key, and then uses the hash value to calculate the index of the bucket array.
+HashMap is a bucket array to store `key-value pairs`. It stores key-value pairs based on their hash value. It uses the `hashcode()` method to calculate the hash value of the key, and then uses the hash value to calculate the index of the bucket array
 
 When hash collision occurs, it stores the key-value pairs in the same bucket array in the form of linked list. When the number of linked lists in the same bucket array exceeds 8 or 16, it will be converted to a red-black tree to improve the search efficiency.
 
