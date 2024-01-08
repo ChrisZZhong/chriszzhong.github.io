@@ -6,6 +6,269 @@ description: "LeetCode daily problems"
 tag: LeetCode
 ---
 
+## 146. LRU Cache 🟠 01-07-2023
+
+[146. LRU Cache](https://leetcode.com/problems/lru-cache/)
+
+**Description**:
+
+<div class="elfjS" data-track-load="description_content"><p>Design a data structure that follows the constraints of a <strong><a href="https://en.wikipedia.org/wiki/Cache_replacement_policies#LRU" target="_blank">Least Recently Used (LRU) cache</a></strong>.</p>
+
+<p>Implement the <code>LRUCache</code> class:</p>
+
+<ul>
+	<li><code>LRUCache(int capacity)</code> Initialize the LRU cache with <strong>positive</strong> size <code>capacity</code>.</li>
+	<li><code>int get(int key)</code> Return the value of the <code>key</code> if the key exists, otherwise return <code>-1</code>.</li>
+	<li><code>void put(int key, int value)</code> Update the value of the <code>key</code> if the <code>key</code> exists. Otherwise, add the <code>key-value</code> pair to the cache. If the number of keys exceeds the <code>capacity</code> from this operation, <strong>evict</strong> the least recently used key.</li>
+</ul>
+
+<p>The functions <code>get</code> and <code>put</code> must each run in <code>O(1)</code> average time complexity.</p>
+
+<p>&nbsp;</p>
+<p><strong class="example">Example 1:</strong></p>
+
+<pre><strong>Input</strong>
+["LRUCache", "put", "put", "get", "put", "get", "put", "get", "get", "get"]
+[[2], [1, 1], [2, 2], [1], [3, 3], [2], [4, 4], [1], [3], [4]]
+<strong>Output</strong>
+[null, null, null, 1, null, -1, null, -1, 3, 4]
+
+<strong>Explanation</strong>
+LRUCache lRUCache = new LRUCache(2);
+lRUCache.put(1, 1); // cache is {1=1}
+lRUCache.put(2, 2); // cache is {1=1, 2=2}
+lRUCache.get(1);    // return 1
+lRUCache.put(3, 3); // LRU key was 2, evicts key 2, cache is {1=1, 3=3}
+lRUCache.get(2);    // returns -1 (not found)
+lRUCache.put(4, 4); // LRU key was 1, evicts key 1, cache is {4=4, 3=3}
+lRUCache.get(1);    // return -1 (not found)
+lRUCache.get(3);    // return 3
+lRUCache.get(4);    // return 4
+</pre>
+
+<p>&nbsp;</p>
+<p><strong>Constraints:</strong></p>
+
+<ul>
+	<li><code>1 &lt;= capacity &lt;= 3000</code></li>
+	<li><code>0 &lt;= key &lt;= 10<sup>4</sup></code></li>
+	<li><code>0 &lt;= value &lt;= 10<sup>5</sup></code></li>
+	<li>At most <code>2 * 10<sup>5</sup></code> calls will be made to <code>get</code> and <code>put</code>.</li>
+</ul>
+</div>
+
+**Ideas**:
+
+1. We can use a Doubly Linked List to store the key and value. **Head -> A -> B -> C -> D -> Tail** With this we can easily remove the tail and add a new node to the head. But the problem is to find the node in the list. We can use a HashMap to store the key and the node. So we can easily find the node in the list. **HashMap: key -> Node**. So the time complexity for get and put is O(1).
+
+```Java
+class LRUCache {
+
+    class DoubledListNode {
+    int key;
+    int value;
+    DoubledListNode prev;
+    DoubledListNode next;
+    DoubledListNode(int key, int value) {
+        this.key = key;
+        this.value = value;
+        }
+    }
+
+    // initialize the cache
+    Map<Integer, DoubledListNode> cache = new HashMap<>();
+    int capacity;
+    int size;
+    DoubledListNode head, tail;
+
+    public LRUCache(int capacity) {
+        this.capacity = capacity;
+        this.size = 0;
+        this.head = new DoubledListNode(-1, -1);
+        this.tail = new DoubledListNode(-1, -1);
+        head.next = tail;
+        tail.prev = head;
+    }
+
+    public int get(int key) {
+
+    }
+
+    public void put(int key, int value) {
+
+    }
+}
+```
+
+2. With the structure above, we can focus on the get and put method.
+
+```Java
+    public int get(int key) {
+        // if the key is not in the cache, return -1
+        // if the key is in the cache, return the value and move the node to the head
+
+        // summary : we need a method moveToHead(DoubledListNode node)
+        // for this method, it contains two steps:
+        // 1. remove the node from the list -> removeNode(node)
+        // 2. add the node to the head  -> addNewNodeToHead(node)
+    }
+
+    public void put(int key, int value) {
+        // if the key is in the cache, update the value and move the node to the head
+        // if the key is not in the cache, add the node to the head, if the size is greater than capacity, remove the tail
+
+        // summary : we need a method moveToHead(DoubledListNode node) and addNewNodeToHead(DoubledListNode node) and evictTail()
+
+    }
+```
+
+3. Implement the methods above
+
+```Java
+    private void moveToHead(DoubledListNode node) {
+        // remove the node from the list
+        removeNode(node);
+        // add the node to the head
+        addNewNodeToHead(node);
+    }
+
+    private void removeNode(DoubledListNode node) {
+        node.prev.next = node.next;
+        node.next.prev = node.prev;
+    }
+
+    private void addNewNodeToHead(DoubledListNode node) {
+        node.next = head.next;
+        node.prev = head;
+        // remember to update the head and the previous node next to head
+        head.next.prev = node;
+        head.next = node;
+    }
+
+    private void evictTail() {
+        DoubledListNode tailNode = tail.prev;
+        removeNode(tailNode);
+        return tailNode;
+    }
+
+
+```
+
+4. Implement the Get and Put methods
+
+```Java
+    public int get(int key) {
+        if (!cache.containsKey(key)) return -1;
+        DoubledListNode node = cache.get(key);
+        moveToHead(node);
+        return node.value;
+    }
+
+    public void put(int key, int value) {
+        if (cache.containsKey(key)) {
+            DoubledListNode node = cache.get(key);
+            node.value = value;
+            moveToHead(node);
+        } else {
+            DoubledListNode node = new DoubledListNode(key, value);
+            cache.put(key, node);
+            addNewNodeToHead(node);
+            size++;
+            if (size > capacity) {
+                DoubledListNode tailNode = evictTail();
+                cache.remove(tailNode.key);
+                size--;
+            }
+        }
+    }
+```
+
+5. the final solution
+
+```Java
+class LRUCache {
+
+    class DoubledListNode {
+        int key;
+        int value;
+        DoubledListNode prev;
+        DoubledListNode next;
+        DoubledListNode(int key, int value) {
+            this.key = key;
+            this.value = value;
+        }
+    }
+
+    Map<Integer, DoubledListNode> cache = new HashMap<>();
+    int capacity;
+    int size;
+    DoubledListNode head, tail;
+
+    public LRUCache(int capacity) {
+        this.capacity = capacity;
+        this.size = 0;
+        this.head = new DoubledListNode(-1, -1);
+        this.tail = new DoubledListNode(-1, -1);
+        head.next = tail;
+        tail.prev = head;
+    }
+
+    public int get(int key) {
+        DoubledListNode node = cache.get(key);
+        // not exist -> return -1
+        if (node == null) return -1;
+        // exist, move node to head, return value;
+        moveToHead(node);
+        return node.value;
+    }
+
+        public void put(int key, int value) {
+        // if exist, update value, move to head
+        DoubledListNode node = cache.get(key);
+        if (node != null) {
+            node.value = value;
+            moveToHead(node);
+        } else {
+            DoubledListNode newNode = new DoubledListNode(key, value);
+            cache.put(key, newNode);
+            addNewNodeToHead(newNode);
+            size++;
+            if (size > capacity) {
+                DoubledListNode tailNode = evictTail();
+                this.size--;
+                cache.remove(tailNode.key);
+            }
+        }
+        // not exist, add a new node to head (update map), check if exceed capacity? evict tail node
+    }
+
+    private void moveToHead(DoubledListNode node) {
+        // break current node prev and next
+        removeNode(node);
+        // move to head
+        addNewNodeToHead(node);
+    }
+
+    private void addNewNodeToHead(DoubledListNode node) {
+        node.prev = head;
+        node.next = head.next;
+        // **
+        head.next.prev = node;
+        head.next = node;
+    }
+
+    private DoubledListNode evictTail() {
+        DoubledListNode tailNode = tail.prev;
+        removeNode(tailNode);
+        return tailNode;
+    }
+    private void removeNode(DoubledListNode node) {
+        node.prev.next = node.next;
+        node.next.prev = node.prev;
+    }
+}
+```
+
 ## 2558. Take Gifts From the Richest Pile 🟢 10-26-2023
 
 [2558. Take Gifts From the Richest Pile](https://leetcode.com/problems/take-gifts-from-the-richest-pile/)
