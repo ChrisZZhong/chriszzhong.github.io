@@ -6,6 +6,83 @@ description: "LeetCode daily problems"
 tag: LeetCode
 ---
 
+## 447. Number of Boomerangs 🟠 01-08-2023
+
+[447. Number of Boomerangs](https://leetcode.com/problems/number-of-boomerangs/description/)
+
+**Description**:
+
+<div class="elfjS" data-track-load="description_content"><p>You are given <code>n</code> <code>points</code> in the plane that are all <strong>distinct</strong>, where <code>points[i] = [x<sub>i</sub>, y<sub>i</sub>]</code>. A <strong>boomerang</strong> is a tuple of points <code>(i, j, k)</code> such that the distance between <code>i</code> and <code>j</code> equals the distance between <code>i</code> and <code>k</code> <strong>(the order of the tuple matters)</strong>.</p>
+
+<p>Return <em>the number of boomerangs</em>.</p>
+
+<p>&nbsp;</p>
+<p><strong class="example">Example 1:</strong></p>
+
+<pre><strong>Input:</strong> points = [[0,0],[1,0],[2,0]]
+<strong>Output:</strong> 2
+<strong>Explanation:</strong> The two boomerangs are [[1,0],[0,0],[2,0]] and [[1,0],[2,0],[0,0]].
+</pre>
+
+<p><strong class="example">Example 2:</strong></p>
+
+<pre><strong>Input:</strong> points = [[1,1],[2,2],[3,3]]
+<strong>Output:</strong> 2
+</pre>
+
+<p><strong class="example">Example 3:</strong></p>
+
+<pre><strong>Input:</strong> points = [[1,1]]
+<strong>Output:</strong> 0
+</pre>
+
+<p>&nbsp;</p>
+<p><strong>Constraints:</strong></p>
+
+<ul>
+	<li><code>n == points.length</code></li>
+	<li><code>1 &lt;= n &lt;= 500</code></li>
+	<li><code>points[i].length == 2</code></li>
+	<li><code>-10<sup>4</sup> &lt;= x<sub>i</sub>, y<sub>i</sub> &lt;= 10<sup>4</sup></code></li>
+	<li>All the points are <strong>unique</strong>.</li>
+</ul>
+</div>
+
+**Ideas**:
+
+When we first see this problem, we can easily come up with a brute force solution. We can use three for loops to find the boomerangs. But the time complexity will be O(n^3).
+
+Another way to solve this problem is : for each point, use a hashmap to store the distance between this point and other points. Then we know how many points have the same distance to this point.
+
+For point A, if there exists n points have the same distance to A, that means we can pick any two of n points to form a boomerang. So the total number of boomerangs is n \* (n - 1).
+
+With this idea, we can for loop the entryset of the map and calculate the total number of boomerangs of one point and sum of all points.
+
+**Solution**:
+
+```Java
+class Solution {
+    public int numberOfBoomerangs(int[][] points) {
+        if (points.length < 3) return 0;
+        int res = 0;
+        // for each point, calculate the distance between this point and other points
+        for (int[] p : points) {
+            Map<Integer, Integer> map = new HashMap<>();
+            for (int[] q : points) {
+                int dis = (p[0] - q[0]) * (p[0] - q[0]) + (p[1] - q[1]) * (p[1] - q[1]);
+                map.put(dis, map.getOrDefault(dis, 0) + 1);
+            }
+            // for each point, calculate the total number of boomerangs
+            for (Map.Entry<Integer, Integer> e : map.entrySet()) {
+                int m = e.getValue();
+                res += m * (m - 1);
+            }
+        }
+        return res;
+    }
+}
+```
+
 ## 356. Line Reflection 🟠 01-08-2023
 
 [356. Line Reflection](https://leetcode.com/problems/line-reflection/description/)
