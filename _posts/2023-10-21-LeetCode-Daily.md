@@ -6,6 +6,100 @@ description: "LeetCode daily problems"
 tag: LeetCode
 ---
 
+## 356. Line Reflection 🟠 01-08-2023
+
+[356. Line Reflection](https://leetcode.com/problems/line-reflection/description/)
+
+**Description**:
+
+<div class="elfjS" data-track-load="description_content"><p>Given <code>n</code> points on a 2D plane, find if there is such a line parallel to the y-axis that reflects the given points symmetrically.</p>
+
+<p>In other words, answer whether or not if there exists a line that after reflecting all points over the given line, the original points' set is the same as the reflected ones.</p>
+
+<p><strong>Note</strong> that there can be repeated points.</p>
+
+<p>&nbsp;</p>
+<p><strong class="example">Example 1:</strong></p>
+<img alt="" src="https://assets.leetcode.com/uploads/2020/04/23/356_example_1.PNG" style="width: 389px; height: 340px;">
+<pre><strong>Input:</strong> points = [[1,1],[-1,1]]
+<strong>Output:</strong> true
+<strong>Explanation:</strong> We can choose the line x = 0.
+</pre>
+
+<p><strong class="example">Example 2:</strong></p>
+<img alt="" src="https://assets.leetcode.com/uploads/2020/04/23/356_example_2.PNG" style="width: 300px; height: 294px;">
+<pre><strong>Input:</strong> points = [[1,1],[-1,-1]]
+<strong>Output:</strong> false
+<strong>Explanation:</strong> We can't choose a line.
+</pre>
+
+<p>&nbsp;</p>
+<p><strong>Constraints:</strong></p>
+
+<ul>
+	<li><code>n == points.length</code></li>
+	<li><code>1 &lt;= n &lt;= 10<sup>4</sup></code></li>
+	<li><code>-10<sup>8</sup> &lt;= points[i][j] &lt;= 10<sup>8</sup></code></li>
+</ul>
+
+<p>&nbsp;</p>
+<p><strong>Follow up:</strong> Could you do better than <code>O(n<sup>2</sup>)</code>?</p>
+</div>
+
+**Ideas**:
+
+Since we only reflect Y axis, to find the line, we can easily get the line with the leftmost and rightmost points. Then we can use a hashset to store the points. Then we can check if the reflected points are in the hashset.
+
+**Solution**:
+
+```Java
+class Solution {
+
+    // Here we create a new class Point to store the x and y value, and override the equals and hashCode method
+    class Point {
+        double x;
+        double y;
+        Point(double x, double y) {
+            this.x = x;
+            this.y = y;
+        }
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true; // check reference
+            // check null and class type
+            if (o == null || getClass() != o.getClass()) return false;
+            // cast o to Point
+            Point point = (Point) o;
+            return point.x == this.x && point.y == this.y;
+        }
+
+        @Override
+        public int hashCode() {
+            return Objects.hash(x, y);
+        }
+
+    }
+
+    public boolean isReflected(int[][] points) {
+        if (points.length == 1) return true;
+        Set<Point> pointSet = new HashSet<>();
+        double min = Integer.MAX_VALUE;
+        double max = Integer.MIN_VALUE;
+        for (int[] point : points) {
+            max = Math.max(point[0], max);
+            min = Math.min(point[0], min);
+            pointSet.add(new Point(point[0], point[1]));
+        }
+        // Here 2 * (line - point[0]) + point[0] is the reflected point, we don't need to consider the point is at the left or right of the line
+        double line = min + (max - min) / 2;
+        for (int[] point : points) {
+            if (!pointSet.contains(new Point(2 * (line - point[0]) + point[0], point[1])))  return false;
+        }
+        return true;
+    }
+}
+```
+
 ## 146. LRU Cache 🟠 01-07-2023
 
 [146. LRU Cache](https://leetcode.com/problems/lru-cache/)
