@@ -50,7 +50,7 @@ tag: LeetCode
 
 **Ideas**:
 
-When we first see this problem, we can easily come up with a brute force solution. We can use three for loops to find the boomerangs. But the time complexity will be O(n^3)
+When we first see this problem, we can easily come up with a brute force solution. We can use three for loops to find the boomerangs. But the time complexity will be O(n^3).
 
 Another way to solve this problem is : for each point, use a hashmap to store the distance between this point and other points. Then we know how many points have the same distance to this point.
 
