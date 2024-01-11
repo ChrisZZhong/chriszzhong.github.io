@@ -396,3 +396,214 @@ The more faults a system can tolerate without failing, the more fault-tolerant i
 5. `Layered System` : Client does not need to know the internal structure (server / intermediary).
 
 6. `Code on demand` : The server can provide executable code or scripts for the client to execute in its context.
+
+## SOAP
+
+SOAP is a protocol that uses XML to exchange information between computers over the Internet. It is an XML-based protocol for accessing web services. Compared to REST, SOAP is more difficult to implement and requires more bandwidth and resources.
+
+Soap document need to have a root element called `<Envelope>`, which is required, and `<Header>` and `<Body>`, which are optional.
+
+1. Header: contains routing and processing information.
+2. Body: contains the actual message.
+
+## JDBC & statement
+
+JDBC is a Java API used to connect and execute query to the database.
+It uses JDBC statements to execute queries.
+
+There are three types of JDBC statements:
+
+- `Statement`: Used to execute static SQL statements with no parameters. Actually we can pass parameters by concatenating strings, but this is not recommended because it is vulnerable to SQL injection attacks. Such as `SELECT * FROM users WHERE username = 'admin' OR 1=1;` will return all the users. So we should use `PreparedStatement` instead.
+
+- `PreparedStatement`: Used to execute static SQL statements with parameters. we can use `?` to represent the parameters, and then use `setXXX()` method to set the parameters. It can prevent SQL injection attacks.
+
+- `CallableStatement`: Used to execute stored procedures in database.
+
+```Java
+public static List<Trainee> getTraineesByPhoneNumber(String phone){
+   List<Trainee> trainees = new ArrayList<>();
+
+   // set up the connection
+   Connection conn = null;
+   PreparedStatement preparedStatement = null;
+
+   try {
+      // Register JDBC driver, open a connection
+      Class.forName(JDBC_DRIVER);
+      conn = DriverManager.getConnection(DB_URL, USER, PASSWORD);
+
+      // Execute a query
+      String query = "select * from trainee where phoneNumber = ? ";
+      preparedStatement = conn.prepareStatement(query);
+      preparedStatement.setString(1, phone);
+
+      ResultSet resultSet = preparedStatement.executeQuery();
+
+      // retrieve data from result set row by row
+      while (resultSet.next()) {
+            int id = resultSet.getInt("id");
+            String firstName = resultSet.getString("firstName");
+            String lastName = resultSet.getString("lastName");
+            String phoneNumber = resultSet.getString("phoneNumber");
+            String ssn = resultSet.getString("ssn");
+
+            Trainee trainee = new Trainee(id, firstName, lastName, phoneNumber, ssn);
+            trainees.add(trainee);
+      }
+      resultSet.close();
+      // Clean-up environment, handle exceptions
+   } catch (ClassNotFoundException | SQLException e) {
+      e.printStackTrace();
+   } finally {
+      try {
+            if (conn != null) {
+               conn.close();
+            }
+            if (preparedStatement != null) {
+               preparedStatement.close();
+            }
+      } catch (SQLException e) {
+            e.printStackTrace();
+      }
+   }
+
+   return trainees;
+}
+```
+
+### Transaction Management
+
+`Transaction` is a set of operations that are executed as a single unit of work. If one operation fails, the whole transaction fails. In JDBC, the Connection interface provides methods to manage transactions. There are three methods in the Connection interface: `setAutoCommit()`, `commit()` and `rollback()`.
+
+```Java
+public static void main(String[] args) {
+
+   Connection conn = null;
+   Statement statement = null;
+
+   try {
+      Class.forName(JDBC_DRIVER);
+      conn = DriverManager.getConnection(DB_URL, USER, PASSWORD);
+      statement = conn.createStatement();
+
+      // 1. setAutoCommit(false) to disable auto-commit mode
+      conn.setAutoCommit(false);
+
+      String query = "update Bank set balance = 100 where accountName = 'April'";
+      statement.executeUpdate(query);
+      // ... several other executions
+
+      // 2. setAutoCommit false all the operations are grouped together and committed at once
+      conn.commit();
+      System.out.println("Transaction successfully committed");
+      System.out.println(getCurrentBalances(statement));
+
+   }
+   catch (ClassNotFoundException | SQLException e) {
+      e.printStackTrace();
+   }
+   catch (RuntimeException e) {
+      try {
+            System.out.println("rolling back ...");
+            if (conn != null) {
+               // 3. rollback if any exception occurs
+               conn.rollback();
+            }
+      } catch (SQLException e1) {
+            e1.printStackTrace();
+      }
+   }
+   finally {
+      try {
+            if (conn != null) {
+               conn.close();
+            }
+            if (statement != null) {
+               statement.close();
+            }
+      } catch (SQLException e) {
+            e.printStackTrace();
+      }
+   }
+}
+```
+
+## JDBCTemplate
+
+`JDBCTemplate` is a class in Spring JDBC, which is used to simplify the use of JDBC and avoid repetitive code.
+
+All we need to do is pass the `SQL statment`, `RowMapper` and `parameters` to the `JDBCTemplate` object, and then it will fetch the data from database and convert it to the object according to the rowmapper.
+
+main methods:
+
+- `queryForObject`: return a single object
+- `query`: return a list of objects
+- `update`: update the database
+
+## Hibernate
+
+Hibernate is an ORM (Object Relational Mapping) framework, which is used to map the object-oriented domain model to the relational database.
+
+### ORM
+
+To configure Hibernate:
+
+- Add the dependency in pom.xml
+
+- Configure hibernate, we need a Hibernate `Configuration class`, inside it, we need to create a `sessionFactory` with the `dataSource`.
+
+- Create entity class using `@Entity` and `@Table`, `@Id`, `@Column` `@GeneratedValue` to map objects to the database.
+
+- To use it, we call sessionFactory.getCurrentSession to perform operations.
+
+- To handle transactions, we can use @Transactional provided by Spring to handle transactions.
+
+### Migration between different databases
+
+Change database URL, driver, username, password, dialect
+
+Dialect is used to generate the SQL statement according to the typr of database.
+
+Driver is used to set up the connection between the application and the database.
+
+### Entity State
+
+- `transient` state, the entity instance is not attached to a session and has no corresponding rows in the database. It's usually just a new object that has been created to save to the database.
+
+- `persistent` state, the entity instance is associated with a unique Session object (object already mapped to the database). Upon flushing the Session to the database, the entity is guaranteed to have a corresponding consistent record in the database.
+
+- `detached` states, the entity instance was once attached to a Session, but now it’s not. An instance enters this state if it is evicted from the context, clear or close the Session, or put the instance through serialization/deserialization process.
+
+### Fetching Strategies
+
+- `Eager`: will fetch all attributes of an entity at once, including Aggregation / Composition.
+
+- `Lazy`: **`Default`** will load the Aggregation / Composition fields only when requested. This can improve performance by reducing the amount of data retrieved from the database
+
+`LazyInitializationException` occurs when accessing a lazily-loaded proxy outside the session. Hibernate is unable to fetch the data because the session has been closed. We can use eager fetching to prevent this from happening, or manually initialize the collection before the session closes.
+
+### Hibernate Caching
+
+There are two level Caching in Hibernate:
+
+- `First level` cache provides caching at the session level. It is enabled by default. When you load an entity using a Session, Hibernate checks the first-level cache first to see if the entity is already loaded. If it's found in the cache, Hibernate returns the cached object, avoiding a database query. We can use session contains() to check if an obj is cached or not. get(). load() methods.
+
+- `Second Level` cache is disabled by default, it is a higher level, cross-multi session. When query something, Hibernate will execute a query like select all fields from table where …, and cache all objects in second level cache, when hibernate need to query object by id, it will first check the first level cache, if not contains, then check the second level cache, if not contains too, it will fetch from database and put it into the second level cache. Second level cache is only used for querying by ID of Hibernate objects.
+
+## Mockito
+
+`Mockito` is a `mocking framework` used for `unit testing` of Java applications. When we write unit tests, we need to mock the `external dependencies`. Mockito provide an easy way to mock the dependencies.
+
+### Difference between `@Mock`, `@Spy`, `@InjectMocks`
+
+`@Mock` is used to create and inject mocked instances. Often used to mock the dao layer. It will not call the real method inside.
+
+`@InjectMocks` will inject the mocked instances into the tested object automatically. Often used to mock the service layer. It will call the real method inside. (suppose we are testing service layer, the service should be marked as `@InjectMocks`. becasue we need to run the logic inside each method)
+
+`@Spy` is used to create and inject partially mocked instances. It will call the real method inside. It is used when we want to call the real method and perform some logic inside the method. like sending an email and then test if the email is sent successfully.
+
+### What is the difference between `@Mock` and `@MockBean`? (same with `@Spy` and `@SpyBean`)
+
+They both are used to create a fake object. `@Mock` create object not related to the spring framework.
+
+When testing controller, it need us to start the Spring Boot application. We use `@MockBean` to create a fake object that is part of the Spring context. such as beans declared in the application's configuration or beans created by Spring Boot auto-configuration.
