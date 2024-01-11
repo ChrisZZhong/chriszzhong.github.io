@@ -6,6 +6,70 @@ description: "frequent questions asked in interviews"
 tag: Interviews
 ---
 
+## Lambda expression
+
+lambda expression is used to create an anonymous function. (para) -> {action}
+
+The usage is in Java 8, we can use `lambda expression` to initialize a `functional interface`.
+
+## Functional Interface
+
+An interface that has only one abstract method and provides a single functionality. `@FunctionalInterface` annotation is not mandatory but it will add constraints to check if there is only one method in it.
+
+- `Consumer` takes a single input and performs action without returning the result.
+
+- `Supplier` used to generate a value.
+
+- `Function` takes a single input and produces a result.
+
+- `Predicate` takes a single input and returns a boolean value.
+
+## Optional
+
+Optional object is used to handle NPE problems, handling values as ‘availableʼ or ‘not availableʼ instead of checking null values.
+
+```
+empty(): Returns an empty Optional object
+of(): Returns an Optional with the specified present non-null value
+ofNullable(): Returns an Optional with the specified value, if non-null, otherwise returns an empty Optional
+isPresent(): Returns true if there is a value present, otherwise false
+```
+
+```Java
+Optional result = xxxService.findById(id);
+if (result.isPresent()) {
+    return result.get();
+} else {
+    throw new Exception();
+}
+// for service
+public Optional<xxx> findById(Long id) {
+    return Optional.ofNullable(xxxRepository.findById(id));
+}
+```
+
+## Stream API (Intermediate & Terminal Operations)
+
+Stream API is used to process collections of objects, it is a pipeline that performs a series of operations to the object to get the desired result.
+
+- `Intermediate` operation is lazily executed and returns a stream as a result, thus can be pipelined. `filter()` , `map()` , `flatMap()` , `distinct()` , and `sorted()`.
+
+  flatMap() : It can transform data or flatten data, like flatten a 2d array to an array.
+
+- `Terminal` operation is eagerly executed and returns a non-stream result, thus ending the stream. `forEach()` , `count()` , `collect()` , `reduce()` , `allMatch()` , `anyMatch()` , `noneMatch()` , `findFirst()` , `findAny()`.
+
+## Comparable & Comparator
+
+They both are used for comparing two objects. They serve for different purposes.
+
+- `Comparable` is used to sort objects in a natural order.
+
+  1. Need to `implement` the `Comparable` interface and override the `compareTo()` method.
+
+- `Comparator` is a functional interface used to sort objects in a custom order.
+  1. We don't need to implement the `Comparator` interface, but we need to create a new class to implement the `Comparator` interface and override the `compare()` method.
+  2. We can also use lambda expression to create a `Comparator` object.
+
 ## Spring Framework (IOC)
 
 Core feature is **`Dependency Injection (IOC)`** - Invert the control of creating objects to the framework.
@@ -114,3 +178,7 @@ JWT mainly contains three parts:
 - Payload: contains the `claims` like userId, the permissions, etc.
 
 - Signature: is used to `verify` that the `sender` of the JWT and to ensure that the message wasn’t changed along the way. (Created by hashing the header and the payload with a secret key)
+
+## API Gateway
+
+API Gateway is a `single entry point` for all the microservices. `Route requests` to the appropriate microservice. It is not necessary, but it is good for `decoupling` and `load balancing` (round robin).
