@@ -67,21 +67,13 @@ Bean is object managed by Spring IOC container.
 
 AOP is used to **decouple cross-cutting concerns** from the core business logic. (e.g. logging, exception handling) **using `proxy` to wrap the object being called.** intercept the calls and add extra functionality before or after the method call.
 
-### 2.1. Join Point
+- `Join point` **it is the `unit of point` can be monitored.**
 
-`Join point` **it is the `unit of point` can be monitored.**
+- `Pointcut` is a predicate or expression that matches join points. It is a `set of join points` where `advice` should be executed.
 
-### 2.2. Pointcut (Designator)
+- `Advice` is the `action` executed on join points. Different types - `before`, `after`, `after-returning`, `after-throwing`, and `around`.
 
-`Pointcut` is a predicate or expression that matches join points. It is a `set of join points` where `advice` should be executed.
-
-### 2.3. Advice
-
-`Advice` is the `action` executed on join points. Different types - `before`, `after`, `after-returning`, `after-throwing`, and `around`.
-
-### 2.4. Aspect
-
-`Aspect` is a module that encapsulates join points, pointcuts, and advice. It is a class that implements cross-cutting concerns.
+- `Aspect` is a module that encapsulates join points, pointcuts, and advice. It is a class that implements cross-cutting concerns.
 
 ## Spring Security
 
@@ -103,7 +95,7 @@ Framework to protect our endpoints.
 
 For authroization, we can use `@PreAuthorize("hasRole('ROLE_ADMIN')")` or `@PreAuthorize("hasAuthority('unverified')")` to check the role of the user. Also, we can use `@AuthenticationPrincipal UserDetails userDetails` to get the user details in the controller.
 
-### JWT (JSON Web Token)
+## JWT (JSON Web Token)
 
 JWT is a standard that allows you to encode data in a JSON format. It is often used to encode authentication information, like the username, the permissions, etc. It is often used in combination with OAuth2.
 
