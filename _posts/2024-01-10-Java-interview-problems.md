@@ -6,47 +6,55 @@ description: "frequent questions asked in interviews"
 tag: Interviews
 ---
 
+## Immutability
+
+state of an object that cannot be changed after it is created.
+
+1. final variable: value (reference) cannot be changed once assigned.
+2. final method: cannot be overridden.
+3. final class: cannot be extended by other class.
+
+### How to create Immutable Class
+
+1. Declare the class as final so it can’t be extended.
+2. Make all fields private and final.
+3. No setter methods. All variables are set in the constructor with the deep copy of the input.
+4. Return copies of feild data in getter methods.
+
+### String is immutable
+
+1. `Security concern`: sensitive information such as password, network connection, etc. Being immutable prevents malicious code from modifuing sensitive information.
+
+2. `Thread safe`: Immutable objects are by default thread safe, can be shared among multiple threads.
+
+3. `Hashcode`: String is widely used as key in Map and other collection classes. Being immutable guarantees that hashcode will always be same so that it can be cached without worrying about the changes.
+
+4. `String Pool`: Save the runtime memory by reusing strings.
+
 ## Lambda expression
 
 lambda expression is used to create an anonymous function. (para) -> {action}
 
-The usage is in Java 8, we can use `lambda expression` to initialize a `functional interface`.
+The usage is in Java 8, we can use `lambda expression` to initialize a `functional interface`. Like `Comparator` interface, we can use lambda expression to create a `Comparator` object when using priority queue.
 
 ## Functional Interface
 
 An interface that has only one abstract method and provides a single functionality. `@FunctionalInterface` annotation is not mandatory but it will add constraints to check if there is only one method in it.
 
 - `Consumer` takes a single input and performs action without returning the result.
-
 - `Supplier` used to generate a value.
-
 - `Function` takes a single input and produces a result.
-
 - `Predicate` takes a single input and returns a boolean value.
 
 ## Optional
 
 Optional object is used to handle NPE problems, handling values as ‘availableʼ or ‘not availableʼ instead of checking null values.
 
-```
-empty(): Returns an empty Optional object
-of(): Returns an Optional with the specified present non-null value
-ofNullable(): Returns an Optional with the specified value, if non-null, otherwise returns an empty Optional
-isPresent(): Returns true if there is a value present, otherwise false
-```
-
-```Java
-Optional result = xxxService.findById(id);
-if (result.isPresent()) {
-    return result.get();
-} else {
-    throw new Exception();
-}
-// for service
-public Optional<xxx> findById(Long id) {
-    return Optional.ofNullable(xxxRepository.findById(id));
-}
-```
+- empty(): Returns an empty Optional object
+- of(): Returns an `non-null` value or throws `NullPointerException` if null
+- ofNullable(): Returns an Optional with the specified value, if non-null, otherwise returns an empty Optional
+- isPresent(): Returns true if there is a value present, otherwise false
+- get(): Returns the value if present, otherwise throws NoSuchElementException
 
 ## Stream API (Intermediate & Terminal Operations)
 
@@ -174,11 +182,25 @@ JWT is a standard that allows you to encode data in a JSON format. It is often u
 JWT mainly contains three parts:
 
 - Header: `Hashing algorithm` used to sign the token.
-
 - Payload: contains the `claims` like userId, the permissions, etc.
-
 - Signature: is used to `verify` that the `sender` of the JWT and to ensure that the message wasn’t changed along the way. (Created by hashing the header and the payload with a secret key)
+
+## Cache - (stale data)
+
+Problem: When we update the data in the database, the cache is not updated. So the data in the cache is stale.
+
+- Set expiration times for cached items.
+- Use `@CacheEvict` to remove the cache when updating the data.
+- Use `@CachePut` to update the cache when updating the data.
 
 ## API Gateway
 
 API Gateway is a `single entry point` for all the microservices. `Route requests` to the appropriate microservice. It is not necessary, but it is good for `decoupling` and `load balancing` (round robin).
+
+## Microservices Debug (Logging & Distributed Tracing)
+
+- Centralized logging: `ELK` (Elasticsearch, Logstash, Kibana) to centralize the logs from different microservices.
+
+- Distributed tracing: `Zipkin`, use Zipkin to trace the request from the client to the microservices.
+
+When Bug happens, we can use the `traceId` to trace the request from the client to the microservices. Then we can use the `traceId` to search the logs in the ELK to find the bug.

@@ -16,6 +16,8 @@ We can use `Log` to quickly narrow down the space of the error. During developme
 
 We can also use `Spring Boot Actuator` to monitor the application. It provides a set of `HTTP endpoints` to monitor the application. For example, `Auditing`, `health`, and `metrics gathering`.
 
+Set up EKL to centralize the log. We can use `Elasticsearch` to store the log, `Kibana` to visualize the log, and `Logstash` to collect the log.
+
 ### Distributed Tracing
 
 `Distributed Tracing` is used to track the request flow across the microservices. If error happens, the distributed tracing can help us to find out which microservice is the root cause.
