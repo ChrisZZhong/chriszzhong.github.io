@@ -25,13 +25,21 @@ Core feature is **`Dependency Injection (IOC)`** - Invert the control of creatin
 
 ### Bean & Bean scopes
 
-Bean is object managed by Spring IOC container.
+Bean is object managed by Spring IOC container. use `@Scope` to specify the scope of the bean.
 
 - `Singleton` : `default scope` only created once during Spring application run time
 - `Prototype` : new instance per request
 - `Request` : new instance per HTTP request
 - `Session` : new instance per HTTP session
 - `GlobalSession` : new instance per global HTTP session
+
+### Dependency Injection (Ambiguous)
+
+- `Constructor` : `@Autowired` on the constructor (inject immutable class)
+- `Setter` : `@Autowired` on the setter method (when circular dependency exist)
+- `Field` : `@Autowired` on the field (tight coupling, not recommended)
+
+If there are multiple beans that implement the same interface, the container will not know which one to inject, We can use `@Primary` to determine which bean has higher priority, or use `@Qualifier` to specify an exact bean
 
 ## Spring Boot (auto configuration)
 
