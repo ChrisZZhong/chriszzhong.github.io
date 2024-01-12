@@ -590,6 +590,24 @@ There are two level Caching in Hibernate:
 
 - `Second Level` cache is disabled by default, it is a higher level, cross-multi session. When query something, Hibernate will execute a query like select all fields from table where …, and cache all objects in second level cache, when hibernate need to query object by id, it will first check the first level cache, if not contains, then check the second level cache, if not contains too, it will fetch from database and put it into the second level cache. Second level cache is only used for querying by ID of Hibernate objects.
 
+## NoSQL & MongoDB
+
+SQL databases based on relational data models. well-defined structure with clear relationships and constraints
+
+NoSQL (not only sql) databases use various data models, such as key-value, document, columnar, or graph. They provide flexible schemas that allow for dynamic and unstructured data. Like mongoDB, redis, Bigtable
+
+Use Relational database:
+
+- needs strong transactional support
+- data has a well-defined structure with clear relationships
+- requires complex queries involving multiple tables, joins, and aggregations
+
+Use Non-Relational DB:
+
+- Data is unstructured, like LinkedIn, user profile, each user may have different sections, if you put it in RDB, there will be many empty fields, so using Nosql will decrease the space and increase the speed for reading.
+- Need high-speed read and write operations
+- Distributed and Cloud Environments: NoSQL databases are well-suited for distributed and cloud-based architectures, allowing you to distribute data across multiple nodes or data centers.
+
 ## Mockito
 
 `Mockito` is a `mocking framework` used for `unit testing` of Java applications. When we write unit tests, we need to mock the `external dependencies`. Mockito provide an easy way to mock the dependencies.
