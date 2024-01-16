@@ -12,7 +12,7 @@ tag: Interviews
 
 ## Immutability
 
-state of an object that cannot be changed after it is created
+state of an object that cannot be changed after it is created.
 
 1. final variable: value (reference) cannot be changed once assigned.
 2. final method: cannot be overridden.
