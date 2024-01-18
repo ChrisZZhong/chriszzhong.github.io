@@ -6,7 +6,7 @@ description: "frequent questions asked in interviews"
 tag: Interviews
 ---
 
-## [project story](https://chriszzhong.github.io/2022/09/script/)
+## [project story](https://chriszzhong.github.io/2022/09/demo/)
 
 ## [last version](https://chriszzhong.github.io/2023/10/Software-interview/)
 
