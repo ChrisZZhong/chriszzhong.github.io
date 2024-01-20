@@ -20,6 +20,50 @@ tag: Interviews
 
 - `Dependency Inversion Principle`: High-level modules should not depend on low-level modules. Both should depend on abstractions.
 
+## OOP
+
+[detailed explanation](https://chriszzhong.github.io/2023/03/Java-Core/#oop)
+
+- `Encapsulation`: wrapping up of data under a single unit. (data hiding, `reflection`)
+
+- `Abstraction`: hiding internal details and showing functionality only. (`abstract class`, `interface`)
+
+- `Inheritance`: Class can extend another class. (`Diamond problem`)
+
+- `Polymorphism`: perform a single action in different ways. (`overloading`, `overriding`)
+
+## Data Structure
+
+### Array & ArrayList
+
+| -            | Array                                      | ArrayList                             |
+| ------------ | ------------------------------------------ | ------------------------------------- |
+| Type         | Array                                      | implemet List                         |
+| Size         | fixed size                                 | dynamic size                          |
+| Element type | can store primitive data types and objects | can only store objects                |
+| Performance  | Slightly better than ArrayList             | slower, More flexible and ease of use |
+
+### ArrayList & LinkedList
+
+| -           | ArrayList                                   | LinkedList                                |
+| ----------- | ------------------------------------------- | ----------------------------------------- |
+| Performance | faster, random access O(1) get(index)       | slower, sequential access                 |
+| Usage       | frequently need to access elements by index | Frequently insert/remove at head or tail. |
+
+### HashMap
+
+- HashMap maintains a bucket array to store the key-value pairs.
+- `Hashing`: when adding a key-value pair, it generates a hash code according to the key; the code is used to determine the index of the bucket.
+- `Index calculation`: taking the modulus of the hash code with the size of the bucket array.
+- `Collision`: when two keys have the same hash code, they are stored in the same bucket as a linked list.
+
+### HashTable & SynchronizedMap & ConcurrentHashMap
+
+- `HashMap`: not thread-safe, fast, null key/value.
+- `SynchronizedMap`: thread-safe, slow, null key/value.
+- `HashTable`: thread-safe, slow, no null key/value.
+- `ConcurrentHashMap`: thread-safe, fast, No null key/value.
+
 ## Immutability
 
 state of an object that cannot be changed after it is created.
