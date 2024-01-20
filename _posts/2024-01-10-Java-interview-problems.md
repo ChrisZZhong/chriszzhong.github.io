@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Interview Preparation"
-date: 2023-12-28
+date: 2024-01-10
 description: "frequent questions asked in interviews"
 tag: Interviews
 ---
