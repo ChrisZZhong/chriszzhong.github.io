@@ -12,7 +12,9 @@ tag: Interviews
 
 ## [Angular](https://chriszzhong.github.io/2023/12/Angular/)
 
-## [Java Basic & Java 8](https://chriszzhong.github.io/2023/10/Software-interview/)
+## [JavaScript](https://chriszzhong.github.io/2023/11/JavaScript/)
+
+## [Java Basic & Java 8](https://chriszzhong.github.io/2023/01/Java-basic/)
 
 # Spring
 
