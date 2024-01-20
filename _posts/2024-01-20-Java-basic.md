@@ -89,6 +89,28 @@ state of an object that cannot be changed after it is created.
 
 4. `String Pool`: Save the runtime memory by reusing strings.
 
+## Exception
+
+two types of exceptions: `checked` and `unchecked`.
+
+- `Checked Exception`: checked at compile-time, like `IOException`, `SQLException`, etc.
+
+- `Unchecked Exception`: checked at runtime, like `NPE`.
+
+To handle exceptions, we can use `try-catch` or `throws` keyword. And in web application, we can use exception handler to handle exceptions.
+
+### Custom Exception
+
+Create a class extending Exception or RunTimeException class, to use it, throw an exception in somewhere and use a try catch block to catch it.
+
+```Java
+public class CustomException extends Exception {
+   public CustomException(String message) {
+      super(message);
+   }
+}
+```
+
 ## Thread
 
 1. `New`: new thread.
@@ -209,6 +231,28 @@ Disadvantage:
 - A careless threads pool size can halt the system and bring performance down
 
 - Always shut down the executor service after tasks are completed and service is no lon..ger needed. Otherwise, JVM will never terminate.
+
+## synchronization
+
+Control the access of multiple threads to any shared resource to achieve consistency and avoid race problem.
+
+two types of synchronization: `Method synchronization` & `Block synchronization`
+
+Use synchronized keyword to achieve synchronization. Add synchronized to the method declaration, or add synchronized to the block. They will both bock other threads to access the method or block until the current thread finished and release the lock.
+
+## Marker Interface & Serialization (transient)
+
+- `Marker Interface`: empty interface used to provide run-time information about objects. like `Serializable`, `Cloneable`.
+
+`Serialization` is convert the object to a byte stream, which can be stored in a file or sent over the network, and then be deserialized later to get the object back. The advantage of serialization is that it is easy to store and transmit data over network.
+
+To serialize an object, the object must implement the `Serializable interface`.
+
+Serializable is a marker interface used to mark the class can be `serialized` and `deserialized`.
+
+When object is serialized, the `serialVersionUID` will be generated automatically. The serialVersionUID is used to ensure that the serialized and deserialized objects are compatible. If the serialVersionUID is not the same, the deserialization will fail.
+
+If we do not want to serialize some fields, we can use `transient` keyword to declare the field. Like public transient int age;
 
 ## JVM
 
