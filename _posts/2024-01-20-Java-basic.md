@@ -6,6 +6,20 @@ description: "Java Basic knowledge"
 tag: Interviews
 ---
 
+## SOLID Principles
+
+[detailed explanation](https://chriszzhong.github.io/2023/03/Java-Core/#solid-principle)
+
+- `Single Responsibility Principle`: A class should have only one job.
+
+- `Open Closed Principle`: Class open for extension, closed for modification.
+
+- `Liskov Substitution Principle`: Subclass must be substitutable for their parent class.
+
+- `Interface Segregation Principle`: If an implementation class does not use all the methods of an interface, then the interface should be split into smaller ones.
+
+- `Dependency Inversion Principle`: High-level modules should not depend on low-level modules. Both should depend on abstractions.
+
 ## Immutability
 
 state of an object that cannot be changed after it is created.
