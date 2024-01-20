@@ -1,9 +1,9 @@
 ---
 layout: post
-title: "Switching Configurations and Jasypt"
+title: "Spring Profile and Jasypt"
 date: 2023-04-16
 description: "Switching Configurations and Jasypt"
-tag: Spring-Database
+tag: Spring Framework
 ---
 
 # What annotation do you use to quickly switch between different environments to load different configurations?

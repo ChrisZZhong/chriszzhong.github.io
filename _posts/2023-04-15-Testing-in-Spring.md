@@ -3,7 +3,7 @@ layout: post
 title: "Testing in Spring & Code Coverage"
 date: 2023-04-15
 description: "Testing in Spring"
-tag: Spring-Testing
+tag: Spring Framework
 ---
 
 # Testing in Spring

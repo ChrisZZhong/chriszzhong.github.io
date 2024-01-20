@@ -1,12 +1,16 @@
 ---
 layout: post
-title: "Java interview questions"
+title: "Interview Preparation"
 date: 2023-12-28
 description: "frequent questions asked in interviews"
 tag: Interviews
 ---
 
+## [java API](https://chriszzhong.github.io/2022/03/Java-API/)
+
 ## [project story](https://chriszzhong.github.io/2022/09/demo/)
+
+## [Angular](https://chriszzhong.github.io/2023/12/Angular/)
 
 ## [last version](https://chriszzhong.github.io/2023/10/Software-interview/)
 
