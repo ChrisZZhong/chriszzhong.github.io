@@ -3,8 +3,9 @@ layout: post
 title: "Solid Principle"
 date: 2023-03-29
 description: "Solid Principle"
-tag: Java Core
+tag: Java
 ---
+
 # Solid Principle
 
 ## Single Responsibility Principle
