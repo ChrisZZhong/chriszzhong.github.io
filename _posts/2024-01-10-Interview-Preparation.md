@@ -133,11 +133,92 @@ Problem: When we update the data in the database, the cache is not updated. So t
 - Use `@CacheEvict` to remove the cache when updating the data.
 - Use `@CachePut` to update the cache when updating the data.
 
+## Spring Profile (switch between different environments)
+
+Spring profile is used to `configure` the application for different environments.
+
+We can use `@Profile` to specify the profile for the class or method. We can use `spring.profiles.active` to specify the active profile in the application.properties file.
+
+- Add `@Profile` annotation to the configuration class.
+
+  ```java
+    @Configuration
+    @Profile("dev")
+    public class DevConfig {
+        // ...
+        @Value("${spring.datasource.url}")
+        private String url;
+    }
+  ```
+
+- Add `spring.profiles.active` in `application.properties` file.
+
+  ```properties
+    spring.profiles.active=dev
+  ```
+
+## Rest Controller & Input Validation (BindingResult) & RestTemplat
+
+### @RestController VS @Controller
+
+`@RestController` is a convenience annotation that combines `@Controller` and `@ResponseBody`. It is used for building RESTful web services that return data in response to HTTP requests in JSON/XML. We don't need to add `@ResponseBody` to our request mapping methods one by one.
+
+`@Controller` is a common annotation that is used to mark a class as Spring MVC Controller while `@ResponseBody` is used to indicate that the return value of a method should be used as the response body of the request.
+
+### @RequestBody VS @ResponseBody
+
+`@RequestBody` is used to map the content of an HTTP request body to a Java object, so you can access the data sent by the request in Java.
+
+`@ResponseBody` is used to map the return value of a method to an HTTP response body, so you can return Java objects as data in the response.
+
+### How to validate the values of the request body? How does BindingResult work?
+
+1. For the DTO classes, we can use `@NotNull`, `@NotEmpty`, `@Size`, etc. to validate the values of the fields.
+
+2. In the controller method, we can use `@Valid` to validate the values of the request body.
+
+`BindingResult` is used to validate the values of the request body. It is used to store the result of the validation and has to be placed right after the request body parameter. We can use `hasErrors()` to check if there is any error and handle the error in the way we want.
+
+### RestTemplate
+
+`RestTemplate` is a tool provided by Spring to simplify the HTTP request to external Restful API.
+
+The advantage is that it is easy to use, but the disadvantage is that the request URL is hardcoded, not good for decoupling. Also, it is synchronous, which means that the thread will be blocked until the request is finished.
+
+## RESTFul API 6 principles
+
+1. `Uniform Interface` : requests looks same
+
+2. `Client-Server decoupling` : client and server `independent`of each other. Client - `user interface` and server - `backend data storage`. Communicate through REST API.
+
+3. `Stateless` : `server X store client data`. Each request contain all the information needed.
+
+4. `Cacheability` : When possible, resources should be cacheable on the client or server side.
+
+5. `Layered System` : Client does not need to know the internal structure (server / intermediary).
+
+6. `Code on demand` : The server can provide executable code or scripts for the client to execute in its context.
+
+## SOAP
+
+SOAP is a protocol that uses XML to exchange information between computers over the Internet. It is an XML-based protocol for accessing web services. Compared to REST, SOAP is more difficult to implement and requires more bandwidth and resources.
+
+Soap document need to have a root element called `<Envelope>`, which is required, and `<Header>` and `<Body>`, which are optional.
+
+1. Header: contains routing and processing information.
+2. Body: contains the actual message.
+
 # Microservices
 
 ## API Gateway
 
 API Gateway is a `single entry point` for all the microservices. `Route requests` to the appropriate microservice. It is not necessary, but it is good for `decoupling` and `load balancing` (round robin).
+
+## Application Monitoring (Actuator & Euraka)
+
+- `Actuator` is used to monitor the application. It provides a lot of endpoints to monitor the application, such as `/health`, `/metrics`, `/info`, etc. (spring-boot-starter-actuator)
+
+- `Eureka` is used to monitor the microservices. It is a service registry that is used to register the microservices. (spring-cloud-starter-netflix-eureka-server)
 
 ## Microservices Debug (Logging & Distributed Tracing)
 
@@ -166,29 +247,6 @@ The more faults a system can tolerate without failing, the more fault-tolerant i
 - Timeouts can prevent a service from waiting too long for a response from another service. Fail fast is better than waiting indefinitely.
 
 - `load balancers` : `avoid routing traffic` to unhealthy instances.
-
-## RESTFul API 6 principles
-
-1. `Uniform Interface` : requests looks same
-
-2. `Client-Server decoupling` : client and server `independent`of each other. Client - `user interface` and server - `backend data storage`. Communicate through REST API.
-
-3. `Stateless` : `server X store client data`. Each request contain all the information needed.
-
-4. `Cacheability` : When possible, resources should be cacheable on the client or server side.
-
-5. `Layered System` : Client does not need to know the internal structure (server / intermediary).
-
-6. `Code on demand` : The server can provide executable code or scripts for the client to execute in its context.
-
-## SOAP
-
-SOAP is a protocol that uses XML to exchange information between computers over the Internet. It is an XML-based protocol for accessing web services. Compared to REST, SOAP is more difficult to implement and requires more bandwidth and resources.
-
-Soap document need to have a root element called `<Envelope>`, which is required, and `<Header>` and `<Body>`, which are optional.
-
-1. Header: contains routing and processing information.
-2. Body: contains the actual message.
 
 ## JDBC & statement
 
@@ -256,6 +314,8 @@ public static List<Trainee> getTraineesByPhoneNumber(String phone){
 ```
 
 ### Transaction Management
+
+[Distributed Transactions](https://chriszzhong.github.io/2023/06/transaction-in-microservices/)
 
 `Transaction` is a set of operations that are executed as a single unit of work. If one operation fails, the whole transaction fails. In JDBC, the Connection interface provides methods to manage transactions. There are three methods in the Connection interface: `setAutoCommit()`, `commit()` and `rollback()`.
 
@@ -373,6 +433,101 @@ There are two level Caching in Hibernate:
 - `First level` cache provides caching at the session level. It is enabled by default. When you load an entity using a Session, Hibernate checks the first-level cache first to see if the entity is already loaded. If it's found in the cache, Hibernate returns the cached object, avoiding a database query. We can use session contains() to check if an obj is cached or not. get(). load() methods.
 
 - `Second Level` cache is disabled by default, it is a higher level, cross-multi session. When query something, Hibernate will execute a query like select all fields from table where …, and cache all objects in second level cache, when hibernate need to query object by id, it will first check the first level cache, if not contains, then check the second level cache, if not contains too, it will fetch from database and put it into the second level cache. Second level cache is only used for querying by ID of Hibernate objects.
+
+## JPA (Java Persistence API)
+
+JPA is a `specification` of Java. It is used to persist data between Java object and relational database. It doesn't provide any implementation, so it need a `provider` to implement it like `Hibernate`, `EclipseLink`, `TopLink`, etc.
+
+1.  ORM mapping between Java object and relational database
+
+    - `@Entity` annotation is used to map Java object to relational database
+    - `@Table` annotation is used to map Java object to relational database table
+    - `@Column` annotation is used to map Java object to relational database column
+    - `@Id` annotation is used to map Java object to relational database primary key
+    - `@Transient` annotation is used to ignore the field when mapping Java object to relational database
+
+2.  JPQL (Java Persistence Query Language)
+
+    - JPQL is a query language which is used to query data from relational database
+    - JPQL is similar to SQL, but it is object-oriented
+    - JPQL is database independent
+
+3.  EntityManager
+    - EntityManager is used to manage the lifecycle of entity, and perform CRUD operations.
+
+<img src = "/images/Full-Stack/SpringFramework/JPA-ORM.png">
+
+## Spring Data JPA
+
+Spring Data JPA is a `framework` which is built on top of JPA. It is used to simplify the development of JPA application.
+
+<img src = "/images/Full-Stack/SpringFramework/SpringDataJPA.png">
+
+## Spring Data Repository
+
+Spring Data Repository has different interfaces, and each interface is used to perform different operations.
+
+1. `Repository` is the central interface in Spring Data repository abstraction. It is a `marker interface` to capture the types to work with and to help you to discover interfaces that extend this one. It is not used directly.
+
+2. `CrudRepository` provides CRUD operations, it extends `Repository` interface.
+
+   ```Java
+   public interface CrudRepository<T, ID> extends Repository<T, ID> {
+       // Note that the ID here is a serializable which represent the id of the Entity
+
+       <S extends T> S save(S entity);
+       Optional<T> findById(ID primaryKey);
+       Iterable<T> findAll();
+       long count();
+       void delete(T entity);
+       boolean existsById(ID primaryKey);
+       // … more functionality omitted.
+   }
+   ```
+
+3. `PagingAndSortingRepository` provides `pagination` and `sorting` operations, it extends `CrudRepository` interface.
+
+   ```Java
+   public interface PagingAndSortingRepository<T, ID> extends CrudRepository<T, ID> {
+       Iterable<T> findAll(Sort sort);
+       Page<T> findAll(Pageable pageable);
+   }
+   ```
+
+4. Query Feature
+
+   Using Spring Data Repository, we can define the query method by using the naming convention. In this way, we don't need to write the query statement and the implementation of the query method.
+
+   The machanism strips the prefixes `find…By`, `read…By`, `query…By`, `count…By`, and `get…By` from the method and starts parsing the rest of it.
+
+   ```Java
+   interface PersonRepository extends Repository<User, Long> {
+
+   List<Person> findByEmailAddressAndLastname(EmailAddress emailAddress, String lastname);
+
+   // Enables the distinct flag for the query
+   List<Person> findDistinctPeopleByLastnameOrFirstname(String lastname, String firstname);
+   List<Person> findPeopleDistinctByLastnameOrFirstname(String lastname, String firstname);
+
+   // Enabling ignoring case for an individual property
+   List<Person> findByLastnameIgnoreCase(String lastname);
+   // Enabling ignoring case for all suitable properties
+   List<Person> findByLastnameAndFirstnameAllIgnoreCase(String lastname, String firstname);
+
+   // Enabling static ORDER BY for a query
+   List<Person> findByLastnameOrderByFirstnameAsc(String lastname);
+   List<Person> findByLastnameOrderByFirstnameDesc(String lastname);
+   }
+   ```
+
+   We can also use `@Query` annotation to define the query method.
+
+   ```Java
+   interface PersonRepository extends Repository<User, Long> {
+       @Query("select u from User u where u.emailAddress = ?1")
+       User findByEmailAddress(String emailAddress);
+   }
+   ```
 
 ## NoSQL & MongoDB
 
