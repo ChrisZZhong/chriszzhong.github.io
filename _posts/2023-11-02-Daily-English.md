@@ -11,7 +11,7 @@ tag: English Learning
 ### 我得...
 
 ```
-I've got to do something. 我得做某事。 / I've gotta do something. 我得做某事。
+I've got to do something. 我得做某事。 / I've gotta do something. 我得做某事
 
 you gotta get going. 你得走了。
 
