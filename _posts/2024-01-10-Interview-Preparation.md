@@ -16,7 +16,13 @@ tag: Interviews
 
 ## [Java Basic & Java 8](https://chriszzhong.github.io/2023/01/Java-basic/)
 
-# Spring
+## AWS Lambda
+
+AWS Lambda is a Serverless service. It is used to run code on the cloud. It is event-driven. Events, such as `changes in an S3 bucket` or an `API Gateway request`, trigger the execution of this function. It integrate well with other AWS services.
+
+It is easy to use and cost on demand, good for running small tasks. for example, we can use it to monitor the price of the stock and send an email when the price is lower than a certain price.
+
+Limitation : The maximum execution time is 15 minutes. It has limitation for memory and tempary storage.
 
 ## Spring Framework (IOC)
 
@@ -124,6 +130,17 @@ JWT mainly contains three parts:
 - Header: `Hashing algorithm` used to sign the token.
 - Payload: contains the `claims` like userId, the permissions, etc.
 - Signature: is used to `verify` that the `sender` of the JWT and to ensure that the message wasn’t changed along the way. (Created by hashing the header and the payload with a secret key)
+
+## Spring Scheduler (cron expression)
+
+execute tasks for each period of time. `@Scheduled` annotation is used to specify the cron expression.
+
+- `@Scheduled(fixedRate = 1000)`: execute the task every 1000ms.
+- `@EnableScheduling`: enable the scheduling in the application.
+
+What if two servers are running the same task? How to `avoid duplicate execution`?
+
+Distributed Lock: use `Redis` to implement distributed lock. Acquire a distributed lock before executing the scheduled task.
 
 ## Cache - (stale data)
 
@@ -242,7 +259,7 @@ Enables system to continue `works` though there are some `failures` inside of it
 
 The more faults a system can tolerate without failing, the more fault-tolerant it is.
 
-- `Circuit breakers` can prevent repeated requests to a failing service, allowing it time to recover.
+- `Circuit breakers` can prevent repeated requests to a failing service, allowing it time to recover. (Hystrix, Resilience4j)
 
 - Timeouts can prevent a service from waiting too long for a response from another service. Fail fast is better than waiting indefinitely.
 
