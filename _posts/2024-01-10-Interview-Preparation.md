@@ -16,13 +16,13 @@ tag: Interviews
 
 ## [Java Basic & Java 8](https://chriszzhong.github.io/2023/01/Java-basic/)
 
-## AWS Lambda
+## AWS Lambda & Step Functions
 
-AWS Lambda is a Serverless service. It is used to run code on the cloud. It is event-driven. Events, such as `changes in an S3 bucket` or an `API Gateway request`, trigger the execution of this function. It integrate well with other AWS services.
+AWS Lambda is a computer service that allows us to run code without deploying and managing server. It is event-driven. Events, such as `changes in an S3 bucket` or an `API Gateway request`, trigger the execution of this function. It is used to run small tasks like `get real time data flow`, with 15 minutes maximum execution time.
 
-It is easy to use and cost on demand, good for running small tasks. for example, we can use it to monitor the price of the stock and send an email when the price is lower than a certain price.
+AWS Step function is a serveless workflow service which allows us to coordinate multiple tasks such as lambda functions. With the help of step functions we can easily visualize our lambda function workflow and make adjustments based on our needs.
 
-Limitation : The maximum execution time is 15 minutes. It has limitation for memory and tempary storage.
+Limitation : limited memory and tempary storage. max execution time is 15 minutes. should optimize the usage of lambda or it will be expensive.
 
 ## Spring Framework (IOC)
 
