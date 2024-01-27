@@ -21,7 +21,7 @@ tag: LeetCode
 
 ![](https://labuladong.github.io/pictures/接雨水/title.png)
 
-就是用一个数组表示一个条形图，问你这个条形图最多能接多少水
+就是用一个数组表示一个条形图，问你这个条形图最多能接多少水。
 
 <!-- muliti_language -->
 
