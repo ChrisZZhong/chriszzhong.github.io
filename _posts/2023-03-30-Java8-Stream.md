@@ -10,6 +10,8 @@ tag: Java
 
 <img src="/images/Full-Stack/JavaCore/StreamApi.jpg">
 
+<img src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/35fa8057a9ba45ee8c627fb29deeaee5~tplv-k3u1fbpfcp-zoom-in-crop-mark:1512:0:0:0.awebp?">
+
 Stream is used to process a series of operations on a collection in a pipeline. The pipeline consists of a source, zero or more intermediate operations, and a terminal operation. Stream is a one-time object that cannot be reused after the terminal operation is executed.
 
 ### Stream Creation
