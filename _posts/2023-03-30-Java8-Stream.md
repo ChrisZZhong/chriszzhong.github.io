@@ -405,7 +405,7 @@ public class StreamTest {
 }
 ```
 
-#### groupingBy/partitioningBy
+#### groupingBy/partitioningBy (mapping)
 
 - groupingBy : cut the stream into multiple `Maps`
 - partitioningBy : cut the stream into two `Maps` (salary > 8000 and salary <= 8000)
@@ -429,6 +429,8 @@ public class StreamTest {
         Map<Boolean, List<Person>> part = personList.stream().collect(Collectors.partitioningBy(x -> x.getSalary() > 8000));
         // 将员工按性别分组
         Map<String, List<Person>> group = personList.stream().collect(Collectors.groupingBy(Person::getSex));
+        // 将员工按性别分组, return the name of the person
+        Map<String, List<String>> group2 = personList.stream().collect(Collectors.groupingBy(Person::getSex, Collectors.mapping(Person::getName, Collectors.toList())));
         // 将员工先按性别分组，再按地区分组
         Map<String, Map<String, List<Person>>> group2 = personList.stream().collect(Collectors.groupingBy(Person::getSex, Collectors.groupingBy(Person::getArea)));
         System.out.println("员工按薪资是否大于8000分组情况：" + part);
