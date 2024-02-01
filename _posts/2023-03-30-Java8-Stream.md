@@ -150,7 +150,7 @@ List<String> newPersonList = personList.stream()
     .map(Person::getName)
     .collect(Collectors.toList());
 
-// [Tom, Anni, Owen]
+// output : [Tom, Anni, Owen]
 ```
 
 ### Aggregate (count/max/min)
