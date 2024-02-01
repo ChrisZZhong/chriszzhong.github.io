@@ -205,7 +205,7 @@ public class StreamTest {
     System.out.println(count);
 ```
 
-### Map (map/flatMap) (remember to return the object in map)
+### Map (map/flatMap) (peek)
 
 <img src="https://pic3.zhimg.com/80/v2-56cad49b35f264e8a71517c226caaa02_720w.webp">
 
@@ -218,7 +218,7 @@ public class StreamTest {
     System.out.println(stringList); // [ABCD, BCDD, DEFDE, FTR]
 ```
 
-2. Each person's salary increase 1000
+2. Each person's salary increase 1000 (modify the original list, we can use peek)
 
 ```Java
 public class StreamTest {
@@ -240,11 +240,14 @@ public class StreamTest {
     System.out.println("一次改动前：" + personList.get(0).getName() + "-->" + personList.get(0).getSalary());
     System.out.println("一次改动后：" + personListNew.get(0).getName() + "-->" + personListNew.get(0).getSalary());
 
-    // 改变原来员工集合的方式
+    // 改变原来员工集合的方式 (not recommended)
     List<Person> personListNew2 = personList.stream().map(person -> {
       person.setSalary(person.getSalary() + 1000);
       return person;
     }).collect(Collectors.toList());
+    // or use peek
+    List<Person> personListNew2 = personList.stream().peek(person -> person.setSalary(person.getSalary() + 1000))
+        .collect(Collectors.toList());
     System.out.println("二次改动前：" + personList.get(0).getName() + "-->" + personListNew.get(0).getSalary());
     System.out.println("二次改动后：" + personListNew2.get(0).getName() + "-->" + personListNew.get(0).getSalary());
   }
