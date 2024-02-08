@@ -142,7 +142,7 @@ public class StreamTest {
 - `limit`：`limit(2)` (keep the first two element, just like SQL TOP)
 - `skip`：`skip(2)` (skip the first two element)
 
-Filter the person whose salary is greater than 8000, return the name of the person, and save it in the list.
+Filter the person whose salary is greater than 8000, return the name of the person, and save it in the list
 
 ```Java
 List<String> newPersonList = personList.stream()
