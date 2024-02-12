@@ -10,7 +10,7 @@ tag: Interviews
 
 [detailed explanation](https://chriszzhong.github.io/2023/03/Java-Core/#solid-principle)
 
-- `Single Responsibility Principle`: A class should have only one job
+- `Single Responsibility Principle`: A class should have only one job.
 
 - `Open Closed Principle`: Class open for extension, closed for modification.
 
