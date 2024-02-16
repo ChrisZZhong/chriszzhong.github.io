@@ -583,3 +583,22 @@ Use Non-Relational DB:
 They both are used to create a fake object. `@Mock` create object not related to the spring framework.
 
 When testing controller, it need us to start the Spring Boot application. We use `@MockBean` to create a fake object that is part of the Spring context. such as beans declared in the application's configuration or beans created by Spring Boot auto-configuration.
+
+### ArgumentCaptor receive the parameter of the mocked method
+
+We can use `ArgumentCaptor` to capture the parameter of the mocked method.
+
+```Java
+@Captor
+private ArgumentCaptor<User> userCaptor;
+
+@Test
+public void testCreateUser() {
+   User user = new User();
+   user.setName("Chris");
+   user.setEmail("xx@gmail.com");
+   userService.createUser(user);
+   verify(userDao).save(userCaptor.capture());
+   assertEquals("Chris", userCaptor.getValue().getName());
+}
+```

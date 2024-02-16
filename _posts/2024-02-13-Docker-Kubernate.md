@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Docker and Kubernate and OpenShift"
+title: "Docker and Kubernetes and OpenShift"
 date: 2024-02-13
 description: "frequent questions asked in interviews"
 tag: CI/CD
@@ -40,7 +40,7 @@ docker build -t myapp .
 
 This command builds the image using the Dockerfile in the current directory and tags it with the name `myapp`.
 
-## Kubernate
+## Kubernetes
 
 ### What is Kubernetes?
 
@@ -58,6 +58,11 @@ Kubernetes provides a container-centric infrastructure that abstracts the underl
 
 A Kubernetes pod is the smallest deployable unit in Kubernetes. It is a group of one or more containers that are deployed together on the same host. Pods are the basic building blocks of Kubernetes, and they are used to run, scale, and manage applications.
 
+pod VS container
+
+- A pod is a group of one or more containers that are deployed together on the same host.
+- A container is a runtime instance of a Docker image.
+
 ### What is a Kubernetes deployment?
 
 A Kubernetes deployment is a resource object that provides declarative updates to applications. It allows you to define the desired state of the application, and Kubernetes will automatically manage the deployment to ensure that the application is running as expected.
@@ -71,6 +76,10 @@ Once you have written the deployment configuration file, you can use the `kubect
 ```bash
 kubectl apply -f deployment.yaml
 ```
+
+### helm chart
+
+Helm is a package manager for Kubernetes that provides a way to define, install, and manage applications on Kubernetes. It allows you to define the desired state of the application, including the `number of replicas`, `the container image`, and any other configuration settings, and it provides a way to package and distribute applications as Helm charts. it's an api object used to store non sensitive configuration
 
 ## OpenShift
 
