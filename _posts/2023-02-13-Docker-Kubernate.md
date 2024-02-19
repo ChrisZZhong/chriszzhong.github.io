@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Docker and Kubernetes and OpenShift"
-date: 2024-02-13
+date: 2023-02-13
 description: "frequent questions asked in interviews"
 tag: CI/CD
 ---

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Interview Preparation"
-date: 2024-01-10
+date: 2023-01-10
 description: "frequent questions asked in interviews"
 tag: Interviews
 ---
@@ -10,9 +10,9 @@ tag: Interviews
 
 ## [project story](https://chriszzhong.github.io/2022/09/demo/)
 
-## [Angular](https://chriszzhong.github.io/2024/01/Angular/)
+## [Angular](https://chriszzhong.github.io/2023/01/Angular/)
 
-## [React](https://chriszzhong.github.io/2024/02/React/)
+## [React](https://chriszzhong.github.io/2023/02/React/)
 
 ## [JavaScript](https://chriszzhong.github.io/2023/11/JavaScript/)
 
