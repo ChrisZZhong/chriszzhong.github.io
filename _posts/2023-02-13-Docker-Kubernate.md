@@ -10,7 +10,7 @@ tag: CI/CD
 
 ### What is Docker?
 
-Docker is a platform for developing, shipping, and running applications. It allows developers to build, package, and distribute applications as containers. Containers are lightweight, standalone, and executable packages that include everything needed to run an application.
+Docker is a platform for developing, shipping, and running applications. It allows developers to build, package, and distribute applications as containers. Containers are lightweight, standalone, and executable packages that include everything needed to run an application
 
 Docker containers are similar to virtual machines, but they are more portable, efficient, and easy to use. They are isolated from each other and from the host system, and they share the same kernel.
 
