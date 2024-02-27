@@ -26,7 +26,7 @@ tag: LeetCode
 <p><strong>Solution : </strong></p>
 
 ```Java
-
+Xx
 ```
 
 <p><strong>TC : O(1)</strong></p>
