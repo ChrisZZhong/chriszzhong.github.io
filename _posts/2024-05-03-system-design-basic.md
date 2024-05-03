@@ -1,4 +1,4 @@
-![image](https://github.com/ChrisZZhong/chriszzhong.github.io/assets/90562417/86b2b69a-be0b-44cf-9888-f80e707985bc)---
+---
 layout: post
 title: "System design Basic - scale up system"
 date: 2024-05-03
