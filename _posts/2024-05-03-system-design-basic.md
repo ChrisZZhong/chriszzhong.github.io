@@ -10,22 +10,7 @@ tag: OOD & System Design
 
 ### Database Replication - master slave
 
-```
-Structure:
-
-      |web service|
-        |      |
-        |      |
-  -------      ----------------
-  |                |    |    |
-  |writes          |    |    |
-  |                |    |    |
-  |          |---slave1 |    |
-  |          |          |    |
-master DB <--|--------slave2 |
-             |  replication  |
-             |-------------slave3
-```
+<img src="/images/System-Design/DB_replication.png">
 
 In this structure, master node only responsible for the write operation, Several slave nodes responsible for the read operations.
 
