@@ -21,3 +21,5 @@ Benefit:
 
 When slave down, master take its job (if other slaves not available), new slave node take the job back, replace old node 
 When master down, a slave promote to master, a new slave node will take old slave node job
+
+### 
