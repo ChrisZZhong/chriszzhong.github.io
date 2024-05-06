@@ -23,3 +23,11 @@ When slave down, master take its job (if other slaves not available), new slave 
 When master down, a slave promote to master, a new slave node will take old slave node job
 
 ### DB scaling
+
+**Vertical scaling**: add more powerful CPU, RAM to improve performance
+- may have **single point of failure**
+- expensive for scaling
+- easily reach limit
+
+**Horizaontal scaling**: separate DB to serveral part called `shard`, it use a hash function to decide which shard goes into. For example, we separate the user schema into 4 shards based on `user_id` (called sharding key), the hash function we can use is `hashcode = user_id % 4`
+- evenly distribute data
