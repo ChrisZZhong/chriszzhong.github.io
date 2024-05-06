@@ -6,7 +6,44 @@ description: "System design"
 tag: OOD & System Design
 ---
 
-## Basic concepts
+## Scale Route
+
+### 1. Single server
+
+### 2. Database (separate Data tier and web traffic tier)
+
+Choose which database to use, Nosql or relational database
+
+Non-relational database might be the right choice if (easy to scale, no join operations):
+- app requires super-low latency.
+- data are unstructured or you do not have any relational data.
+- only need to serialize and deserialize data (JSON, XML, YAML, etc.).
+- store massive amount of data
+
+### 3. Load Balancer
+
+load balancer
+- Balance the traffic, easy to scale server, just need to redirect the traffic to the latest added server
+- Good security, as the entry point of the server using Public IP, hide the server behind with private IP
+
+### 4. Database Replication
+
+### 5. Cache
+
+Add cache between DB and server, reduce response time
+Add CDN to cache static resources
+
+### 6. Move session data to persistent database
+
+### 7. Data center
+
+Lower latency for user in diff geo location
+
+### 8. Message Queue, logging, metrics, automation
+
+use message queue and worker nodes to async process jobs.
+
+## Basic Concepts
 
 ### Database Replication - master slave
 
