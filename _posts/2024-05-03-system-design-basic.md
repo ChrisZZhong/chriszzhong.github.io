@@ -68,3 +68,15 @@ When master down, a slave promote to master, a new slave node will take old slav
 
 **Horizaontal scaling**: separate DB to serveral part called `shard`, it use a hash function to decide which shard goes into. For example, we separate the user schema into 4 shards based on `user_id` (called sharding key), the hash function we can use is `hashcode = user_id % 4`
 - evenly distribute data
+
+### CDN
+
+CDN is used to cache static resources like images, videos, CSS, JavaScripts etc (cache used to lower the response time)
+
+- Cost: CDNs are run by third-party providers, only cache frequently used things in CDN.
+- TTL: find an appropriate cache expire time
+- CDN fallback: If there is a CDN outage, clients should be able to detect the problem and request from origin.
+
+**Invalidating files**: You can remove a file from the CDN before it expires by performing one of the following operations:
+- Invalidate the CDN object using APIs provided by CDN vendors.
+- Use object versioning to serve a different version of the object. To version an object, you can add a parameter to the URL, such as a version number. For example, version number 2 is added to the query string: image.png?v=2
