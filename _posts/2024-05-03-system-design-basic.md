@@ -10,7 +10,11 @@ tag: OOD & System Design
 
 ### 1. Single server
 
+<img src="/images/System-Design/scale-route/1.png">
+
 ### 2. Database (separate Data tier and web traffic tier)
+
+<img src="/images/System-Design/scale-route/2.png">
 
 Choose which database to use, Nosql or relational database
 
@@ -22,24 +26,36 @@ Non-relational database might be the right choice if (easy to scale, no join ope
 
 ### 3. Load Balancer
 
+<img src="/images/System-Design/scale-route/3.png">
+
 load balancer
 - Balance the traffic, easy to scale server, just need to redirect the traffic to the latest added server
 - Good security, as the entry point of the server using Public IP, hide the server behind with private IP
 
 ### 4. Database Replication
 
+<img src="/images/System-Design/scale-route/4.png">
+
 ### 5. Cache
+
+<img src="/images/System-Design/scale-route/5.png">
 
 Add cache between DB and server, reduce response time
 Add CDN to cache static resources
 
 ### 6. Move session data to persistent database
 
+<img src="/images/System-Design/scale-route/6.png">
+
 ### 7. Data center
+
+<img src="/images/System-Design/scale-route/7.png">
 
 Lower latency for user in diff geo location
 
 ### 8. Message Queue, logging, metrics, automation
+
+<img src="/images/System-Design/scale-route/8.png">
 
 use message queue and worker nodes to async process jobs.
 
@@ -53,7 +69,7 @@ In this structure, master node only responsible for the write operation, Several
 
 Benefit:
 - Better performance: multi slave nodes support parallel read operation.
-- Reliability: data is replicated accross multiple locations, do not need worriy about data loss when one machine is down or destroyed
+- Reliability: data is replicated across multiple locations, do not need to worry about data loss when one machine is down or destroyed
 - High availability: master or slave down, DB can still be functional
 
 When slave down, master take its job (if other slaves not available), new slave node take the job back, replace old node 
@@ -69,7 +85,11 @@ When master down, a slave promote to master, a new slave node will take old slav
 **Horizaontal scaling**: separate DB to serveral part called `shard`, it use a hash function to decide which shard goes into. For example, we separate the user schema into 4 shards based on `user_id` (called sharding key), the hash function we can use is `hashcode = user_id % 4`
 - evenly distribute data
 
+<img src="/images/System-Design/shard.png">
+
 ### CDN
+
+<img src="/images/System-Design/CDN.png">
 
 CDN is used to cache static resources like images, videos, CSS, JavaScripts etc (cache used to lower the response time)
 
