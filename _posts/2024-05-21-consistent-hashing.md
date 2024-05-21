@@ -7,3 +7,10 @@ tag: OOD & System Design
 ---
 
 ## Consistent Hasing
+
+Consistent Hasing is used as a load balancing algorithm, can be compared with Round Robin. 
+
+**Advantange:** 
+- Consistent Hasing is a good choice in distributed systems.
+- compared with Round Robin, Consistent Hasing can guarantee client connect to the same server everytime while round robin can not.
+
