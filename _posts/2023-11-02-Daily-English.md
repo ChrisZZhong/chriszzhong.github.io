@@ -6,6 +6,24 @@ description: "Daily English"
 tag: English Learning
 ---
 
+## May 21, 2024
+
+### 物有所值/努力的价值
+
+```
+Bang for buck
+
+A is your best bang for buck, A是最划算的，最赚的
+```
+
+### 主动提出建议/没请求的建议
+
+```
+Unasked-for advice is information, input, or suggestions that someone gives without being requested
+
+that's my unasked-for advice 这是我给的建议
+```
+
 ## Dec 11, 2023
 
 ### 我得...
