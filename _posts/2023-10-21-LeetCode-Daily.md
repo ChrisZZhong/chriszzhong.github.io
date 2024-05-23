@@ -6,7 +6,101 @@ description: "LeetCode daily problems"
 tag: LeetCode
 ---
 
-## 447. Number of Boomerangs 🟠 01-08-2023
+## 2831. Find the Longest Equal Subarray 🟠 05-23-2024
+
+**Description**:
+
+<div class="elfjS" data-track-load="description_content"><p>You are given a <strong>0-indexed</strong> integer array <code>nums</code> and an integer <code>k</code>.</p>
+
+<p>A subarray is called <strong>equal</strong> if all of its elements are equal. Note that the empty subarray is an <strong>equal</strong> subarray.</p>
+
+<p>Return <em>the length of the <strong>longest</strong> possible equal subarray after deleting <strong>at most</strong> </em><code>k</code><em> elements from </em><code>nums</code>.</p>
+
+<p>A <b>subarray</b> is a contiguous, possibly empty sequence of elements within an array.</p>
+
+<p>&nbsp;</p>
+<p><strong class="example">Example 1:</strong></p>
+
+<pre><strong>Input:</strong> nums = [1,3,2,3,1,3], k = 3
+<strong>Output:</strong> 3
+<strong>Explanation:</strong> It's optimal to delete the elements at index 2 and index 4.
+After deleting them, nums becomes equal to [1, 3, 3, 3].
+The longest equal subarray starts at i = 1 and ends at j = 3 with length equal to 3.
+It can be proven that no longer equal subarrays can be created.
+</pre>
+
+<p><strong class="example">Example 2:</strong></p>
+
+<pre><strong>Input:</strong> nums = [1,1,2,2,1,1], k = 2
+<strong>Output:</strong> 4
+<strong>Explanation:</strong> It's optimal to delete the elements at index 2 and index 3.
+After deleting them, nums becomes equal to [1, 1, 1, 1].
+The array itself is an equal subarray, so the answer is 4.
+It can be proven that no longer equal subarrays can be created.
+</pre>
+
+<p>&nbsp;</p>
+<p><strong>Constraints:</strong></p>
+
+<ul>
+	<li><code>1 &lt;= nums.length &lt;= 10<sup>5</sup></code></li>
+	<li><code>1 &lt;= nums[i] &lt;= nums.length</code></li>
+	<li><code>0 &lt;= k &lt;= nums.length</code></li>
+</ul>
+</div>
+
+**Ideas**
+After analyze we find for each element with same value, we can use sliding window to calculate the max num that meet the constraints. So basically for each distinct value, we need a sliding window.
+
+1. traverse the array get the map, then for each key in map, do a sliding window
+
+```
+0 1 2 3 4 5 6
+1 3 2 3 1 3 1 k = 3
+i
+            j
+
+map<value, list of index>
+map: {
+    1 : 0 4 6
+    3 : 1 3 5
+    2 : 2
+}
+```
+
+we can use list to store index, and use two int stand for the boundary. or a simple way -> use queue.pop to update the boundary.
+
+2. We find the above solution need traverse the array two times in total. Is there a simple way to calculate while traversing the array?
+
+
+**In a queue, how to determine if new added element is satisfied? answer is : (index - queue.peekFirst() + 1) - queue.size() > k ?
+(index - queue.peekFirst() + 1) stand for the length between the first and last occurance of the element. To calculate the rest number of elements who's value are not euqlas to the current value, we use length - number of current value in between, compare it with the k. if greater than k, that means it can not be replaced within k times. then we need to pop the first element out of the queue and check again until it is satisfied. Then we update the globalmax.**
+
+
+**Solution**
+
+```Java
+class Solution {
+    public int longestEqualSubarray(List<Integer> nums, int k) {
+        int globalMax = Integer.MIN_VALUE;
+        Map<Integer, Deque<Integer>> map = new HashMap<>();
+        for (int i = 0; i < nums.size(); i++) {
+            // add it to the map
+            Deque<Integer> queue = map.computeIfAbsent(nums.get(i), num -> new ArrayDeque<>());
+            queue.offerLast(i);
+            // update the boundary
+            while(i - queue.peekFirst() + 1 - queue.size() > k) {
+                queue.pollFirst();
+            }
+            globalMax = Math.max(globalMax, queue.size());
+        }
+        return globalMax;
+    }
+}
+```
+
+
+## 447. Number of Boomerangs 🟠 01-08-2024
 
 [447. Number of Boomerangs](https://leetcode.com/problems/number-of-boomerangs/description/)
 
@@ -83,7 +177,7 @@ class Solution {
 }
 ```
 
-## 356. Line Reflection 🟠 01-08-2023
+## 356. Line Reflection 🟠 01-08-2024
 
 [356. Line Reflection](https://leetcode.com/problems/line-reflection/description/)
 
@@ -177,7 +271,7 @@ class Solution {
 }
 ```
 
-## 146. LRU Cache 🟠 01-07-2023
+## 146. LRU Cache 🟠 01-07-2024
 
 [146. LRU Cache](https://leetcode.com/problems/lru-cache/)
 
