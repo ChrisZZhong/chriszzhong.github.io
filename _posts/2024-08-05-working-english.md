@@ -18,6 +18,9 @@ I just want to ensure I understand your response correctly.
 
 ```
 If you can't help on this, could you please let me know the contact information I can reach out to? thanks!
+
+// if email to higher level person
+Could you let me know who can check this from XX team?
 ```
 
 ## reply people's questions in email
@@ -30,3 +33,5 @@ Regarding below:
 
 XXX answer
 ```
+
+## 
