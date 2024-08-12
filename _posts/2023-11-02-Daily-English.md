@@ -6,6 +6,23 @@ description: "Daily English"
 tag: English Learning
 ---
 
+## Aug 12, 2024
+
+### 街边
+```
+Almost stripped on the curb, 差点被马路牙子绊倒
+now I'm walking on the sidewalk, 人行道 （crosswalk 人行横道）
+street pole, 街边杆子
+pedestrain 行人
+alley 小巷
+dumpster 超大的那种垃圾箱，
+fire hydrant消防栓
+bike racks,停自行车的间隙
+lifeguard 救生员
+cones, 圆锥桶，路边封路用的
+beach unbrella 遮阳伞
+```
+
 ## May 21, 2024
 
 ### 物有所值/努力的价值
