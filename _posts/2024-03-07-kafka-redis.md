@@ -62,6 +62,7 @@ The smaller the size the faster a message can be published and consumed off a to
 **Kafka Pub/Sub Reconciliation**
 
 In Kafka-based systems, ensuring message delivery and consistency is crucial. Pub/Sub reconciliation is the process of verifying that all published messages are successfully received and processed by subscribers.
+![image](https://github.com/user-attachments/assets/4a1aec1e-f00c-473b-9720-44af0d3b7454)
 
 **Feature recommendations:**
 
@@ -82,6 +83,7 @@ In Kafka-based systems, ensuring message delivery and consistency is crucial. Pu
   - Ideal for time-series analysis of message flow.
 - Disadvantages:
   - Doesn't provide granular insights into individual message status.
+![image](https://github.com/user-attachments/assets/354d3507-ad40-4481-9dfa-5fec37236ba6)
 
 - **Rebalancing Errors**: rebalancing errors can occur during consumer group rebalances, which are processes where partitions are dynamically reassigned among active consumers within a consumer group.
 
@@ -133,5 +135,8 @@ The optimal metric depends on your specific requirements:
 
 **Use case based flow:**
 - **Use Case 1:**  Kafka Reconciliation Proposed Solution (Garbage in Garbage Out)
+![image](https://github.com/user-attachments/assets/e7ef9816-04af-450e-ae5f-ba2d836b96e5)
+
 - **Use Case 2:**  Kafka Reconciliation (Validation) Fiserv Proposed Solution–Beyond Recon --if Consumer wants to do further reconciliation with bad data.
+![image](https://github.com/user-attachments/assets/9649af51-7dae-4206-94ed-001536c4c254)
 
