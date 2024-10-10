@@ -31,5 +31,27 @@ Client call api to trigger Bulk load, Kafka process an incoming request, build a
 
 Use @Schedule for consumer, consumer subscribe topic, send every 100 count record to Redis, and audit at the same time
 
+```
+Kafka Message Size
+The optimal size of a Kafka message is 10KB or less. Any publishing applications should try to keep this payload within these limit.
+The AVRO compression can help reducing the size of the payload.
+The smaller the size the faster a message can be published and consumed off a topic.
+
+Feeding Redis Cache From Kafka
+  From Bulk Feed Load Kafka Topic
+    Add
+      Insert Record
+        Record Key already exists then overwrite
+  From Change Kafka Topic(near realtime)
+    Update or Delete
+      Add
+        Insert Record
+          Record Key already exists then overwrite
+      Update
+        Delete Old Record
+        Insert new Record
+      Delete
+        Delete Record
+```
 
 ![bab3a307336b3d2c408a7fc820cd5e8](https://github.com/user-attachments/assets/833de4ef-065d-42f5-b72f-8a28628ff5b0)
