@@ -75,3 +75,6 @@ The DLQ persistence layer is implemented in a database table BW_MS_RTTP.MS_EVENT
 | dead-letter-source | Name of the service which published the dlq events eg omnipay-fee-consumer-service | YES |
 | dead-letter-topic | Original Topic name from where the event was consumed | YES |
 
+### blogs
+
+[DLQ in Kafka](https://www.kai-waehner.de/blog/2022/05/30/error-handling-via-dead-letter-queue-in-apache-kafka/)
