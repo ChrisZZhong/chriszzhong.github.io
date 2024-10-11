@@ -61,9 +61,17 @@ The DLQ persistence layer is implemented in a database table BW_MS_RTTP.MS_EVENT
 - Events must have **STATUS = 'RETRY'** to be considered for reprocessing.
 - Events must have **RETRY_ATTEMPTS < 3**
 
+**example headers**
 
-
-
-
-
+| header Name | Description | Required |
+| -------- | ------- | -----|
+| dead-letter-exception-class-name | Exception class name from where the event failed.This will be use to classify the exceptions as retriable or non-retriable.eg.TransactionDataProcessingException/DatabaseProcessingException/KafkaDeserializationException | YES |
+| dead-letter-offset | Event  offset number for the  event for the original topic. This could either be from primary topic or the retry topic | YES |
+| dead-letter-partition | Topic  partition number for the  event for the original topic. This could either be from primary topic or the retry topic | YES |
+| dead-letter-reason | Event failure reason. eg: com.fiserv.omnipay.exception.TransactionDataProcessingException: Processing of the transaction failed at transactionDataService: [Attribute:fdms80_0607_4_31]. | Optional Incase of deserialization issue this could be null|
+| dead-letter-reason | Additional information if present in addition to failure cause | Opt |
+| dead-letter-schema-name | Original Topic Avro Schema name eg. TransactionCanonicalModel | Opt |
+| dead-letter-schema-version | Schema version eg: 2.1.0 | Opt |
+| dead-letter-source | Name of the service which published the dlq events eg omnipay-fee-consumer-service | YES |
+| dead-letter-topic | Original Topic name from where the event was consumed | YES |
 
