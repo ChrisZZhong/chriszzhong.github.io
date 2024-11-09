@@ -8,11 +8,11 @@ tag: distributed system
 
 ## Dead Letter Queue
 
-A Dead Letter Queue (DLQ) is a service implementation utilised in message-based systems to store messages that could not be processed or delivered. 
+A Dead Letter Queue (DLQ) is a service implementation utilised in message-based systems to store messages that could not be processed or delivered.
 
 For consumer, there may be scenarios in which incoming messages cannot be fully processed due to corruption in the incoming event, faults in the application code, temporary resource outages, etc. **Since Kafka events are removed from the topic when consumed, we need a way to prevent permanent loss of the event data in the scenario it cannot be processed.**
 
-This microservice serves as a generic error handling solution across Kafka microservices that accept forwarded errored events and persist them for later reprocessing once the original issue has been rectified. 
+This microservice serves as a generic error handling solution across Kafka microservices that accept forwarded errored events and persist them for later reprocessing once the original issue has been rectified.
 
 ### Implementation Overview:
 
@@ -22,7 +22,8 @@ Incoming errored events are ingested from a common DLQ topic, written to the DLQ
 
 The DLQ persistence layer is implemented in a database table BW_MS_RTTP.MS_EVENT_ERROR_LOG, storing all requisite information need to reprocess the event at a later stage.
 
-![image](https://github.com/user-attachments/assets/96c031b3-ca6e-46cc-8bc0-056db1e97ef3)
+<img src="/images/Kafka DQL/DLQ Kafka.png">
+<!-- ![image](https://github.com/user-attachments/assets/96c031b3-ca6e-46cc-8bc0-056db1e97ef3) -->
 
 ### Data Flow
 
@@ -31,11 +32,14 @@ The DLQ persistence layer is implemented in a database table BW_MS_RTTP.MS_EVENT
   - Producer flow: polls for events which are ready to be reprocessed and publishes event to appropriate retry topic
 
 **Activity Diagram:**
-![image](https://github.com/user-attachments/assets/cb2b347d-745f-42dc-9e44-2b551641335b)
+<img src="/images/Kafka DQL/activity diagram.png">
+
+<!-- ![image](https://github.com/user-attachments/assets/cb2b347d-745f-42dc-9e44-2b551641335b) -->
 
 **Consumer-Side Flow:**
+
 - **Data Ingested From**: DLQ topic
-- **Processing Steps**: 
+- **Processing Steps**:
   - The entry-point of this flow is DeadLetterQueueServiceConsumer.java
   - A **@KafkaListener** reads events from the configured DLQ topics and passes them to the **DeadLetterQueueService**.
   - The event is mapped to a DLQ entry entity and persisted.
@@ -43,6 +47,7 @@ The DLQ persistence layer is implemented in a database table BW_MS_RTTP.MS_EVENT
 - **Data Outputted To: BW_MS_RTTP.MS_EVENT_ERROR_LOG** (DLQ table)
 
 **Producer-Side Flow:**
+
 - **Data Ingested From: BW_MS_RTTP.MS_EVENT_ERROR_LOG** (DLQ table)
 - **Processing Steps**:
   - The entry-point of this flow is **DaemonConfiguration.java**.
@@ -56,24 +61,24 @@ The DLQ persistence layer is implemented in a database table BW_MS_RTTP.MS_EVENT
     - On failure, we increment the **RETRY_COUNT**
 - **Data Outputted To**: A Kafka retry topic, determined by the event source.
 
-
 **Retry Criteria**
+
 - Events must have **STATUS = 'RETRY'** to be considered for reprocessing.
 - Events must have **RETRY_ATTEMPTS < 3**
 
 **example headers**
 
-| header Name | Description | Required |
-| -------- | ------- | -----|
-| dead-letter-exception-class-name | Exception class name from where the event failed.This will be use to classify the exceptions as retriable or non-retriable.eg.TransactionDataProcessingException/DatabaseProcessingException/KafkaDeserializationException | YES |
-| dead-letter-offset | Event  offset number for the  event for the original topic. This could either be from primary topic or the retry topic | YES |
-| dead-letter-partition | Topic  partition number for the  event for the original topic. This could either be from primary topic or the retry topic | YES |
-| dead-letter-reason | Event failure reason. eg: com.fiserv.omnipay.exception.TransactionDataProcessingException: Processing of the transaction failed at transactionDataService: [Attribute:fdms80_0607_4_31]. | Optional Incase of deserialization issue this could be null|
-| dead-letter-reason | Additional information if present in addition to failure cause | Opt |
-| dead-letter-schema-name | Original Topic Avro Schema name eg. TransactionCanonicalModel | Opt |
-| dead-letter-schema-version | Schema version eg: 2.1.0 | Opt |
-| dead-letter-source | Name of the service which published the dlq events eg omnipay-fee-consumer-service | YES |
-| dead-letter-topic | Original Topic name from where the event was consumed | YES |
+| header Name                      | Description                                                                                                                                                                                                                | Required                                                    |
+| -------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------- |
+| dead-letter-exception-class-name | Exception class name from where the event failed.This will be use to classify the exceptions as retriable or non-retriable.eg.TransactionDataProcessingException/DatabaseProcessingException/KafkaDeserializationException | YES                                                         |
+| dead-letter-offset               | Event offset number for the event for the original topic. This could either be from primary topic or the retry topic                                                                                                       | YES                                                         |
+| dead-letter-partition            | Topic partition number for the event for the original topic. This could either be from primary topic or the retry topic                                                                                                    | YES                                                         |
+| dead-letter-reason               | Event failure reason. eg: com.fiserv.omnipay.exception.TransactionDataProcessingException: Processing of the transaction failed at transactionDataService: [Attribute:fdms80_0607_4_31].                                   | Optional Incase of deserialization issue this could be null |
+| dead-letter-reason               | Additional information if present in addition to failure cause                                                                                                                                                             | Opt                                                         |
+| dead-letter-schema-name          | Original Topic Avro Schema name eg. TransactionCanonicalModel                                                                                                                                                              | Opt                                                         |
+| dead-letter-schema-version       | Schema version eg: 2.1.0                                                                                                                                                                                                   | Opt                                                         |
+| dead-letter-source               | Name of the service which published the dlq events eg omnipay-fee-consumer-service                                                                                                                                         | YES                                                         |
+| dead-letter-topic                | Original Topic name from where the event was consumed                                                                                                                                                                      | YES                                                         |
 
 ### blogs
 
