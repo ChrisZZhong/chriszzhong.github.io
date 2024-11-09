@@ -72,10 +72,8 @@ we can use list to store index, and use two int stand for the boundary. or a sim
 
 2. We find the above solution need traverse the array two times in total. Is there a simple way to calculate while traversing the array?
 
-
 **In a queue, how to determine if new added element is satisfied? answer is : (index - queue.peekFirst() + 1) - queue.size() > k ?
 (index - queue.peekFirst() + 1) stand for the length between the first and last occurance of the element. To calculate the rest number of elements who's value are not euqlas to the current value, we use length - number of current value in between, compare it with the k. if greater than k, that means it can not be replaced within k times. then we need to pop the first element out of the queue and check again until it is satisfied. Then we update the globalmax.**
-
 
 **Solution**
 
@@ -98,7 +96,6 @@ class Solution {
     }
 }
 ```
-
 
 ## 447. Number of Boomerangs 🟠 01-08-2024
 
@@ -1081,3 +1078,95 @@ class Solution {
 Time complexity: O(nlogn)
 
 Space complexity: O(1)
+
+## [3254. Find the Power of K-Size Subarrays I](https://leetcode.cn/problems/find-the-power-of-k-size-subarrays-i/description/) 🟢 11-08-2024
+
+<div class="elfjS" data-track-load="description_content"><p>You are given an array of integers <code>nums</code> of length <code>n</code> and a <em>positive</em> integer <code>k</code>.</p>
+
+<p>The <strong>power</strong> of an array is defined as:</p>
+
+<ul>
+	<li>Its <strong>maximum</strong> element if <em>all</em> of its elements are <strong>consecutive</strong> and <strong>sorted</strong> in <strong>ascending</strong> order.</li>
+	<li>-1 otherwise.</li>
+</ul>
+
+<p>You need to find the <strong>power</strong> of all <span data-keyword="subarray-nonempty" class=" cursor-pointer relative text-dark-blue-s text-sm"><div class="popover-wrapper inline-block" data-headlessui-state=""><div><div aria-expanded="false" data-headlessui-state="" id="headlessui-popover-button-:r1e:"><div>subarrays</div></div><div style="position: fixed; z-index: 40; inset: 0px auto auto 0px; transform: translate(264px, 347px);"></div></div></div></span> of <code>nums</code> of size <code>k</code>.</p>
+
+<p>Return an integer array <code>results</code> of size <code>n - k + 1</code>, where <code>results[i]</code> is the <em>power</em> of <code>nums[i..(i + k - 1)]</code>.</p>
+
+<p>&nbsp;</p>
+<p><strong class="example">Example 1:</strong></p>
+
+<div class="example-block">
+<p><strong>Input:</strong> <span class="example-io">nums = [1,2,3,4,3,2,5], k = 3</span></p>
+
+<p><strong>Output:</strong> [3,4,-1,-1,-1]</p>
+
+<p><strong>Explanation:</strong></p>
+
+<p>There are 5 subarrays of <code>nums</code> of size 3:</p>
+
+<ul>
+	<li><code>[1, 2, 3]</code> with the maximum element 3.</li>
+	<li><code>[2, 3, 4]</code> with the maximum element 4.</li>
+	<li><code>[3, 4, 3]</code> whose elements are <strong>not</strong> consecutive.</li>
+	<li><code>[4, 3, 2]</code> whose elements are <strong>not</strong> sorted.</li>
+	<li><code>[3, 2, 5]</code> whose elements are <strong>not</strong> consecutive.</li>
+</ul>
+</div>
+
+<p><strong class="example">Example 2:</strong></p>
+
+<div class="example-block">
+<p><strong>Input:</strong> <span class="example-io">nums = [2,2,2,2,2], k = 4</span></p>
+
+<p><strong>Output:</strong> <span class="example-io">[-1,-1]</span></p>
+</div>
+
+<p><strong class="example">Example 3:</strong></p>
+
+<div class="example-block">
+<p><strong>Input:</strong> <span class="example-io">nums = [3,2,3,2,3,2], k = 2</span></p>
+
+<p><strong>Output:</strong> <span class="example-io">[-1,3,-1,3,-1]</span></p>
+</div>
+
+<p>&nbsp;</p>
+<p><strong>Constraints:</strong></p>
+
+<ul>
+	<li><code>1 &lt;= n == nums.length &lt;= 500</code></li>
+	<li><code>1 &lt;= nums[i] &lt;= 10<sup>5</sup></code></li>
+	<li><code>1 &lt;= k &lt;= n</code></li>
+</ul>
+</div>
+
+---
+
+**Solution**:
+
+1. 合理转化题意，拆解 power 的定义，当连续且递增时才会取最大值。因为递增，最大值则是这个 subarray 的最右侧值。
+2. 因为题目以 length 为 k 的 subarray 进行拆解，所以应联想到用 sliding window 来解决
+3. 将 power 取值转化为逻辑实现：
+   - 连续递增 -> 前后差值为 1 -> 即 window block 内所有相邻 element 差值均为 1 时，条件成立
+   - 定义 cnt 为以 i 结尾连续递增的 element 个数，我们默认第 i 个数计入统计。cnt default = 1
+   - 第 i 个值，若跟 i-1 差值为 1 则 cnt++，（在 i-1 连续递增的数上+1，当前 i 也符合）若不为 1，则 cnt = 1 （从 i 重新开始，左边不连续递增，所以 i 为第一个符合的 element）
+   - 在遍历时，便有公式 cnt = nums[i] - nums[i - 1] == 1 ? cnt + 1 : 1;
+   - 考虑一开始第一个数没有左边，i - 1 越界了，则当 i==0 时默认为 1 -- cnt = i == 0 || nums[i] - nums[i - 1] != 1 ? 1 : cnt + 1; （当然也可以拆开写）
+   - 因为左边可能都是递增的，所以 cnt>=k 代表向左 K 个肯定满足连续递增
+
+```Java
+class Solution {
+    public int[] resultsArray(int[] nums, int k) {
+        int n = nums.length;
+        int[] ans = new int[n - k + 1];
+        Arrays.fill(ans, -1);
+        int cnt = 0;
+        for (int i = 0; i = k) {
+                ans[i - k + 1] = nums[i];
+            }
+        }
+        return ans;
+    }
+}
+```
