@@ -22,7 +22,7 @@ Incoming errored events are ingested from a common DLQ topic, written to the DLQ
 
 The DLQ persistence layer is implemented in a database table BW_MS_RTTP.MS_EVENT_ERROR_LOG, storing all requisite information need to reprocess the event at a later stage.
 
-<img src="/images/Kafka-DQL/DLQ-Kafka.png">
+<img src="/images/Kafka-DLQ/DLQ-Kafka.png">
 <!-- ![image](https://github.com/user-attachments/assets/96c031b3-ca6e-46cc-8bc0-056db1e97ef3) -->
 
 ### Data Flow
@@ -32,7 +32,7 @@ The DLQ persistence layer is implemented in a database table BW_MS_RTTP.MS_EVENT
   - Producer flow: polls for events which are ready to be reprocessed and publishes event to appropriate retry topic
 
 **Activity Diagram:**
-<img src="/images/Kafka-DQL/activity-diagram.png">
+<img src="/images/Kafka-DLQ/activity-diagram.png">
 
 <!-- ![image](https://github.com/user-attachments/assets/cb2b347d-745f-42dc-9e44-2b551641335b) -->
 
