@@ -3,7 +3,7 @@ layout: post
 title: Failure detection and handling in distributed system
 date: 2024-05-21
 description: "System design"
-tag: distributed system
+tag: Distributed system
 ---
 
 # Failure detection
@@ -26,10 +26,8 @@ Gossip protocol is a decentralized failure detection method.
 
 When the node is down, in `strict quorum`, read and write operations may be blocked. We can use `sloppy quorum` to improve availability. the system chooses the first W healthy servers for writes and first R healthy server for reads on the hash ring.
 
-- `hinted handoff`: If a server is down, another server will process requests temporarily. When the down server is up, changes will be pushed back to achieve data consistency. 
+- `hinted handoff`: If a server is down, another server will process requests temporarily. When the down server is up, changes will be pushed back to achieve data consistency.
 
 ### Handle permanent failures
 
-`Anti-entropy` 
-
-
+`Anti-entropy`

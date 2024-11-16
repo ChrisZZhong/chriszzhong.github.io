@@ -3,7 +3,7 @@ layout: post
 title: "kafka & redis"
 date: 2024-03-07
 description: "kafka & redis"
-tag: distributed system
+tag: Distributed system
 ---
 
 ## Kafka & Redis cache
@@ -54,7 +54,6 @@ The smaller the size the faster a message can be published and consumed off a to
       - Delete
         -Delete Record
 
-
 ![bab3a307336b3d2c408a7fc820cd5e8](https://github.com/user-attachments/assets/833de4ef-065d-42f5-b72f-8a28628ff5b0)
 
 **Proposed Options:**
@@ -82,12 +81,14 @@ In Kafka-based systems, ensuring message delivery and consistency is crucial. Pu
   - Useful for high-level monitoring and bulk reconciliation.
   - Ideal for time-series analysis of message flow.
 - Disadvantages:
+
   - Doesn't provide granular insights into individual message status.
-![image](https://github.com/user-attachments/assets/354d3507-ad40-4481-9dfa-5fec37236ba6)
+    ![image](https://github.com/user-attachments/assets/354d3507-ad40-4481-9dfa-5fec37236ba6)
 
 - **Rebalancing Errors**: rebalancing errors can occur during consumer group rebalances, which are processes where partitions are dynamically reassigned among active consumers within a consumer group.
 
 **2. Message UUIDs:**
+
 - Description: Tracks message delivery using unique identifiers (UUIDs).
 - Requirements: Storage for UUIDs, topic/queue names, create timestamps (publish side), and update timestamps (subscribe side).
 - Advantages:
@@ -97,6 +98,7 @@ In Kafka-based systems, ensuring message delivery and consistency is crucial. Pu
   - Requires additional storage for UUIDs and timestamps.
 
 **3. Message Hash/Digest: (Phase1- Recommended Approach)**
+
 - Description: Uses message content hashes to detect discrepancies between published and consumed messages.
 - Advantages:
   - Efficiently identifies missing or altered messages.
@@ -107,6 +109,7 @@ In Kafka-based systems, ensuring message delivery and consistency is crucial. Pu
   - Can be used instead of Hash/MD for efficiency and basic error detection in less sensitive data.
 
 **4. Audit Logs: (Phase2- Recommended Approach)**
+
 - Description: Stores full message content for comprehensive reconciliation.
 - Advantages:
   - Offers the most detailed insights into message flow and content.
@@ -118,6 +121,7 @@ In Kafka-based systems, ensuring message delivery and consistency is crucial. Pu
 **Choosing the Right Metric**
 
 The optimal metric depends on your specific requirements:
+
 - Bulk reconciliation: Message counts may suffice.
 - Individual message tracking: UUIDs or audit logs are more suitable.
 - Privacy concerns: Message hashes offer a privacy-preserving/data protection approach.
@@ -130,13 +134,14 @@ The optimal metric depends on your specific requirements:
 - Integration with Other Systems: Integrate reconciliation processes with monitoring and alerting tools for comprehensive visibility.
 
 **Solutions:**
+
 - To Reconcile from subscriber side, provide steps or API to reconcile on demand.
 - Batch Load will be on Demand.
 
 **Use case based flow:**
-- **Use Case 1:**  Kafka Reconciliation Proposed Solution (Garbage in Garbage Out)
-![image](https://github.com/user-attachments/assets/e7ef9816-04af-450e-ae5f-ba2d836b96e5)
 
-- **Use Case 2:**  Kafka Reconciliation (Validation) Fiserv Proposed Solution–Beyond Recon --if Consumer wants to do further reconciliation with bad data.
-![image](https://github.com/user-attachments/assets/9649af51-7dae-4206-94ed-001536c4c254)
+- **Use Case 1:** Kafka Reconciliation Proposed Solution (Garbage in Garbage Out)
+  ![image](https://github.com/user-attachments/assets/e7ef9816-04af-450e-ae5f-ba2d836b96e5)
 
+- **Use Case 2:** Kafka Reconciliation (Validation) Fiserv Proposed Solution–Beyond Recon --if Consumer wants to do further reconciliation with bad data.
+  ![image](https://github.com/user-attachments/assets/9649af51-7dae-4206-94ed-001536c4c254)

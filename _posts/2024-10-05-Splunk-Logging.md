@@ -3,37 +3,36 @@ layout: post
 title: Debug in distributed system (Splunk)
 date: 2024-05-21
 description: "Splunk"
-tag: distributed system
+tag: Distributed system
 ---
 
 ## Splunk
 
-
 Splunk
 
-```
+````
 index=application_na sourcetype=fs_newarch_qa source=*gfs-feaid-services*
- 
+
 Response Time: index=application_na sourcetype=fs_newarch_prod source=*fs-utilities*  eventType=END OR eventType=ERROR | timechart avg(duration)
- 
+
 tps:
 index=application_na sourcetype=fs_newarch_prod source=*fs-account-search*  eventType=START | eval tps=1 | timechart per_second(tps)
- 
+
 index=application_na sourcetype=fs_newarch_prod source=*fs-account-search* eventType=ERROR | stats count by error.message
 
 sourcetype=fs_newarch_prod /fs/offers/v1/retrieveOffers level=ERROR source="*gfs-offers-services*"
- 
- 
- 
+
+
+
 Find what is the client from the time range:
 sourcetype=fs_newarch_prod action=*fs.offers.retrieveOffers* source="*gfs-offers-services*" | stats count by common.clientName
- 
+
 Show what most of the error is from this client :
 sourcetype=fs_newarch_prod action=*fs.offers.retrieveOffers* source="*gfs-offers-services*"  "common.clientName"="DGPrdODS-PSCU.fdclientcenter.com" eventType = ERROR | stats count by error.message
- 
+
 Show the avg time of that service from that client:
 sourcetype=fs_newarch_prod action=*fs.offers.retrieveOffers* source="*gfs-offers-services*"  "common.clientName"="DGPrdODS-PSCU.fdclientcenter.com" eventType = ERROR OR eventType = END | timechart avg(duration)
- 
+
 leSplunk Queries
 
 Version:
@@ -82,7 +81,7 @@ index=datapower_na host=X*CPIR* "*:500 Internal*"  client_ip_addr=*   | eval err
 index=datapower_na host=X*CPIR* "*:500 Internal*"  client_ip_addr=*   | eval error_500=1 | timechart  span=1m per_second(error_500) AS 500_responses
 
 tps vs response
-index=datapower_na host_env=prod host=*Issuing-T1R* latency | dedup gtid | eval tps=1 | timechart span=1s per_second(tps) avg(resp_xmit) 
+index=datapower_na host_env=prod host=*Issuing-T1R* latency | dedup gtid | eval tps=1 | timechart span=1s per_second(tps) avg(resp_xmit)
 
 Trafffic
 index=application_na sourcetype=fs_newarch_prod source=*fs-account-maint* host=l3pvap1192 eventType=* | timechart span=1s count
@@ -120,36 +119,36 @@ ERROR group by env
 index=application_na sourcetype=fs_newarch_prod source=*fs-utilities* eventType=ERROR | eval env=case(like(host, "l%"), "linux", like(host, "fs-utilities%"), "openshift") | stats count by env, error.message
 
 ODS
-index=gfsauth_na ```Always used for ODS``` AND 
-sourcetype=gfsauth_prod ```Production=gfsauth_prod``` ```CAT=gfsauth_cat``` AND 
-eventType=ODS ```Always used for ODS``` AND 
+index=gfsauth_na ```Always used for ODS``` AND
+sourcetype=gfsauth_prod ```Production=gfsauth_prod``` ```CAT=gfsauth_cat``` AND
+eventType=ODS ```Always used for ODS``` AND
 common.cycle=N ```Needs to exist in the sourcetype selection``` AND
 transaction.terminalId="MQ8C"
 
-index=gfsauth_na ```Always used for ODS``` AND 
-sourcetype=gfsauth_prod ```Production=gfsauth_prod``` ```CAT=gfsauth_cat``` AND 
-eventType=ODS ```Always used for ODS``` AND 
+index=gfsauth_na ```Always used for ODS``` AND
+sourcetype=gfsauth_prod ```Production=gfsauth_prod``` ```CAT=gfsauth_cat``` AND
+eventType=ODS ```Always used for ODS``` AND
 common.cycle=N ```Needs to exist in the sourcetype selection``` AND
 transaction.terminalId="MQ8C" AND
 transaction.tranDesc=*PCF*
 
-index=gfsauth_na ```Always used for ODS``` AND 
-sourcetype=gfsauth_prod ```Production=gfsauth_prod``` ```CAT=gfsauth_cat``` AND 
-eventType=ODS ```Always used for ODS``` AND 
+index=gfsauth_na ```Always used for ODS``` AND
+sourcetype=gfsauth_prod ```Production=gfsauth_prod``` ```CAT=gfsauth_cat``` AND
+eventType=ODS ```Always used for ODS``` AND
 common.cycle=N ```Needs to exist in the sourcetype selection``` AND
 transaction.terminalId="MQ8C" AND
 transaction.tranDesc=*PCF* AND
 error.message=*"RECORD NOT FOUND"* | stats count by error.cause
 
-index=gfsauth_na ```Always used for ODS``` AND 
-sourcetype=gfsauth_prod ```Production=gfsauth_prod``` ```CAT=gfsauth_cat``` AND 
-eventType=ODS ```Always used for ODS``` AND 
+index=gfsauth_na ```Always used for ODS``` AND
+sourcetype=gfsauth_prod ```Production=gfsauth_prod``` ```CAT=gfsauth_cat``` AND
+eventType=ODS ```Always used for ODS``` AND
 common.cycle=* ```Needs to exist in the sourcetype selection``` AND
 transaction.terminalId="MQ8C" AND
 transaction.tranDesc=*PCF* AND
 error.message=*"RECORD NOT FOUND"* | stats count by error.cause, common.cycle
-```
+````
 
-index=application_na sourcetype=fs_newarch_cat source=*fs-internal-services* host=*l1cvap1047* eventType=ERROR | stats count by error.message
- 
-index=application_na sourcetype=fs_newarch_cat source=*fs-internal-services* host=*l1cvap1047* eventType=ERROR | stats count by eventType
+index=application_na sourcetype=fs_newarch_cat source=_fs-internal-services_ host=_l1cvap1047_ eventType=ERROR | stats count by error.message
+
+index=application_na sourcetype=fs_newarch_cat source=_fs-internal-services_ host=_l1cvap1047_ eventType=ERROR | stats count by eventType

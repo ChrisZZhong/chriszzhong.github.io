@@ -3,7 +3,7 @@ layout: post
 title: Dead Letter Queue(DLQ) Handler Service
 date: 2024-05-21
 description: "Dead Letter Queue Handler"
-tag: distributed system
+tag: Distributed system
 ---
 
 ## Dead Letter Queue

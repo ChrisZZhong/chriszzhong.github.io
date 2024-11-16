@@ -3,7 +3,7 @@ layout: post
 title: "Regression Newman with HTML report"
 date: 2024-09-04
 description: "Regression Report Documentation"
-tag: Microservices
+tag: Distributed system
 ---
 
 ## Regression Report with NewMan
