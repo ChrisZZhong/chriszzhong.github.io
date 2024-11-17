@@ -72,8 +72,22 @@ Asynchronous:
 
 ### Set up new followers
 
-setting up a follower can usually be done without downtime
-![image](https://github.com/user-attachments/assets/b9ac986a-9b59-4782-acfb-583ba6dc1824)
+setting up a follower can usually be done without downtime.
 
+1. Take a consistent snapshot of the leader’s database at some point in time—if possible, without taking a lock on the entire database.
+2. Copy the snapshot to the new follower node.
+3. The follower connects to the leader and requests all the data changes that have happened since the snapshot was taken.
+4. When the follower has processed the backlog of data changes since the snapshot, we say it has caught up
 
+### Handling Node Outages
+
+#### follower failure
+
+If follower failed, it can easily catch up by requesting the recent changes from leader node's log.
+
+#### leader failure
+
+1. to determine the leader is failed, generally use **time out like 30s no respond**
+2. **choose a new leader** Getting all the nodes to agree on a new leader is a consensus problem
+3. Reconfiguring the system to use the new leader. If the old leader comes back, it might still believe that it is the leader, not realizing that the other replicas have forced it to step down. The system needs to ensure that the old leader becomes a follower and recognizes the new leader. **it could happen that two nodes both believe that they are the leader. This situation is called split brain, and it is dangerous: if both leaders accept writes, and there is no process for resolving conflicts**
 
