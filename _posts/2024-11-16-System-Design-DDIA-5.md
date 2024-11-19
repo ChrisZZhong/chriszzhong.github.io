@@ -6,7 +6,7 @@ description: "System design"
 tag: OOD & System Design
 ---
 
-## 5. Replication
+# 5. Replication
 
 Replication means: keep a copy of data on multiple machines.
 
@@ -24,7 +24,7 @@ Type of replication:
 
 - synchronous vs asynchronous
 
-### Leader-follower (master-slave) replication
+## Leader-follower (master-slave) replication
 
 <img src="/images/System-Design/DB_replication.png">
 
@@ -34,7 +34,6 @@ summary:
 write to master, read from master or slave
 
 ![image](https://github.com/user-attachments/assets/83b2b00f-d05f-488b-9131-ae0f9dd88d35)
-
 
 Benefit:
 
@@ -49,7 +48,7 @@ When master down, a slave promote to master, a new slave node will take old slav
 
 ![image](https://github.com/user-attachments/assets/d08bf40b-4c6f-4eca-94b9-09c36e2db37d)
 
- In the example of Figure 5-2, the replication to follower 1 is synchronous: the leader waits until follower 1 has confirmed that it received the write before reporting success to the user, and before making the write visible to other clients. The replication to follower 2 is asynchronous: the leader sends the message, but doesn’t wait for a response from the follower.
+In the example of Figure 5-2, the replication to follower 1 is synchronous: the leader waits until follower 1 has confirmed that it received the write before reporting success to the user, and before making the write visible to other clients. The replication to follower 2 is asynchronous: the leader sends the message, but doesn’t wait for a response from the follower.
 
 ```
 Synchronous:
@@ -91,3 +90,21 @@ If follower failed, it can easily catch up by requesting the recent changes from
 2. **choose a new leader** Getting all the nodes to agree on a new leader is a consensus problem
 3. Reconfiguring the system to use the new leader. If the old leader comes back, it might still believe that it is the leader, not realizing that the other replicas have forced it to step down. The system needs to ensure that the old leader becomes a follower and recognizes the new leader. **it could happen that two nodes both believe that they are the leader. This situation is called split brain, and it is dangerous: if both leaders accept writes, and there is no process for resolving conflicts**
 
+## Replication Lag
+
+### Statement based replication
+
+**Statement based replication**: the leader logs the original SQL queries that made the changes, and the followers execute those queries to make the same changes to their copy of the database.
+
+```
+Should be careful with following cases:
+1. Be careful with non-deterministic queries, like `NOW()` or `RAND()`, which will cause different results on different machines. ( replace any nondeterministic function calls with a fixed return value)
+
+2. auto-incrementing columns: if the leader generates a new ID for a row, the follower must generate the same ID, or the row will have a different ID on the follower. (not good for concurrent write)
+
+3. triggers, stored procedures, and user-defined functions may result in different behavior on the leader and follower.
+```
+
+New version of MySQL and PostgreSQL use **row-based replication** instead of statement-based replication. In row-based replication, the leader sends the changed rows to the followers, rather than the original SQL queries.
+
+### Write-Ahead Log (WAL) shipping
