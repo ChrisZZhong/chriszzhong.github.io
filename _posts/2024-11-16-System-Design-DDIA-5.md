@@ -3,7 +3,7 @@ layout: post
 title: "System design DDIA digest - 5. Replication"
 date: 2024-11-16
 description: "System design"
-tag: OOD & System Design
+tag: System Design
 ---
 
 # 5. Replication
