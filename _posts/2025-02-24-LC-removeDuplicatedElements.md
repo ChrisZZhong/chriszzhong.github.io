@@ -2,7 +2,7 @@
 layout: post
 title: "Remove Duplicated elements"
 date: 2025-02-24
-description: "water trapper problems"
+description: "Remove Duplicated elements"
 tag: LeetCode
 ---
 
