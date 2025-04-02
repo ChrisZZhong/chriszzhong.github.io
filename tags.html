@@ -24,7 +24,7 @@ group: navigation
 
   <h3 id="{{ tag[0] }}-ref">{{ tag[0] }}</h3>
   <ul>
-    {% assign pages_list = tag[1] | sort: 'title' %}  
+    {% assign pages_list = tag[1] | sort: 'title' | reverse %}  
     {% include JB/pages_list %}
   </ul>
 
