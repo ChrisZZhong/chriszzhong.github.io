@@ -18,16 +18,15 @@ group: navigation
   textColor: '#fff'
 })</script>
 
-<div class = "card">
-{% assign sorted_tags = site.tags %}
-{% for tag in sorted_tags %} 
-
-  <h3 id="{{ tag[0] }}-ref">{{ tag[0] }}</h3>
-  <ul>
-    {% assign pages_list = tag[1] | sort: 'title' | reverse %}  
-    {% include JB/pages_list %}
-  </ul>
-
-
-{% endfor %}
+<div class="card">
+  {% assign tags_array = site.tags | sort %}
+  {% assign reversed_tags = tags_array | reverse %}
+  {% for tag in reversed_tags %}
+    <h3 id="{{ tag[0] }}-ref">{{ tag[0] }}</h3>
+    <ul>
+      {% assign pages_list = tag[1] | sort: 'title' %}
+      {% include JB/pages_list %}
+    </ul>
+  {% endfor %}
 </div>
+
