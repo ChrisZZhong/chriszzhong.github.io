@@ -19,7 +19,7 @@ group: navigation
 })</script>
 
 <div class = "card">
-{% assign sorted_tags = site.tags | sort %}
+{% assign sorted_tags = site.tags | sort  | reverse %}
 {% for tag in sorted_tags %} 
 
   <h3 id="{{ tag[0] }}-ref">{{ tag[0] }}</h3>
