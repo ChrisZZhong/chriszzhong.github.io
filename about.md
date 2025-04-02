@@ -3,9 +3,9 @@ layout: page
 title: About me
 ---
 
-[![Matrix SVG](https://raw.githubusercontent.com/rodrigograca31/rodrigograca31/master/matrix.svg)](https://www.youtube.com/watch?v=SDkAGkd4NLc)
+[![Matrix SVG](https://raw.githubusercontent.com/rodrigograca31/rodrigograca31/master/matrix.svg)]()
 
-### I am Zhicheng Zhong👋
+I am Zhicheng Zhong👋
 
 [![Linkedin Badge](https://img.shields.io/badge/-Zhicheng-blue?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/zhicheng-z-35805722b/)](https://www.linkedin.com/in/zhicheng-z-35805722b/)
 [![Gmail Badge](https://img.shields.io/badge/-zzcjob397@gmail.com-c14438?style=flat-square&logo=Gmail&logoColor=white&link=mailto:zzcjob397@gmail.com)](mailto:zzcjob397@gmail.com)
@@ -14,7 +14,7 @@ title: About me
 - 💬 Ask me about anything, I am happy to help :smile:
 - 📬 How to reach me: [Let's get in touch!](https://www.linkedin.com/in/zhicheng-z-35805722b/)
 
-### Languages and Tools:
+**Languages and Tools:**
 
 <img align="left" src="https://www.vectorlogo.zone/logos/java/java-horizontal.svg" alt="Java">
 
@@ -47,13 +47,11 @@ title: About me
 <br />
 <br />
 
-<p>
-    <a href="https://gitstats.me/ChrisZZhong" target="_blank"> 
-        <img src="https://github-readme-stats.vercel.app/api?username=ChrisZZhong&&show_icons=true&hi&theme=dark&count_private=true&include_all_commits=true">
-    </a>
-</p>
+<a href="https://gitstats.me/ChrisZZhong" target="_blank"> 
+    <img src="https://github-readme-stats.vercel.app/api?username=ChrisZZhong&&show_icons=true&hi&theme=dark&count_private=true&include_all_commits=true">
+</a>
 
 <div align="center">
-<h3 align="center">Show some &nbsp;❤️&nbsp; by starring some of the repositories!</h3>
+**Show some &nbsp;❤️&nbsp; by starring some of the repositories!**</h3>**
 
 {% include comments.html %}
