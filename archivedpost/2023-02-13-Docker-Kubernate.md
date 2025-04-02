@@ -1,10 +1,10 @@
----
+<!-- ---
 layout: post
 title: "Docker and Kubernetes and OpenShift"
 date: 2023-02-13
 description: "frequent questions asked in interviews"
 tag: CI/CD
----
+--- -->
 
 ## Docker
 
