@@ -18,16 +18,14 @@ group: navigation
   textColor: '#fff'
 })</script>
 
-<div class = "card">
-{% assign sorted_tags = site.tags | sort  | reverse %}
-{% for tag in sorted_tags %} 
-
-  <h3 id="{{ tag[0] }}-ref">{{ tag[0] }}</h3>
-  <ul>
-    {% assign pages_list = tag[1] | sort: 'title' | reverse %}  
-    {% include JB/pages_list %}
-  </ul>
-
-
-{% endfor %}
+<div class="card">
+  {% assign sorted_tags = site.tags | map: "first" | sort | reverse %} <!-- 提取标签并排序 -->
+  {% for tag in sorted_tags %} 
+    <h3 id="{{ tag }}-ref">{{ tag }}</h3>
+    <ul>
+      {% assign pages_list = site.tags[tag] | sort: 'title' | reverse %} <!-- 按标题降序排序页面 -->
+      {% include JB/pages_list %}
+    </ul>
+  {% endfor %}
 </div>
+
