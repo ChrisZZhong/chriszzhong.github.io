@@ -65,11 +65,11 @@ title: About
         <img src="https://www.vectorlogo.zone/logos/jupyter/jupyter-ar21.svg" alt="Jupyter">
     </div>
 
-    <div class="display: grid; grid-template-columns: repeat(4, auto); gap: 20px; justify-content: start;">
+    <!-- <div class="display: grid; grid-template-columns: repeat(4, auto); gap: 20px; justify-content: start;">
         <a href="https://gitstats.me/ChrisZZhong" target="_blank">
             <img src="https://github-readme-stats.vercel.app/api?username=ChrisZZhong&&show_icons=true&hi&theme=dark&count_private=true&include_all_commits=true" alt="GitHub Stats">
         </a>
-    </div>
+    </div> -->
     <p><strong>Show some ❤️ by starring some of the repositories!</strong></p>
     </div>
 
