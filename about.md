@@ -3,7 +3,6 @@ layout: page
 title: About
 ---
 
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -78,12 +77,12 @@ title: About
     </div>
 
     <div style="width: 25%;float: left;position: fixed;left: 75%;top: 40px;bottom: 20px;overflow-x: hidden;overflow-y: scroll;">
-        <hearder >
+        <!-- <hearder >
           {% if site.enableToc %}
             <h2 class="post-title">Contents</h2>
             {% include toc.html html=content %}
           {% endif %}
-        </hearder>
+        </hearder> -->
       </div>
 
 </body>
