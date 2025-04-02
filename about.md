@@ -36,7 +36,7 @@ title: About
     <div class="profile">
 
         <h1>I am Zhicheng Zhong👋</h1>
-        <p>
+        <p style="display: flex; gap: 10px; justify-content: start;">
             <a href="https://www.linkedin.com/in/zhicheng-z-35805722b/" target="_blank">
                 <img src="https://img.shields.io/badge/-Zhicheng-blue?style=flat-square&logo=Linkedin&logoColor=white">
             </a>
