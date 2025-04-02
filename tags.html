@@ -19,9 +19,8 @@ group: navigation
 })</script>
 
 <div class="card">
-  {% assign tags_array = site.tags | sort %}
-  {% assign reversed_tags = tags_array | reverse %}
-  {% for tag in reversed_tags %}
+  {% assign tags_array = site.tags | sort: 'key' | reverse %}
+  {% for tag in tags_array %}
     <h3 id="{{ tag[0] }}-ref">{{ tag[0] }}</h3>
     <ul>
       {% assign pages_list = tag[1] | sort: 'title' %}
@@ -29,4 +28,5 @@ group: navigation
     </ul>
   {% endfor %}
 </div>
+
 
