@@ -144,14 +144,11 @@ When a user has sent too many requests, a 429 too many requests error and X-Rate
 
 In distributed systems, generally it will have two problems:
 
-- Race condition
-- Synchoronization issue
-
-`Race condition`:
+- `Race condition`:
     - `Lua script`
     - `sorted set`
 
-`Sync problem`:
+- `Sync problem`:
     - same client to same limiter (not scalable)
     - better solution:
         - use centralized data stores like Redis, all rate limiter fetch data from Redis
