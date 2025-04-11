@@ -112,11 +112,13 @@ h1 {
   line-height: 1.2em;
   letter-spacing: .05em; 
   font-weight: bold;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.18);
 }
 
 h2 {
   font-size: 1.5em; 
   font-weight: bold;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.18);
   /*background:#B9D3EE;*/
   /*text-align: center;*/
 }
@@ -140,11 +142,13 @@ h4 {
   font-size: 1.2em; 
   padding: 6px 15px;
   font-weight: bold;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.18);
 }
 
 h5 {
   font-size: 1em; 
   font-weight: bold;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.18);
 }
 
 p {
@@ -189,32 +193,38 @@ ul {
   list-style-type: disc; }
 
 code {
-  color: #000000;
-  padding: .1em .4em;
-  background: #e8f2fb;
-  border: 1px solid #c9e1f6;
+  font-family: SFMono-Regular, Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  font-size: 1em;
+  line-height: 1.357em;
+  background: #f3f3f3;
+  padding: 0.2em 0.4em;
   border-radius: 3px;
-  font-family: Consolas, Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace, serif;
-  font-size: 1.0em;
-  vertical-align: bottom;
-  word-wrap: break-word; }
+  color: #000;
+}
 
 pre {
-  margin-bottom: 1.3em;
-  padding: 1em 2.5%;
-  background: #e8f2fb;
-  border: 1px solid #c9e1f6;
+  font-family: SFMono-Regular, Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  font-size: 13px;
+  line-height: 1.4em;
+  background-color: #f3f3f3;
+  border: 1px solid rgba(0, 0, 0, 0.18);
+  padding: 16px;
   border-radius: 3px;
-  font-family: Consolas, Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace, serif;
-  font-size: .9em;
-  font-weight: normal;
-  line-height: 1.3em;
-  overflow: scroll; }
+  overflow: auto;
+  white-space: pre;
+  word-wrap: normal;
+  margin: 1em 0;
+}
+
 pre code {
-  padding: 0;
   background: none;
   border: none;
-  word-wrap: normal; }
+  padding: 0;
+  margin: 0;
+  display: block;
+  color: #000;
+  tab-size: 4;
+}
 
 table {
   color: #333333;
