@@ -141,8 +141,8 @@ h5 {
 p {
   margin-top: 5px;
   margin-bottom: 10px;
+  font-size: 16px;
   line-height: 1.7em; 
-  font-size: 18px;
 }
 
 strong {
@@ -167,9 +167,12 @@ blockquote p:last-child {
 
 ol, ul {
   margin: 0 0 1.3em 2.5em; }
+
 ol li, ul li {
   margin: 0 0 .2em 0;
+  font-size: 16px;
   line-height: 1.6em; }
+
 ul ul, ol ul, ul ol, ol ol {
   margin-top: 0.2em;
 }
