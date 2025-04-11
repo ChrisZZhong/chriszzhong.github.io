@@ -19,6 +19,7 @@ service.
 ## implement
 
 - client side: throttle the button click rate, no guarentee (can be modified source code)
+
 - server side: most cases implemented within API Gateway
 
 - hard limit or soft limit
@@ -38,6 +39,7 @@ service.
 - ![token bucket](https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fi%2Fmkifh9c3ze4i9ir5j4mo.png)
 
 - TokenBucket(bucketSize, RefillRate)
+
   - Refill rate: number of tokens put into the bucket every second
 
 - How many bucket is needed depends on different api, if a user is allowed to make 1 post per second, add 150 friends per day, the we need 2 buckets
@@ -50,10 +52,7 @@ Cons:
     1. hard to tune the params properly
 ```
 
-`Leaking bucket`: FIFO queue
-    - if queue is not full, add it to queue
-    - else drop it
-    - Requests are pulled from the queue and processed at regular intervals.
+`Leaking bucket`: FIFO queue - if queue is not full, add it to queue - else drop it - Requests are pulled from the queue and processed at regular intervals.
 
 - leakingBucket(BucketSize, OutflowRate):
   - Outflow rate: it defines how many requests can be processed at a fixed rate, usually in seconds.
@@ -67,12 +66,9 @@ Cons:
     2. hard to tune params
 ```
 
-`Fixed window counter`
-    - The algorithm divides the timeline into fix-sized time windows and assign a counter for each window
-    - Each request increments the counter by one
-    - Once the counter reaches the pre-defined threshold, new requests are dropped until a new time window starts.
+`Fixed window counter` - The algorithm divides the timeline into fix-sized time windows and assign a counter for each window - Each request increments the counter by one - Once the counter reaches the pre-defined threshold, new requests are dropped until a new time window starts.
 
-issue: [0.5 : 1] + [1, 1.5] this one second can process 2 * count requests
+issue: [0.5 : 1] + [1, 1.5] this one second can process 2 \* count requests
 
 ```text
 Pros:
@@ -82,11 +78,7 @@ Cons:
     issue: [0.5 : 1] + [1, 1.5] this one second can process 2 * count requests
 ```
 
-`sliding window log` : fix the issue of fixed window counter
-    - keep track request timestamp in cache (redis)
-    - when new request came, remove all outdated timestamp, eg request comes at 1:01:30, so the frame is [1:00:30 - 1:01:30], remove all timestamp before 1:00:30
-    - add timestamp to log
-    - if log size <= allowed count, process else rejected
+`sliding window log` : fix the issue of fixed window counter - keep track request timestamp in cache (redis) - when new request came, remove all outdated timestamp, eg request comes at 1:01:30, so the frame is [1:00:30 - 1:01:30], remove all timestamp before 1:00:30 - add timestamp to log - if log size <= allowed count, process else rejected
 
 ```text
 Pros:
@@ -95,9 +87,7 @@ Cons:
     1. need memory to store request timestamp
 ```
 
-`sliding window counter`: combine fixed window counter and sliding window log
-    - Requests in current window + requests in the previous window * overlap percentage of the rolling window and previous window
-    - round up or down, then compare with allowed count
+`sliding window counter`: combine fixed window counter and sliding window log - Requests in current window + requests in the previous window \* overlap percentage of the rolling window and previous window - round up or down, then compare with allowed count
 
 ```text
 Pros:
@@ -145,13 +135,14 @@ When a user has sent too many requests, a 429 too many requests error and X-Rate
 In distributed systems, generally it will have two problems:
 
 - `Race condition`:
-    - `Lua script`
-    - `sorted set`
+
+  - `Lua script`
+  - `sorted set`
 
 - `Sync problem`:
-    - same client to same limiter (not scalable)
-    - better solution:
-        - use centralized data stores like Redis, all rate limiter fetch data from Redis
+  - same client to same limiter (not scalable)
+  - better solution:
+    - use centralized data stores like Redis, all rate limiter fetch data from Redis
 
 ## performance
 

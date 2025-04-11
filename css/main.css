@@ -112,13 +112,11 @@ h1 {
   line-height: 1.2em;
   letter-spacing: .05em; 
   font-weight: bold;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.18);
 }
 
 h2 {
   font-size: 1.5em; 
   font-weight: bold;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.18);
   /*background:#B9D3EE;*/
   /*text-align: center;*/
 }
@@ -142,13 +140,11 @@ h4 {
   font-size: 1.2em; 
   padding: 6px 15px;
   font-weight: bold;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.18);
 }
 
 h5 {
   font-size: 1em; 
   font-weight: bold;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.18);
 }
 
 p {
@@ -199,7 +195,7 @@ code {
   background: #f3f3f3;
   padding: 0.2em 0.4em;
   border-radius: 3px;
-  color: #000;
+  color: firebrick;
 }
 
 pre {
