@@ -36,7 +36,7 @@ service.
 
 - If there is enough token, process request and consume one token
 - else: request is denied
-- ![token bucket](https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fi%2Fmkifh9c3ze4i9ir5j4mo.png)
+  ![token bucket](https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fi%2Fmkifh9c3ze4i9ir5j4mo.png)
 
 - TokenBucket(bucketSize, RefillRate)
 
@@ -44,58 +44,71 @@ service.
 
 - How many bucket is needed depends on different api, if a user is allowed to make 1 post per second, add 150 friends per day, the we need 2 buckets
 
-```text
-Pros:
-    1. easy to implement
-    2. memory efficient
-Cons:
-    1. hard to tune the params properly
-```
+  ```text
+  Pros:
+      1. easy to implement
+      2. memory efficient
+  Cons:
+      1. hard to tune the params properly
+  ```
 
-`Leaking bucket`: FIFO queue - if queue is not full, add it to queue - else drop it - Requests are pulled from the queue and processed at regular intervals.
+`Leaking bucket`: FIFO queue
+
+- if queue is not full, add it to queue - else drop it
+- Requests are pulled from the queue and processed at regular intervals.
 
 - leakingBucket(BucketSize, OutflowRate):
+
   - Outflow rate: it defines how many requests can be processed at a fixed rate, usually in seconds.
 
-```text
-Pros:
-    1. memory efficient given the limited queue size
-    2. Requests are processed at a fixed rate therefore it is suitable for use cases that a stable outflow rate is needed.
-Cons:
-    1. when queue filled with old requests, burst recent traffic will be dropped
-    2. hard to tune params
-```
+  ```text
+  Pros:
+      1. memory efficient given the limited queue size
+      2. Requests are processed at a fixed rate therefore it is suitable for use cases that a stable outflow rate is needed.
+  Cons:
+      1. when queue filled with old requests, burst recent traffic will be dropped
+      2. hard to tune params
+  ```
 
-`Fixed window counter` - The algorithm divides the timeline into fix-sized time windows and assign a counter for each window - Each request increments the counter by one - Once the counter reaches the pre-defined threshold, new requests are dropped until a new time window starts.
+`Fixed window counter`
 
-issue: [0.5 : 1] + [1, 1.5] this one second can process 2 \* count requests
+- The algorithm divides the timeline into fix-sized time windows and assign a counter for each window
+- Each request increments the counter by one - Once the counter reaches the pre-defined threshold, new requests are dropped until a new time window starts.
 
-```text
-Pros:
-    1. memory efficient
-    2. fit certain cases
-Cons:
-    issue: [0.5 : 1] + [1, 1.5] this one second can process 2 * count requests
-```
+- issue: [0.5 : 1] + [1, 1.5] this one second can process 2 \* count requests
 
-`sliding window log` : fix the issue of fixed window counter - keep track request timestamp in cache (redis) - when new request came, remove all outdated timestamp, eg request comes at 1:01:30, so the frame is [1:00:30 - 1:01:30], remove all timestamp before 1:00:30 - add timestamp to log - if log size <= allowed count, process else rejected
+  ```text
+  Pros:
+      1. memory efficient
+      2. fit certain cases
+  Cons:
+      issue: [0.5 : 1] + [1, 1.5] this one second can process 2 * count requests
+  ```
 
-```text
-Pros:
-    1. accurate rate limit, in any rolling window, request will not exceed limit
-Cons:
-    1. need memory to store request timestamp
-```
+`sliding window log` : fix the issue of fixed window counter
 
-`sliding window counter`: combine fixed window counter and sliding window log - Requests in current window + requests in the previous window \* overlap percentage of the rolling window and previous window - round up or down, then compare with allowed count
+- keep track request timestamp in cache (redis)
+- when new request came, remove all outdated timestamp, eg request comes at 1:01:30, so the frame is [1:00:30 - 1:01:30], remove all timestamp before 1:00:30 - add timestamp to log - if log size <= allowed count, process else rejected
 
-```text
-Pros:
-    1.  It smooths out spikes in traffic because the rate is based on the average rate of the previous window
-    2. memory efficient
-Cons:
-    1. not so strict
-```
+  ```text
+  Pros:
+      1. accurate rate limit, in any rolling window, request will not exceed limit
+  Cons:
+      1. need memory to store request timestamp
+  ```
+
+`sliding window counter`: combine fixed window counter and sliding window log
+
+- Requests in current window + requests in the previous window \* overlap percentage of the rolling window and previous window
+- round up or down, then compare with allowed count
+
+  ```text
+  Pros:
+      1.  It smooths out spikes in traffic because the rate is based on the average rate of the previous window
+      2. memory efficient
+  Cons:
+      1. not so strict
+  ```
 
 ## [implementation Code with Redis](https://systemsdesign.cloud/SystemDesign/RateLimiter)
 
@@ -154,5 +167,7 @@ In distributed systems, generally it will have two problems:
 - `limit algorithm is effective`
 - `limit rules are effective`
 
-too many valid request are dropped -> relax rule
-flash sales, burst traffic -> change to token buckets
+  ```
+  too many valid request are dropped -> relax rule
+  flash sales, burst traffic -> change to token buckets
+  ```
