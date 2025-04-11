@@ -188,7 +188,7 @@ ol {
 ul {
   list-style-type: disc; }
 
-code {
+/* code {
   color: #000000;
   padding: .1em .4em;
   background: #e8f2fb;
@@ -250,7 +250,7 @@ tbody td {
 td:last-child {
   padding-right: 10px; 
   border: 1px solid #363636;
-}
+} */
 
 /*pager start----------------*/
 .post-container 
