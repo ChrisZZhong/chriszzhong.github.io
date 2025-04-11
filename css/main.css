@@ -75,22 +75,13 @@ body {
   background: #f39ca4; }
 
 a {
+  color: #00688B;
   text-decoration: none;
-  color: #00688B; 
-
-}
-p a {
-  margin-left: 4px;
-  margin-right: 4px;
-  text-decoration: underline;
 }
 
 a:hover {
+  text-decoration: underline;
   color: #0000CD;
-  -o-transition: .5s;
-  -ms-transition: .5s;
-  -moz-transition: .5s;
-  -webkit-transition: .5s; 
 }
 
 h1,
@@ -148,11 +139,8 @@ h5 {
 }
 
 p {
-  margin-bottom: 10px;
-  margin-top: 5px;
-  line-height: 1.7em; 
-  padding-left: 20px;
-  font-size: 18px;
+  margin-top: 0;
+  margin-bottom: 16px;
 }
 
 strong {
@@ -180,13 +168,18 @@ ol, ul {
 ol li, ul li {
   margin: 0 0 .2em 0;
   line-height: 1.6em; }
-ol ol, ol ul, ul ol, ul ul {
-  margin: .1em 0 .2em 2em; }
+ul ul, ol ul, ul ol, ol ol {
+  margin-top: 0.2em;
+}
 ol {
   list-style-type: decimal; }
 
 ul {
   list-style-type: disc; }
+
+li p {
+  margin-bottom: 0.7em;
+}
 
 code {
   font-family: SFMono-Regular, Consolas, "Liberation Mono", Menlo, Courier, monospace;
@@ -221,6 +214,15 @@ pre code {
   color: #000;
   tab-size: 4;
 }
+
+blockquote {
+  margin: 1em 0;
+  padding-left: 10px;
+  border-left: 5px solid rgba(0, 0, 0, 0.15);
+  color: #555;
+  background-color: #f9f9f9;
+}
+
 
 table {
   color: #333333;
