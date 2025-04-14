@@ -44,3 +44,5 @@ As the number of virtual nodes increases, the distribution of keys becomes more 
 This is because the `standard deviation` gets smaller with more virtual nodes, leading to
 balanced data distribution. The standard deviation is between 5% (200 virtual nodes) and 10%
 (100 virtual nodes) of the mean
+
+ServerSwith higher capacity can have more virtual nodes than others
