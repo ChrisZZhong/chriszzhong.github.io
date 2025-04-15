@@ -53,8 +53,7 @@ Cons:
 
 Twitter's ID generation system called snowflake. It divide 64 bits into below:
 
-| sign (1 bit) | timestamp (41 bit) | datacenter ID (5 bit) | worker ID (5 bit) | sequence ID (12 bit) |
-|--------------|---------------------|-----------------------|-------------------|-----------------------|
+**| sign (1 bit) | timestamp (41 bit) | datacenter ID (5 bit) | worker ID (5 bit) | sequence ID (12 bit) |**
 
 ```text
 sign is always 0 to represent positive number.
