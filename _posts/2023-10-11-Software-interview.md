@@ -17,12 +17,100 @@ tag: Interviews
   **Example:**  
   Suppose you have a shape class, like triangle, you want to have a method to give you the area of the shape, instead of writing a method called calculateArea, you should create a new class called areaCalculator which is responsible for calculating area of all types, and call areaCalculator when you need to calculate the area.
 
+  ```Java
+  // violate SRP
+   public class ReportGenerator {
+      public void generateReport(String data) {
+         System.out.println("Generating report: " + data);
+      }
+
+      public void saveToFile(String data) {
+         System.out.println("Saving report to file: " + data);
+      }
+
+      public void sendEmail(String data) {
+         System.out.println("Sending report by email: " + data);
+      }
+   }
+   // should decouple to three class
+   public class ReportContentGenerator {
+      public String generateReport(String data) {
+         return "Report: " + data;
+      }
+   }
+
+   public class FileSaver {
+      public void saveToFile(String data) {
+         System.out.println("Saving report to file: " + data);
+      }
+   }
+
+   public class EmailSender {
+      public void sendEmail(String data) {
+         System.out.println("Sending report by email: " + data);
+      }
+   }
+  ```
+
 ### Open-Closed Principle
 
 - **Objects or entities should be open for extension but closed for modification.**
 
   **Example:**  
-   you have different payment methods, like card, cash, third parties, instead of checking input several times with if else statement, you should generate a new interface like payProcessor to handle the payment, this is good for decoupling. You don’t have to modify this class when a new payment method is added, all you need to do is generate a new class and extend the payProcessor.
+   In Spring, use registration based factory design pattern to satisfy open closed principle:
+   ```Java
+   public interface DiscountStrategy {
+      double getDiscount();
+   }
+   @Component("Regular")
+   public class RegularDiscount implements DiscountStrategy {
+      public double getDiscount() { return 0.05; }
+   }
+
+   @Component("Premium")
+   public class PremiumDiscount implements DiscountStrategy {
+      public double getDiscount() { return 0.10; }
+   }
+
+   @Component("VIP")
+   public class VIPDiscount implements DiscountStrategy {
+      public double getDiscount() { return 0.20; }
+   }
+   ```
+
+   ```Java
+   // Use component map so we only need to regist new strategy without modifying the business codes
+   @Component
+   public class DiscountStrategyFactory {
+
+      private final Map<String, DiscountStrategy> strategyMap;
+
+      public DiscountStrategyFactory(Map<String, DiscountStrategy> strategyMap) {
+         this.strategyMap = strategyMap;
+      }
+
+      public DiscountStrategy getStrategy(String customerType) {
+         return strategyMap.getOrDefault(customerType, () -> 0.0);
+      }
+   }
+   ```
+
+   ```Java
+   @Service
+   public class DiscountCalculator {
+
+      private final DiscountStrategyFactory strategyFactory;
+
+      public DiscountCalculator(DiscountStrategyFactory strategyFactory) {
+         this.strategyFactory = strategyFactory;
+      }
+
+      public double calculateDiscount(String customerType) {
+         DiscountStrategy strategy = strategyFactory.getStrategy(customerType);
+         return strategy.getDiscount();
+      }
+   }
+   ```
 
 ### Liskov Substitution Principle
 
@@ -31,12 +119,79 @@ tag: Interviews
   **Example:**  
    List and arrayList are both list, so you can use arrayList anywhere you use list.
 
+   ```Java
+   // Ostrich can not replace Bird
+   public class Bird {
+      public void fly() {
+         System.out.println("Bird is flying");
+      }
+   }
+
+   public class Ostrich extends Bird {
+      @Override
+      public void fly() {
+         throw new UnsupportedOperationException("Ostriches can't fly");
+      }
+   }
+   ```
+
+   ```Java
+   // should be
+   public interface Flyable {
+    void fly();
+   }
+
+   public abstract class Bird {
+      public abstract void move();
+   }
+
+   public class Eagle extends Bird implements Flyable {
+      @Override
+      public void move() {
+         fly();
+      }
+
+      @Override
+      public void fly() {
+         System.out.println("Eagle is flying");
+      }
+   }
+
+   public class Ostrich extends Bird {
+      @Override
+      public void move() {
+         System.out.println("Ostrich is running");
+      }
+   }
+
+   ```
+
 ### Interface Segregation Principle
 
 - **A client should never be forced to implement an interface that it doesn’t use**
 
   **Example:**  
    Take payment as mentioned above as an example, A and B both implement payProcessor, A have charge and refund function, suppose B do not support refund, but B have to implement an empty method, this is a violation. Instead, we should separate the parProcessor to chargeProcessor, refundProcessor.
+
+   ```Java
+   // use two interface instead one
+   public interface Workable {
+    void work();
+   }
+
+   public interface Eatable {
+      void eat();
+   }
+
+   public class HumanWorker implements Workable, Eatable {
+      public void work() { System.out.println("Human working"); }
+      public void eat() { System.out.println("Human eating"); }
+   }
+
+   public class RobotWorker implements Workable {
+      public void work() { System.out.println("Robot working"); }
+   }
+   ```
 
 ### Dependency Inversion Principle
 
