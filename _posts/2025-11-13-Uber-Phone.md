@@ -4,6 +4,7 @@ title: "UB Phone"
 date: 2025-06-24
 description: "interview problems"
 tag: Algorithms
+prime: false
 ---
 
 
@@ -37,11 +38,7 @@ tag: Algorithms
 - 将该边加入图中
 
 ### 缓存优化（Reachability Cache）
-- 可以缓存节点之间的可达性关系，例如 canReach
-𝑎
-a
-𝑏
-b
+- 可以缓存节点之间的可达性关系，例如 canReach(a, b)
 - 新增依赖时优先从缓存中判断是否可达，避免重复 DFS / BFS
 - 缓存策略可以包括：
 - 只缓存高访问频率的节点
@@ -289,7 +286,7 @@ time 12: counter.get_total_count() -> 2
   - ts = 1 → 1 <= 2 → 过期  
   - ts = 3 → 3 > 2 → 仍然有效
 
-因此 **过期条件** 为：
+因此 **过期条件** 为：`ts <= now - window`
 
 
 
