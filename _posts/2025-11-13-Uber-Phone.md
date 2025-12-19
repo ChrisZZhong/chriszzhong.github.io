@@ -145,8 +145,6 @@ Constraints:
 
 ## 564. Find the Closest Palindrome
 
-
-
 ---------------------------------------------------------------------------------------------
 
 phone screen: [1438](https://leetcode.cn/problems/longest-continuous-subarray-with-absolute-diff-less-than-or-equal-to-limit/)
@@ -202,27 +200,47 @@ Phone Screen Problem: Determine the minimum number of characters required to app
 
 [214](https://leetcode.cn/problems/shortest-palindrome/description/)
 
-Onsite Round 1: Data Structures & Algorithms Problem: Given an integer $x$ and an array, determine if it is possible to make the entire array equal to a target number $y$. The operation allowed is adding or subtracting a value between $0$ and $x$ to each element in the array.
+Onsite Round 1: Data Structures & Algorithms Problem: Given an integer x and an array, determine if it is possible to make the entire array equal to a target number y. The operation allowed is adding or subtracting a value between 0 and x to each element in the array.
 
 [2779](https://leetcode.cn/problems/maximum-beauty-of-an-array-after-applying-operation/description/)
 
-Initial Case: $x = 1$.
-Follow-up: $x \ge 1$. Result: Provided multiple solutions.
+Initial Case: x = 1.
+Follow-up: x >= 1. Result: Provided multiple solutions.
 
 ---------------------------------------------------------------------------------------------
 
-* Given two inputs,
-* First input is the location map, a 2D array
-* | O | E | E | E | X |
-* | E | O | X | X | X |
-* | E | E | E | E | E |
-* | X | E | O | E | E |
-* | X | E | X | E | X |
-* O = Robot, E = Empty, X = blocker
-* {{'O','E','E','E','X'},{'E','O','X','X','X'},{'E','E','E','E','E'},{'X','E','O','E','E'},{'X','E','X','E','X'}}
-* Second input is the query. It’s a 1D array consisting of distance to the closest blocker in the order from left, top, bottom and right
-* [2, 2, 4, 1] -> This means distance of 2 to the left blocker, 2 to the top blocker, 4 to the bottom blocker and 1 to the right blocker
-* The location map boundary is also considered blocker, meaning if the robot hits the boundary it also means it’s hitting the blocker.
+## Robot Location Query Problem
+
+Given two inputs:
+
+### First Input: Location Map (2D Array)
+
+```
+| O | E | E | E | X |
+| E | O | X | X | X |
+| E | E | E | E | E |
+| X | E | O | E | E |
+| X | E | X | E | X |
+```
+
+- O = Robot
+- E = Empty
+- X = blocker
+
+Example: `{{'O','E','E','E','X'},{'E','O','X','X','X'},{'E','E','E','E','E'},{'X','E','O','E','E'},{'X','E','X','E','X'}}`
+
+### Second Input: Query Array
+
+A 1D array consisting of distance to the closest blocker in the order from left, top, bottom and right.
+
+Example: `[2, 2, 4, 1]` means:
+- Distance of 2 to the left blocker
+- Distance of 2 to the top blocker
+- Distance of 4 to the bottom blocker
+- Distance of 1 to the right blocker
+
+Note: The location map boundary is also considered blocker, meaning if the robot hits the boundary it also means it's hitting the blocker.
+
 说了思路，然后结束了。整个一轮都没有写代码
 
 ```
@@ -288,12 +306,9 @@ time 12: counter.get_total_count() -> 2
 
 因此 **过期条件** 为：`ts <= now - window`
 
-
-
 ---------------------------------------------------------------------------------------------
 
- 骑👂🍷
-
+## Find Elephant Path (Binary Search)
 
 Given a sorted array and an elephant's path length, use binary search to find the value in the path that is closest to the target path length.
 
@@ -384,8 +399,8 @@ Requirements
 Write unit tests to verify the compression correctness.
 Provide an optimization method, such as utilizing CPU multi-threading.
 Discuss decoding the Quadtree to reconstruct the original image, no code needed.
-Constraints
-Image size is $n \times n$, where $n \leq 1024$.
+Constraints:
+- Image size is n x n, where n <= 1024
 
 
 code2：上来就说要做俩道题
@@ -405,12 +420,13 @@ nums = [-5, -4, -2, 0, 1, 2, 3]
 Output
 [0, 1, -2, 2, 3, -4, -5]
 
-Requirements
-Time complexity: O(n)
-Space complexity: O(1)
-Constraints
-$-10^9 \leq \text{nums}[i] \leq 10^9$
-$1 \leq n \leq 10^5$
+Requirements:
+- Time complexity: O(n)
+- Space complexity: O(1)
+
+Constraints:
+- -10^9 <= nums[i] <= 10^9
+- 1 <= n <= 10^5
 
 
 ---------------------------------------------------------------------------------------------
