@@ -227,7 +227,7 @@ Given two inputs:
 - E = Empty
 - X = blocker
 
-Example: `{{'O','E','E','E','X'},{'E','O','X','X','X'},{'E','E','E','E','E'},{'X','E','O','E','E'},{'X','E','X','E','X'}}`
+Example: {% raw %}`{{'O','E','E','E','X'},{'E','O','X','X','X'},{'E','E','E','E','E'},{'X','E','O','E','E'},{'X','E','X','E','X'}}`{% endraw %}
 
 ### Second Input: Query Array
 
