@@ -374,7 +374,6 @@ coding two：一上来问我一道和phone screen一样的题目，我说做过�
 
 ---------------------------------------------------------------------------------------------
 
-
 店面：
 外星人字典
 
@@ -498,12 +497,10 @@ class Solution {
 }
 ```
 
-
 SD: 购物网站首页展示 popular 商品
 也算高频题，我是按 click 商品的次数定义popularity，总体用 ads click aggregation + top k 的思路。 因为前面面试官自我介绍和问项目用了20多分钟，我怕时间不够刚开始答的有些着急，miss 了一些 requirement 和 API。 面试官提醒后才加上。图画的应该没什么问题，核心的 kafka + flink + redis 都讨论了存什么数据以及scalability，kafka 的 partition key， 还写了 flink 的 pseudo code。还有就是展示商品的popular要最近多长时间的，flink 时间窗口设多大等等。
 
 ---------------------------------------------------------------------------------------------
-
 
 时间线：
 7月份：Uber Recruiter Call
