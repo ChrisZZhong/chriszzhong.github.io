@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "UB coding"
+title: "UB coding hello interview"
 date: 2025-12-19
 description: "UB coding hello interview"
 tag: Algorithms
