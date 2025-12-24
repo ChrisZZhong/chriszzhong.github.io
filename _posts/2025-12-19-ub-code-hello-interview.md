@@ -10,7 +10,7 @@ prime: false
 
 # Problem
 
-- [‼️] [Leetcode 269. Alien Dictionary](https://leetcode.cn/problems/alien-dictionary)
+## - [‼️] [Leetcode 269. Alien Dictionary](https://leetcode.cn/problems/alien-dictionary)
 
 ```java
 class Solution {
@@ -83,7 +83,7 @@ class Solution {
 }
 ```
 
-- [‼️] [Leetcode 247. Strobogrammatic Number II](https://leetcode.cn/problems/strobogrammatic-number-ii)
+## - [‼️] [Leetcode 247. Strobogrammatic Number II](https://leetcode.cn/problems/strobogrammatic-number-ii)
 
 ```java
 class Solution {
@@ -112,7 +112,7 @@ class Solution {
 }
 ```
 
-- [‼️] [Leetcode 384. Shuffle an Array](https://leetcode.cn/problems/shuffle-an-array) 
+## - [‼️] [Leetcode 384. Shuffle an Array](https://leetcode.cn/problems/shuffle-an-array) 
 
 ```java
 public int[] shuffle() {
@@ -128,7 +128,7 @@ public int[] shuffle() {
 }
 ```
 
-- [‼️] [Leetcode 305. Number of Islands II](https://leetcode.cn/problems/number-of-islands-ii)
+## - [‼️] [Leetcode 305. Number of Islands II](https://leetcode.cn/problems/number-of-islands-ii)
 
 ```java
 class Solution {
@@ -196,7 +196,7 @@ class Solution {
 }
 ```
 
-- [‼️] [Leetcode 2402. Meeting Rooms III](https://leetcode.cn/problems/meeting-rooms-iii) 用两个heap存free和busy
+## - [‼️] [Leetcode 2402. Meeting Rooms III](https://leetcode.cn/problems/meeting-rooms-iii) 用两个heap存free和busy
 
 ```java
 class Solution {
@@ -246,7 +246,7 @@ class Solution {
 }
 ```
 
-- [‼️] [Leetcode 815. Bus Routes](https://leetcode.cn/problems/bus-routes) 对bus和route同时记录visit
+## - [‼️] [Leetcode 815. Bus Routes](https://leetcode.cn/problems/bus-routes) 对bus和route同时记录visit
 
 ```java
 class Solution {
@@ -282,7 +282,7 @@ class Solution {
 }
 ```
 
-- [‼️] [Leetcode 427. Construct Quad Tree](https://leetcode.cn/problems/construct-quad-tree) 二维前缀和求面积
+## - [‼️] [Leetcode 427. Construct Quad Tree](https://leetcode.cn/problems/construct-quad-tree) 二维前缀和求面积
 
 ```java
 class Solution {
@@ -342,7 +342,7 @@ class Solution {
 }
 ```
 
-- [‼️] [Leetcode 564. Find the Closest Palindrome](https://leetcode.cn/problems/find-the-closest-palindrome)
+## - [‼️] [Leetcode 564. Find the Closest Palindrome](https://leetcode.cn/problems/find-the-closest-palindrome)
 
 ```java
 class Solution {
@@ -384,23 +384,23 @@ class Solution {
 ```
 
 
-- [⚠️] [Leetcode 5. Longest Palindromic Substring](https://leetcode.cn/problems/longest-palindromic-substring)
+## - [⚠️] [Leetcode 5. Longest Palindromic Substring](https://leetcode.cn/problems/longest-palindromic-substring)
 
-- [⚠️] [Leetcode 1244. Design A Leaderboard](https://leetcode.cn/problems/design-a-leaderboard) TreeMap store score cnt
+## - [⚠️] [Leetcode 1244. Design A Leaderboard](https://leetcode.cn/problems/design-a-leaderboard) TreeMap store score cnt
 
-- [⚠️ 复习] [Leetcode 648. Replace Words](https://leetcode.cn/problems/replace-words) Trie Tree
+## - [⚠️ 复习] [Leetcode 648. Replace Words](https://leetcode.cn/problems/replace-words) Trie Tree
 
-- [⚠️] [Leetcode 79. Word Search](https://leetcode.cn/problems/word-search)
+## - [⚠️] [Leetcode 79. Word Search](https://leetcode.cn/problems/word-search)
 
-- [✅] [Design an in-memory database to handle transactions](https://www.hellointerview.com/community/questions/memory-database-transactions/cm6uaoy1y00003b6la4jojd7s?company=Uber&level=STAFF)
+## - [✅] [Design an in-memory database to handle transactions](https://www.hellointerview.com/community/questions/memory-database-transactions/cm6uaoy1y00003b6la4jojd7s?company=Uber&level=STAFF)
 
-- [ ] [Package Installation Order](https://www.hellointerview.com/community/questions/package-installation-order/cm6jw34rg0018dar9w2f337wf?company=Uber&level=MID_LEVEL)
+## - [ ] [Package Installation Order](https://www.hellointerview.com/community/questions/package-installation-order/cm6jw34rg0018dar9w2f337wf?company=Uber&level=MID_LEVEL)
 
-- [ ] [Leetcode 127. Word Ladder](https://leetcode.cn/problems/word-ladder)
+## - [ ] [Leetcode 127. Word Ladder](https://leetcode.cn/problems/word-ladder)
 
-- [ ] [Leetcode 749. Contain Virus](https://leetcode.cn/problems/contain-virus)
+## - [ ] [Leetcode 749. Contain Virus](https://leetcode.cn/problems/contain-virus)
 
-- [✅] [Leetcode 588. Design In-Memory File System](https://leetcode.cn/problems/design-in-memory-file-system) Trie Tree
+## - [✅] [Leetcode 588. Design In-Memory File System](https://leetcode.cn/problems/design-in-memory-file-system) Trie Tree
 
 ```java
 class TrieNode {
@@ -498,22 +498,22 @@ class FileSystem {
 }
 ```
 
-- [✅] [Leetcode 1166. Design File System](https://leetcode.cn/problems/design-file-system) Trie Tree
+## - [✅] [Leetcode 1166. Design File System](https://leetcode.cn/problems/design-file-system) Trie Tree
 
-- [✅] [Leetcode 1438. Longest Continuous Subarray With Absolute Diff Less Than or Equal to Limit](https://leetcode.cn/problems/longest-continuous-subarray-with-absolute-diff-less-than-or-equal-to-limit)
+## - [✅] [Leetcode 1438. Longest Continuous Subarray With Absolute Diff Less Than or Equal to Limit](https://leetcode.cn/problems/longest-continuous-subarray-with-absolute-diff-less-than-or-equal-to-limit)
 
-- [✅] [Leetcode 207. Course Schedule](https://leetcode.cn/problems/course-schedule)
+## - [✅] [Leetcode 207. Course Schedule](https://leetcode.cn/problems/course-schedule)
 
-- [✅] [Leetcode 638. Shopping Offers](https://leetcode.cn/problems/shopping-offers) 
+## - [✅] [Leetcode 638. Shopping Offers](https://leetcode.cn/problems/shopping-offers) 
 
-- [✅] [Leetcode 146. LRU Cache](https://leetcode.cn/problems/lru-cache) double linked list + MAP
+## - [✅] [Leetcode 146. LRU Cache](https://leetcode.cn/problems/lru-cache) double linked list + MAP
 
-- [✅] [Leetcode 415. Add Strings](https://leetcode.cn/problems/add-strings)
+## - [✅] [Leetcode 415. Add Strings](https://leetcode.cn/problems/add-strings)
 
-- [✅] [Leetcode 53. Maximum Subarray](https://leetcode.cn/problems/maximum-subarray) DP
+## - [✅] [Leetcode 53. Maximum Subarray](https://leetcode.cn/problems/maximum-subarray) DP
 
-- [✅] [Leetcode 200. Number of Islands](https://leetcode.cn/problems/number-of-islands)
+## - [✅] [Leetcode 200. Number of Islands](https://leetcode.cn/problems/number-of-islands)
 
-- [✅] [Leetcode 314. Binary Tree Vertical Order Traversal](https://leetcode.cn/problems/binary-tree-vertical-order-traversal) BFS or DFS + TreeMap
+## - [✅] [Leetcode 314. Binary Tree Vertical Order Traversal](https://leetcode.cn/problems/binary-tree-vertical-order-traversal) BFS or DFS + TreeMap
 
-- [✅] [Leetcode 347. Top K Frequent Elements](https://leetcode.cn/problems/top-k-frequent-elements) PQ
+## - [✅] [Leetcode 347. Top K Frequent Elements](https://leetcode.cn/problems/top-k-frequent-elements) PQ
