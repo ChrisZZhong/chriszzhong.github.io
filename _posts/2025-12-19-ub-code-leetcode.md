@@ -11,7 +11,7 @@ prime: false
 
 ## - [ ] [Leetcode 14. Longest Common Prefix](https://leetcode.cn/problems/longest-common-prefix)
 
-## - [ ] [Leetcode 79. Word Search](https://leetcode.cn/problems/word-search)
+## - [‼️] [Leetcode 79. Word Search](https://leetcode.cn/problems/word-search)
 
 ## - [ ] [Leetcode 200. Number of Islands](https://leetcode.cn/problems/number-of-islands)
 
