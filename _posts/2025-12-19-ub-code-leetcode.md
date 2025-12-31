@@ -55,7 +55,7 @@ prime: false
 
 ## - [‼️] [Leetcode 721. Accounts Merge](https://leetcode.cn/problems/accounts-merge) 注意如何建图和保存
 
-## - [ ] [Leetcode 729. My Calendar I](https://leetcode.cn/problems/my-calendar-i) 前边的跟end，后边的跟start比
+## - [‼️] [Leetcode 729. My Calendar I](https://leetcode.cn/problems/my-calendar-i) 前边的跟end，后边的跟start比
 
 ## - [‼️] [Leetcode 752. Open the Lock](https://leetcode.cn/problems/open-the-lock) BFS visit在加queue时加
 
@@ -69,23 +69,23 @@ prime: false
 
 ## - [✅] [Leetcode 1101. The Earliest Moment When Everyone Become Friends](https://leetcode.cn/problems/the-earliest-moment-when-everyone-become-friends)
 
-## - [ ] [Leetcode 1235. Maximum Profit in Job Scheduling](https://leetcode.cn/problems/maximum-profit-in-job-scheduling)
+## - [‼️] [Leetcode 1235. Maximum Profit in Job Scheduling](https://leetcode.cn/problems/maximum-profit-in-job-scheduling) DP 二分
 
-## - [ ] [Leetcode 1428. Leftmost Column with at Least a One](https://leetcode.cn/problems/leftmost-column-with-at-least-a-one)
+## - [‼️] [Leetcode 1428. Leftmost Column with at Least a One](https://leetcode.cn/problems/leftmost-column-with-at-least-a-one)
 
-## - [ ] [Leetcode 1429. First Unique Number](https://leetcode.cn/problems/first-unique-number)
+## - [‼️] [Leetcode 1429. First Unique Number](https://leetcode.cn/problems/first-unique-number) LRU, LinkedHashSet()
 
-## - [ ] [Leetcode 1438. Longest Continuous Subarray With Absolute Diff Less Than or Equal to Limit](https://leetcode.cn/problems/longest-continuous-subarray-with-absolute-diff-less-than-or-equal-to-limit)
+## - [✅] [Leetcode 1438. Longest Continuous Subarray With Absolute Diff Less Than or Equal to Limit](https://leetcode.cn/problems/longest-continuous-subarray-with-absolute-diff-less-than-or-equal-to-limit) monotonic queue
 
-## - [ ] [Leetcode 1475. Final Prices With a Special Discount in a Shop](https://leetcode.cn/problems/final-prices-with-a-special-discount-in-a-shop)
+## - [‼️] [Leetcode 1475. Final Prices With a Special Discount in a Shop](https://leetcode.cn/problems/final-prices-with-a-special-discount-in-a-shop) 单调栈
 
-## - [ ] [Leetcode 2163. Minimum Difference in Sums After Removal of Elements](https://leetcode.cn/problems/minimum-difference-in-sums-after-removal-of-elements)
+## - [‼️] [Leetcode 2163. Minimum Difference in Sums After Removal of Elements](https://leetcode.cn/problems/minimum-difference-in-sums-after-removal-of-elements) two heap
 
-## - [ ] [Leetcode 2258. Escape the Spreading Fire](https://leetcode.cn/problems/escape-the-spreading-fire)
+## - [‼️] [Leetcode 2258. Escape the Spreading Fire](https://leetcode.cn/problems/escape-the-spreading-fire) BFS FireTime, BFS human
 
 ## - [ ] [Leetcode 2468. Split Message Based on Limit](https://leetcode.cn/problems/split-message-based-on-limit)
 
-## - [ ] [Leetcode 2571. Minimum Operations to Reduce an Integer to 0](https://leetcode.cn/problems/minimum-operations-to-reduce-an-integer-to-0)
+## - [‼️] [Leetcode 2571. Minimum Operations to Reduce an Integer to 0](https://leetcode.cn/problems/minimum-operations-to-reduce-an-integer-to-0) greedy
 
 ## - [ ] [Leetcode 2791. Count Paths That Can Form a Palindrome in a Tree](https://leetcode.cn/problems/count-paths-that-can-form-a-palindrome-in-a-tree)
 
