@@ -952,3 +952,35 @@ Request: {
 7. **幂等性保证**: Idempotency Key是防止重复请求的核心机制
 8. **交易安全**: 分布式锁 + 状态检查 + 幂等性检查多重防护
 
+## recap
+
+**Core Requirements**
+
+1.  Users can see live prices of stocks.
+    
+2.  Users can manage orders for stocks (market / limit orders, create / cancel orders).
+    
+
+**Below the line (out of scope)**
+
+*   Users can trade outside of market hours.
+    
+*   Users can trade ETFs, options, crypto.
+    
+*   Users can see the [order book](https://www.investopedia.com/terms/o/order-book.asp) in real time.
+    
+- `GET /symbol/:name` - 获取股票信息和价格数据
+- `POST /order` - 创建订单
+  - Request: `{position: "buy", symbol: "META", priceInCents: 52210, numShares: 10}`
+  - 使用 `priceInCents` 而非 `price` 避免浮点数精度问题
+- `DELETE /order/:id` - 取消订单
+- `GET /orders` - 获取用户订单列表（分页）
+- `POST /subscribe` - 订阅价格更新（SSE连接）
+
+用户看到价格更新，用SSE即可，这里多对多关系，吞吐量没有特别大可以用Redis pub/sub，特别大了用kafka比较好。交易所推送到price tracking service --> kafka/Redis --> symbol service --> client，第一次加载价格从cache读取
+
+订单实际上是transaction，用postgre来满足，根据userid切片，然后就是怎么跟exchange连接讨论，scale order service即可。
+
+如何保证订单tracking，用状态机来做
+
+fault tolerance，用clean up job来纠正订单状态，使其保持一致
