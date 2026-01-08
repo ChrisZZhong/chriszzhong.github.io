@@ -42,6 +42,60 @@ prime: false
 
 ## - [‼️] [Leetcode 269. Alien Dictionary](https://leetcode.cn/problems/alien-dictionary)
 
+```java
+class Solution {
+    public String alienOrder(String[] words) {
+        List<Integer>[] graph = new ArrayList[26];
+        Arrays.setAll(graph, _ -> new ArrayList<>());
+        int n = words.length;
+        int[] indegree = new int[26];
+        Set<Integer> met = new HashSet<>();
+        // ***** 提前把所有的字符加入集合，别在后边处理了, 也可以用boolean array来
+        for (String w : words) {
+            for (char c : w.toCharArray()) {
+                met.add(c - 'a');
+            }
+        }
+        for (int i = 0; i < n - 1; i++) {
+            String cur = words[i];
+            String next = words[i + 1];
+            int minLen = Math.min(cur.length(), next.length());
+            boolean find = false;
+            for (int j = 0; j < minLen; j++) {
+                int from = cur.charAt(j) - 'a';
+                int to = next.charAt(j) - 'a';
+                if (cur.charAt(j) != next.charAt(j)) {
+                    find = true;
+                    indegree[to]++;
+                    graph[from].add(to);
+                    // ********* 终止
+                    break;
+                }
+            }
+            if (!find && cur.length() > next.length()) return "";
+        }
+        Deque<Integer> queue = new ArrayDeque<>();
+        for (int i = 0; i < 26; i++) {
+            if (indegree[i] == 0 && met.contains(i)) {
+                queue.offerLast(i);
+            }
+        }
+        StringBuilder sb = new StringBuilder();
+        while (!queue.isEmpty()) {
+            int cur = queue.pollFirst();
+            sb.append((char) (cur + 'a'));
+            for (int next : graph[cur]) {
+                if (--indegree[next] == 0) {
+                    queue.offerLast(next);
+                }
+            }
+        }
+        if (sb.length() != met.size()) return "";
+        return sb.toString();
+    }
+}
+```
+
 ## - [‼️] [Leetcode 305. Number of Islands II](https://leetcode.cn/problems/number-of-islands-ii) union find
 
 ## - [✅] [Leetcode 314. Binary Tree Vertical Order Traversal](https://leetcode.cn/problems/binary-tree-vertical-order-traversal) BFS or DFS + TreeMap
