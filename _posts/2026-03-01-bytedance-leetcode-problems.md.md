@@ -13,6 +13,8 @@ prime: false
 
 [20. valid-parentheses](https://leetcode.cn/problems/valid-parentheses/description/?envType=company&envId=bytedance&favoriteSlug=bytedance-thirty-days)
 
+[678. Valid Parenthesis String](https://leetcode.cn/problems/valid-parenthesis-string/)
+
 [22. Generate Parentheses](https://leetcode.cn/problems/generate-parentheses/)
 
 一面：Validate parenthesis (含*)， follow up 输出所有可能的string（dfs）
