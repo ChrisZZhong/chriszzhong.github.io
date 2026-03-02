@@ -1,6 +1,6 @@
 ---
 layout: post
-title: UB
+title: ByteDance
 date: 2026-02-27
 description: ""
 tag: Algorithms
