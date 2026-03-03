@@ -9,39 +9,39 @@ prime: false
 
 单调栈 / Trie Tree复习/ 拓扑排序 / BFS / DJ / 计算器
 
-[19. Remove Nth Node From End of List](https://leetcode.cn/problems/remove-nth-node-from-end-of-list/)
+[✅] [19. Remove Nth Node From End of List](https://leetcode.cn/problems/remove-nth-node-from-end-of-list/)
 
-[20. valid-parentheses](https://leetcode.cn/problems/valid-parentheses/description/?envType=company&envId=bytedance&favoriteSlug=bytedance-thirty-days)
+[✅] [20. valid-parentheses](https://leetcode.cn/problems/valid-parentheses/description/?envType=company&envId=bytedance&favoriteSlug=bytedance-thirty-days)
 
-[678. Valid Parenthesis String](https://leetcode.cn/problems/valid-parenthesis-string/)
-
-[22. Generate Parentheses](https://leetcode.cn/problems/generate-parentheses/)
+[⚠️] [22. Generate Parentheses](https://leetcode.cn/problems/generate-parentheses/) DFS
 
 一面：Validate parenthesis (含*)， follow up 输出所有可能的string（dfs）
 
-[Encode and Decode TinyURL](https://leetcode.cn/problems/encode-and-decode-tinyurl/)
+[⚠️] [678. Valid Parenthesis String](https://leetcode.cn/problems/valid-parenthesis-string/) DP / greedy
 
-[Nested List Weight Sum](https://leetcode.cn/problems/nested-list-weight-sum/)
+[⚠️] [Encode and Decode TinyURL](https://leetcode.cn/problems/encode-and-decode-tinyurl/)
 
-[827. Making A Large Island](https://leetcode.cn/problems/making-a-large-island/)
+[✅] [Nested List Weight Sum](https://leetcode.cn/problems/nested-list-weight-sum/) DFS
 
-[207. Course Schedule](https://leetcode.cn/problems/course-schedule/)
+[✅] [827. Making A Large Island](https://leetcode.cn/problems/making-a-large-island/) Union Find
 
-[151. Reverse Words in a String](https://leetcode.cn/problems/reverse-words-in-a-string/)
+[✅]  [207. Course Schedule](https://leetcode.cn/problems/course-schedule/) 拓扑排序
 
-[78. Subsets](https://leetcode.cn/problems/subsets/)
+[✅]  [151. Reverse Words in a String](https://leetcode.cn/problems/reverse-words-in-a-string/)
 
-[90. Subsets II](https://leetcode.cn/problems/subsets-ii/)
+[✅]  [78. Subsets](https://leetcode.cn/problems/subsets/)
 
-[72. Edit Distance](https://leetcode.cn/problems/edit-distance/)
+[⚠️]  [90. Subsets II](https://leetcode.cn/problems/subsets-ii/) 注意重复的选择
 
-[124. Binary Tree Maximum Path Sum](https://leetcode.cn/problems/binary-tree-maximum-path-sum/)
+[⚠️]  [72. Edit Distance](https://leetcode.cn/problems/edit-distance/) 子问题定义
 
-[253. Meeting Rooms II](https://leetcode.cn/problems/meeting-rooms-ii/)
+[✅]  [124. Binary Tree Maximum Path Sum](https://leetcode.cn/problems/binary-tree-maximum-path-sum/)
 
-[215. Kth Largest Element in an Array](https://leetcode.cn/problems/kth-largest-element-in-an-array/)
+[✅]  [253. Meeting Rooms II](https://leetcode.cn/problems/meeting-rooms-ii/) Sort + PQ
 
-[15. 3Sum](https://leetcode.cn/problems/3sum/)
+[✅]  [215. Kth Largest Element in an Array](https://leetcode.cn/problems/kth-largest-element-in-an-array/) PQ
+
+[✅]  [15. 3Sum](https://leetcode.cn/problems/3sum/) sort + two pointer
 
 [51. N-Queens](https://leetcode.cn/problems/n-queens/)
 
