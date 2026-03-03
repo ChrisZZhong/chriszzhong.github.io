@@ -43,6 +43,8 @@ prime: false
 
 [✅]  [15. 3Sum](https://leetcode.cn/problems/3sum/) sort + two pointer
 
+[23. Merge k Sorted Lists](https://leetcode.cn/problems/merge-k-sorted-lists/) 注意最后断开next
+
 [51. N-Queens](https://leetcode.cn/problems/n-queens/)
 
 [198. House Robber](https://leetcode.cn/problems/house-robber/)
